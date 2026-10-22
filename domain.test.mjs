@@ -11,3 +11,25 @@ test('voice commands reject partial or negated matches',()=>{assert.equal(comman
 
 import {validateArchive} from './archive-schema.js';
 test('archive import validates exercise counts',()=>{const r=validateArchive({version:1,programmes:[{name:'Example',date:'2026-01-01',exercises:[{name:'Step',text:'Move slowly',reps:3}]}]});assert.equal(r.programmes.length,1);assert.equal(r.programmes[0].exercises[0].reps,3)});
+
+import {normaliseExerciseFeedback,makeExerciseLog} from './exercise-feedback.js';
+test('no rating stays explicitly unrecorded, not zero',()=>{
+  assert.deepEqual(normaliseExerciseFeedback(),{pain:null,difficulty:'',note:''});
+  assert.equal(normaliseExerciseFeedback({pain:'0'}).pain,0);
+  assert.equal(normaliseExerciseFeedback({pain:'10'}).pain,10);
+});
+test('invalid discomfort and unknown difficulty are rejected',()=>{
+  for(const pain of ['-1','11','2.5','banana'])assert.throws(()=>normaliseExerciseFeedback({pain}),RangeError);
+  assert.throws(()=>normaliseExerciseFeedback({difficulty:'severe'}),RangeError);
+});
+test('exercise feedback preserves manual and skipped status',()=>{
+  const entry=makeExerciseLog({name:'Neck turn'},{step:3,totalSteps:10,holdSeconds:30},{skip:true,manual:true,feedback:{pain:'7',difficulty:'difficult',note:'  Headache began  '}});
+  assert.deepEqual([entry.status,entry.steps,entry.total,entry.holdSeconds,entry.manual,entry.pain,entry.difficulty,entry.note],['skipped',3,10,30,true,7,'difficult','Headache began']);
+});
+test('notes are limited and past logs can omit newer optional fields',()=>{
+  const entry=makeExerciseLog({name:'Posture'},{step:0,totalSteps:0,holdSeconds:0},{feedback:{note:'x'.repeat(700)}});
+  assert.equal(entry.note.length,500);
+  assert.equal(entry.pain,null);
+  const old={name:'Posture',status:'complete',steps:0,holdSeconds:0};
+  assert.equal(old.pain??null,null);
+});
