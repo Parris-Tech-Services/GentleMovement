@@ -8,7 +8,7 @@ const GUIDE_TYPES=Object.freeze({
   'Supported cervical extension':{kind:'extend',heading:'Gently extend with head supported',detail:'Place your fingers under the back of your head as prescribed; the drawing does not demonstrate the grip.',axis:'Side view'},
   'Mirror posture drill':{kind:'mirror',heading:'Check your posture in the mirror',detail:'Look in a mirror and gently self-correct towards neutral, as John instructed.',axis:'Front view'}
 });
-const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function getMovementGuide(programmeId,exercise){
   if(programmeId!==ACTIVE_ID)return null;
   return GUIDE_TYPES[exercise?.name]||null;
