@@ -17,7 +17,8 @@ jobs:
       - run: node --check data.js
       - run: node --check clinician-report.js
       - run: node --check clinician-report-view.js
-      - run: node --test domain.test.mjs clinician-report.test.mjs
+      - run: node --check movement-guides.js
+      - run: node --test domain.test.mjs clinician-report.test.mjs movement-guides.test.mjs
       - name: Install browser test runner
         run: npm install --no-save playwright@1.60.0
       - name: Install Chromium
