@@ -42,6 +42,7 @@ try {
   assert.equal(record.results.length,2);
   assert.deepEqual(record.results.map(x=>[x.status,x.pain,x.difficulty]),[['skipped',3,'manageable'],['complete',7,'difficult']]);
   assert.equal(record.results[1].note,'Headache started');
+  await page.locator('main details.card summary').first().click();
   assert.ok((await page.locator('main').innerText()).includes('Headache started'));
 
   const waitDownload=page.waitForEvent('download');
