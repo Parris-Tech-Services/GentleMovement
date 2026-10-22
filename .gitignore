@@ -1,0 +1,3 @@
+prescriptions/
+*.private.*
+patient-config.json
