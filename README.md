@@ -24,3 +24,6 @@ Exercise instructions are dated; only the current clinician-approved routine sho
 
 ## Clinician progress report
 Open **Progress → Clinician report**. Filter by 7, 30, 90 days or all history and by programme. The report shows self-reported session counts, before/after ratings using matched pairs, review prompts for skipped/difficult/high-discomfort movements and your recorded exercise notes. Choose **Print or save as PDF** on Android to make a shareable document; the app does not automatically transmit your medical data. Historical exercise plans are not medical advice to start them again.
+
+## Directional movement guides (22 October 2026 programme)
+The latest five prescribed exercises now have **schematic**, explicitly **non-clinical** SVG movement-direction cues. In a session, switch between the starting reference and movement direction; for rotation compare left/right. Written directions and recorded doses remain unchanged. These are not videos, measured movement targets, or verified replacements for John Robins' demonstration. Other archived exercises intentionally show a text-only warning when technique cannot be accurately drawn from the original email.
