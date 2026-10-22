@@ -100,7 +100,9 @@ try {
   assert.match(await v.locator('.motion-guide svg').getAttribute('aria-label'),/right side/i);
   assert.equal(await v.evaluate(()=>JSON.parse(localStorage.getItem('gentle-motion-v1')).session.step),beforeStep);
   await v.reload();
-  assert.equal(await v.locator('[data-action="guide:side:Right"]').getAttribute('aria-pressed'),'true');
+  const afterReload=await v.evaluate(()=>({url:location.href,state:JSON.parse(localStorage.getItem('gentle-motion-v1')),main:document.querySelector('main')?.innerText.slice(0,400)}));
+  console.log('Visual guide reload diagnostics:',JSON.stringify({url:afterReload.url,active:afterReload.state?.active,session:afterReload.state?.session?.programme,screenText:afterReload.main}).slice(0,1200));
+  assert.equal(await v.locator('[data-action="guide:side:Right"]').getAttribute('aria-pressed',{timeout:5000}),'true');
   await v.getByRole('button',{name:/Skip this one/i}).click();
   await v.getByRole('button',{name:/Continue without rating/i}).click();
   assert.ok((await v.locator('main').innerText()).includes('Passive rotation holds'));
