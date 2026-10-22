@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {chromium} from 'playwright';
 
 const mime={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.webmanifest':'application/manifest+json'};
-const allowed=new Set(['index.html','app.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
+const allowed=new Set(['index.html','app.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
 const server=createServer(async(req,res)=>{
   let file=(req.url||'/').split('?')[0].replace(/^\//,'')||'index.html';
   if(!allowed.has(file)){res.writeHead(404);res.end('Not found');return}
@@ -50,6 +50,21 @@ try {
   const csv=await readFile(await (await waitDownload).path(),'utf8');
   assert.match(csv,/exercise_discomfort,|exercise_discomfort"/);
   assert.match(csv,/Headache started/);
+  await page.getByRole('button',{name:'Clinician report'}).click();
+  await page.getByRole('heading',{name:'Movement & symptom report'}).waitFor();
+  assert.ok((await page.locator('main').innerText()).includes('Headache started'));
+  assert.ok((await page.locator('main').innerText()).includes('Session stopped'));
+  await page.locator('#report-period').selectOption('7');
+  await page.locator('#report-programme').selectOption('robins-2026-10-22');
+  assert.ok((await page.locator('main').innerText()).includes('No sessions match these filters'));
+  await page.locator('#report-programme').selectOption('robins-2026-03-17');
+  assert.ok((await page.locator('main').innerText()).includes('Headache started'));
+  await page.emulateMedia({media:'print'});
+  assert.equal(await page.locator('.report-controls').evaluate(x=>getComputedStyle(x).display),'none');
+  const pdf=await page.pdf({format:'A4'});
+  assert.equal(pdf.subarray(0,4).toString(),'%PDF');
+  assert.ok(pdf.length>1500);
+  await page.emulateMedia({media:'screen'});
   await context.close();
 
   const empty=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
