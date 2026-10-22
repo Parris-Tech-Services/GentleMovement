@@ -38,7 +38,7 @@ test('direction and position switches show pressed state and different illustrat
 test('passive rotation explicitly avoids claiming to demonstrate hand placement',()=>{
  const e=current.exercises[1],g=getMovementGuide(current.id,e);
  const markup=movementGuideMarkup(g,e);
- assert.match(markup,/does not describe the hand placement/);
+ assert.match(markup,/do not describe the hand placement/);
  assert.match(markup,/method John demonstrated/);
 });
 test('rendered clinician directions are escaped, including quotes and injected markup',()=>{
