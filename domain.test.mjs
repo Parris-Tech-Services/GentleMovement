@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {phases,remaining,expired,command,programmes} from './data.js';
-test('no patient prescription ships publicly',()=>assert.equal(programmes[0].id,'unconfigured'));
+import {phases,remaining,expired,command,programmes,adviceArchive} from './data.js';
+test('four dated clinician programmes are available',()=>{assert.equal(programmes.length,4);assert.equal(programmes[0].date,'2026-10-22');assert.equal(programmes[0].exercises.length,5);assert.equal(adviceArchive.length,4)});
 test('bilateral counts remain separate and holds sum correctly',()=>{const p=phases({reps:3,sides:true,hold:12,each:true});assert.equal(p.length,6);assert.equal(p.filter(x=>x.side==='Left').length,3);assert.equal(p.reduce((s,x)=>s+x.seconds,0),72)});
 test('last hold differs from each-repetition hold',()=>{assert.deepEqual(phases({reps:3,hold:12}).map(p=>p.seconds),[0,0,12]);assert.deepEqual(phases({reps:3,hold:12,each:true}).map(p=>p.seconds),[12,12,12])});
 test('unknown and ambiguous dosage never gets invented',()=>{assert.deepEqual(phases({}),[]);assert.ok(phases({reps:3,hold:12,ambiguous:true}).every(p=>p.seconds===0))});

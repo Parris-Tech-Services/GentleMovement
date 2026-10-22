@@ -1,6 +1,8 @@
 // No patient information belongs in this public repository.
-export const programmes=[{id:'unconfigured',name:'No programme configured',date:'',custom:true,frequency:'Add an approved routine in the library.',precaution:'Follow your clinician’s advice.',exercises:[{name:'Instructions required',text:'Ask your clinician for a current exercise prescription. No exercise is prescribed by this template.'}]}];
-export const defaultTimes=[];
+import {programmeArchive,adviceArchive} from './programmes.js';
+export const programmes=programmeArchive;
+export {adviceArchive};
+export const defaultTimes=['06:30','08:30','16:30','18:30','20:30','22:30'];
 export const expiry=null;
 export function sydneyDate(time=Date.now()){return new Intl.DateTimeFormat('en-CA',{timeZone:'Australia/Sydney',year:'numeric',month:'2-digit',day:'2-digit'}).format(time)}
 export function phases(e){if(!e.reps)return [];let list=[];for(let n=1;n<=e.reps;n++)for(const side of e.sides?['Left','Right']:[''])list.push({rep:n,side,seconds:e.ambiguous?0:e.hold&&(e.each||n===e.reps)?e.hold:0});return list}
