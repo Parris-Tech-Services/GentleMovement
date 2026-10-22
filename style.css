@@ -39,3 +39,25 @@
  .report-page .report-table th,.report-page .report-table td,.report-page .report-entry{border-color:#bbb!important}
  .report-page .report-heading{margin:12px 0}
 }
+
+/* Illustrated movement directions: user-controlled references, never target angles. */
+.motion-guide{margin:18px 0 24px;padding:16px;background:var(--soft);border:1px solid var(--line);border-radius:20px;color:var(--ink)}
+.motion-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.motion-head strong{font-size:1.05rem}
+.motion-head .pill{margin:0;background:var(--card)}
+.motion-guide svg{display:block;width:100%;height:auto;max-height:300px;margin:auto;max-width:510px}
+.motion-svg-heading{font:600 17px system-ui,sans-serif;fill:#254e42}
+.motion-svg-label{font:14px system-ui,sans-serif;fill:#254e42}
+.motion-guide figcaption{text-align:center;color:var(--muted);font-size:.8rem;margin:6px 0 14px}
+.motion-controls{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:10px auto}
+.motion-controls button{flex:1 1 128px;max-width:245px;min-height:50px;padding:8px 12px;border:2px solid var(--line)}
+.motion-controls button.motion-active,.motion-controls button[aria-pressed=true]{border-color:var(--accent);background:var(--card);color:var(--ink);font-weight:700;box-shadow:inset 0 0 0 1px var(--accent)}
+.motion-controls button:focus-visible{outline:3px solid #ad7e2b}
+.motion-script{border-top:1px solid var(--line);padding-top:16px;margin-top:14px}
+.motion-script p{font-size:.96rem;margin:5px 0 15px;color:var(--ink)}
+.motion-script p.small{color:var(--muted);font-size:.87rem}
+.motion-guide.motion-compact{padding:12px}
+.motion-guide.motion-compact svg{max-height:220px}
+.motion-guide.motion-compact figcaption{font-size:.72rem}
+@media(max-width:640px){.motion-head{align-items:start}.motion-guide{padding:12px}.motion-guide svg{max-height:260px}.motion-controls button{flex-basis:110px}}
+@media print{.motion-controls{display:none}}
