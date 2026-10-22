@@ -16,3 +16,9 @@ jobs:
       - run: node --check programmes.js
       - run: node --check data.js
       - run: node --test domain.test.mjs
+      - name: Install browser test runner
+        run: npm install --no-save playwright@1.60.0
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Mobile browser exercise check-in
+        run: node exercise-feedback.e2e.mjs
