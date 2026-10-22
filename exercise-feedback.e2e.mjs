@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {chromium} from 'playwright';
 
 const mime={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.webmanifest':'application/manifest+json'};
-const allowed=new Set(['index.html','app.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
+const allowed=new Set(['index.html','app.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','movement-guides.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
 const server=createServer(async(req,res)=>{
   let file=(req.url||'/').split('?')[0].replace(/^\//,'')||'index.html';
   if(!allowed.has(file)){res.writeHead(404);res.end('Not found');return}
@@ -81,6 +81,33 @@ try {
   assert.equal(pending.pain,null);
   assert.equal(pending.difficulty,'');
   await empty.close();
+  // Visual demonstration navigation and persistence on a mobile-sized screen.
+  const visualContext=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  await visualContext.addInitScript(()=>{
+    localStorage.setItem('gentle-motion-v1',JSON.stringify({active:'robins-2026-10-22',session:null,history:[],custom:[],settings:{voice:false,speed:1,dark:false,font:1,reminders:false,times:[]}}))
+  });
+  const v=await visualContext.newPage();
+  await v.goto('http://127.0.0.1:'+server.address().port+'/#today');
+  await v.getByRole('button',{name:/Start My Exercises/i}).click();
+  await v.getByRole('button',{name:/begin/i}).click();
+  assert.ok((await v.locator('main').innerText()).includes('John’s recorded instructions'));
+  assert.ok((await v.locator('main').innerText()).includes('10 on each side'));
+  const beforeStep=await v.evaluate(()=>JSON.parse(localStorage.getItem('gentle-motion-v1')).session.step);
+  await v.locator('[data-action="guide:pose:move"]').click();
+  await v.locator('[data-action="guide:side:Right"]').click();
+  assert.equal(await v.locator('[data-action="guide:pose:move"]').getAttribute('aria-pressed'),'true');
+  assert.equal(await v.locator('[data-action="guide:side:Right"]').getAttribute('aria-pressed'),'true');
+  assert.match(await v.locator('.motion-guide svg').getAttribute('aria-label'),/right side/i);
+  assert.equal(await v.evaluate(()=>JSON.parse(localStorage.getItem('gentle-motion-v1')).session.step),beforeStep);
+  await v.reload();
+  assert.equal(await v.locator('[data-action="guide:side:Right"]').getAttribute('aria-pressed'),'true');
+  await v.getByRole('button',{name:/Skip this one/i}).click();
+  await v.getByRole('button',{name:/Continue without rating/i}).click();
+  assert.ok((await v.locator('main').innerText()).includes('Passive rotation holds'));
+  assert.equal(await v.locator('[data-action="guide:pose:start"]').getAttribute('aria-pressed'),'true');
+  assert.equal(await v.locator('[data-action="guide:side:Left"]').getAttribute('aria-pressed'),'true');
+  await visualContext.close();
+  console.log('Visual guide mobile interactions: PASS');
   console.log('Exercise feedback mobile browser smoke: PASS');
 }finally {
   await browser.close();
