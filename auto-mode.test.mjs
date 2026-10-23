@@ -16,14 +16,14 @@ test('uses natural, varied and concise trainer-style cues with unambiguous count
   bilateral.push(cue);
  }
  assert.equal(new Set(bilateral).size,20,'all twenty bilateral count cues should vary');
- assert.ok(bilateral.some(c=>/\\brep\\b/i.test(c)));
- assert.ok(bilateral.some(c=>/\\bnumber\\b/i.test(c)));
- assert.ok(bilateral.some(c=>/\\bcount\\b/i.test(c)));
+ assert.ok(bilateral.some(c=>/\brep\b/i.test(c)));
+ assert.ok(bilateral.some(c=>/\bnumber\b/i.test(c)));
+ assert.ok(bilateral.some(c=>/\bcount\b/i.test(c)));
  const unilateral=Array.from({length:10},(_,i)=>autoPhasePrompt({side:'',rep:i+1,seconds:0},{totalReps:10}));
  assert.equal(new Set(unilateral).size,10);
- assert.ok(unilateral.some(c=>/\\bRep\\b/.test(c)));
- assert.ok(unilateral.some(c=>/\\bNumber\\b/.test(c)));
- assert.ok(unilateral.some(c=>/\\bCount\\b/.test(c)));
+ assert.ok(unilateral.some(c=>/\bRep\b/.test(c)));
+ assert.ok(unilateral.some(c=>/\bNumber\b/.test(c)));
+ assert.ok(unilateral.some(c=>/\bCount\b/.test(c)));
  assert.match(bilateral.at(-1),/Last one/i);
 });
 test('spoken cues vary between sessions and exercises without changing counts',()=>{
