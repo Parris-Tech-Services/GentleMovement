@@ -1,0 +1,31 @@
+name: Project Completion Gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'completion/**'
+      - 'scripts/completion-gate.mjs'
+      - '.github/workflows/completion-gate.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  completion:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate ledger and publish honest progress report
+        run: node scripts/completion-gate.mjs
+      - name: Enforce completion only when explicitly requested
+        if: ${{ contains(github.event.pull_request.labels.*.name, 'ready-for-completion') }}
+        run: node scripts/completion-gate.mjs --strict
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: project-completion-report
+          path: completion/report.md
