@@ -14,6 +14,7 @@ jobs:
           node-version: '22'
       - run: node --check app.js
       - run: node --check auto-mode.js
+      - run: node --check coach-tracks.js
       - run: node --check premium-voice.js
       - run: node --check scripts/generate-elevenlabs.mjs
       - run: npm run voices:plan
@@ -22,7 +23,7 @@ jobs:
       - run: node --check clinician-report.js
       - run: node --check clinician-report-view.js
       - run: node --check movement-guides.js
-      - run: node --test domain.test.mjs clinician-report.test.mjs movement-guides.test.mjs auto-mode.test.mjs premium-voice.test.mjs scripts/voice-phrases.test.mjs
+      - run: node --test domain.test.mjs clinician-report.test.mjs movement-guides.test.mjs auto-mode.test.mjs coach-tracks.test.mjs recordings.test.mjs premium-voice.test.mjs scripts/voice-phrases.test.mjs
       - name: Install browser test runner
         run: npm install --no-save playwright@1.60.0
       - name: Install Chromium
