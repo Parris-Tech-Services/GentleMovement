@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {chromium} from 'playwright';
 
 const mime={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.webmanifest':'application/manifest+json'};
-const allowed=new Set(['index.html','app.js','auto-mode.js','coach-tracks.js','premium-voice.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','movement-guides.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
+const allowed=new Set(['voicebank/src/index.js','voicebank/src/browser.js','voicebank/adapters/gentle-movement.js','audio/voicebank-manifest.json','index.html','app.js','auto-mode.js','coach-tracks.js','premium-voice.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','movement-guides.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
 const server=createServer(async(req,res)=>{
   let file=(req.url||'/').split('?')[0].replace(/^\//,'')||'index.html';
   if(!allowed.has(file)){res.writeHead(404);res.end('Not found');return}
@@ -113,3 +113,4 @@ try {
   await browser.close();
   await new Promise(resolve=>server.close(resolve));
 }
+

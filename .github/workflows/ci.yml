@@ -27,10 +27,14 @@ jobs:
       - name: Install browser test runner
         run: npm install --no-save playwright@1.60.0
       - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
       - name: Mobile browser exercise check-in
         run: node exercise-feedback.e2e.mjs
       - name: Mobile Auto Mode guided session
         run: node auto-mode.e2e.mjs
       - name: Verify deployed production ElevenLabs audio in Chromium
         run: node production-audio.e2e.mjs
+
+      - name: Verify shared Naomy playback and rollback fallback
+        run: node shared-voice.e2e.mjs
+
