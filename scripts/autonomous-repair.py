@@ -28,6 +28,9 @@ def main():
     if code==0:
         print("Tests passed, but original objectives remain OPEN. Do not claim completion or fabricate a repair.")
         print("Outstanding criteria:",[(o["id"],[a["id"] for a in o["acceptance"] if not a["verified"] or not a["evidence"]]) for o in pending])
+        # Escalate unmet non-test criteria to a durable GitHub issue; a green unit test is not completion.
+        if os.environ.get("GITHUB_EVENT_NAME")=="workflow_dispatch":
+            issue("Automated completion inspection found passing unit tests but unresolved acceptance criteria.\\n\\n"+json.dumps(pending,indent=2)[:30000])
         return
     if not KEY:
         print("BLOCKED: OPENAI_API_KEY secret not configured; cannot autonomously propose code changes.")
