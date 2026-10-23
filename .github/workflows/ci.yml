@@ -32,6 +32,8 @@ jobs:
         run: node exercise-feedback.e2e.mjs
       - name: Mobile Auto Mode guided session
         run: node auto-mode.e2e.mjs
+      - name: Complete real recorded sessions online and offline
+        run: node recorded-session.e2e.mjs
       - name: Verify deployed production ElevenLabs audio in Chromium
         run: node production-audio.e2e.mjs
 
