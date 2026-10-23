@@ -14,7 +14,7 @@ for(const o of data.objectives){
  const incomplete=o.acceptance.filter(a=>!a.verified||!Array.isArray(a.evidence)||a.evidence.length===0);
  const complete=incomplete.length===0;
  if(o.status==='complete'&&!complete)failures.push(`${o.id}: marked complete without evidence for every criterion`);
- if(o.status==='complete'&&complete===false)throw Error('Invalid completion');
+ if(!['open','blocked','complete'].includes(o.status))throw Error('Invalid objective status: '+o.id);
  lines.push(`## ${o.id}: ${o.title}`,`Status: ${complete&&o.status==='complete'?'COMPLETE':'OPEN'} (${o.acceptance.length-incomplete.length}/${o.acceptance.length} evidenced)`,'');
  for(const a of o.acceptance)lines.push(`- [${a.verified&&a.evidence?.length?'x':' '}] ${a.id}: ${a.description}${a.evidence?.length?' — '+a.evidence.join('; '):''}`);
  lines.push('');
@@ -26,4 +26,4 @@ mkdirSync('completion',{recursive:true});
 writeFileSync('completion/report.md',report+'\n');
 console.log(report);
 if(process.env.GITHUB_STEP_SUMMARY)writeFileSync(process.env.GITHUB_STEP_SUMMARY,report+'\n',{flag:'a'});
-if(failures.length){console.error('Completion gate: '+failures.join(' | '));if(strict)process.exitCode=1}
+if(failures.length){console.error('Completion gate: '+failures.join(' | '));if(strict||data.objectives.some(o=>o.status==='complete'&&o.acceptance.some(a=>!a.verified||!a.evidence?.length)))process.exitCode=1}
