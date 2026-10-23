@@ -66,7 +66,7 @@ function startAutoExercise(){
  s.autoStage='speaking';s.autoUntil=null;s.autoLeft=null;
  if(phase?.side)s.guideSide=phase.side;
  s.guidePose='move';persist();render();
- const instruction=steps.length?`${s.step===0?`${e.name}. ${e.text} `:''}${autoPhasePrompt(phase)}`:autoUnspecifiedPrompt(e);
+ const instruction=steps.length?`${s.step===0?`${e.name}. ${e.text} `:''}${autoPhasePrompt(phase,{totalReps:e.reps,exerciseIndex:s.index,sessionSeed:s.started})}`:autoUnspecifiedPrompt(e);
  say(instruction,false,()=>{
   const live=state.session;
   if(!live||!live.auto||live.paused||document.hidden||live.id!==expectedId||live.index!==expectedIndex||live.step!==expectedStep)return;
