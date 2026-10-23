@@ -6,11 +6,12 @@ import {resolve} from 'node:path';
 const file=process.argv.find(x=>x.startsWith('--file='))?.slice(7)||'completion/objectives.json';
 const strict=process.argv.includes('--strict');
 const data=JSON.parse(readFileSync(resolve(file),'utf8'));
-if(data.schemaVersion!==1||!Array.isArray(data.objectives))throw Error('Invalid objective ledger');
+if(data.schemaVersion!==1||!Array.isArray(data.objectives)||data.objectives.length===0)throw Error('Invalid or empty objective ledger');
 const failures=[];
 const lines=['# Project Completion Report','',`Project: ${data.project||'Unnamed'}`,''];
 for(const o of data.objectives){
  if(!o.id||!o.title||!Array.isArray(o.acceptance)||!o.acceptance.length)throw Error('Malformed objective');
+ for(const a of o.acceptance){if(!a.id||!a.description||typeof a.verified!=='boolean'||!Array.isArray(a.evidence)||a.evidence.some(e=>typeof e!=='string'||!e.trim()))throw Error('Malformed acceptance criterion: '+o.id)}
  const incomplete=o.acceptance.filter(a=>!a.verified||!Array.isArray(a.evidence)||a.evidence.length===0);
  const complete=incomplete.length===0;
  if(o.status==='complete'&&!complete)failures.push(`${o.id}: marked complete without evidence for every criterion`);
