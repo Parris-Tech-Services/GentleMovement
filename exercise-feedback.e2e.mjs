@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {chromium} from 'playwright';
 
 const mime={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.webmanifest':'application/manifest+json'};
-const allowed=new Set(['index.html','app.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','movement-guides.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
+const allowed=new Set(['index.html','app.js','auto-mode.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','movement-guides.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
 const server=createServer(async(req,res)=>{
   let file=(req.url||'/').split('?')[0].replace(/^\//,'')||'index.html';
   if(!allowed.has(file)){res.writeHead(404);res.end('Not found');return}
@@ -21,7 +21,7 @@ try {
   });
   const page=await context.newPage();
   await page.goto('http://127.0.0.1:'+server.address().port+'/#today');
-  await page.getByRole('button',{name:/Start My Exercises/i}).click();
+  await page.getByRole('button',{name:/Start manually/i}).click();
   await page.getByRole('button',{name:/begin/i}).click();
 
   await page.getByRole('button',{name:/Skip this one/i}).click();
@@ -73,7 +73,7 @@ try {
   });
   const q=await empty.newPage();
   await q.goto('http://127.0.0.1:'+server.address().port+'/#today');
-  await q.getByRole('button',{name:/Start My Exercises/i}).click();
+  await q.getByRole('button',{name:/Start manually/i}).click();
   await q.getByRole('button',{name:/begin/i}).click();
   await q.getByRole('button',{name:/Skip this one/i}).click();
   await q.getByRole('button',{name:/Continue without rating/i}).click();
@@ -88,7 +88,7 @@ try {
   });
   const v=await visualContext.newPage();
   await v.goto('http://127.0.0.1:'+server.address().port+'/#today');
-  await v.getByRole('button',{name:/Start My Exercises/i}).click();
+  await v.getByRole('button',{name:/Start manually/i}).click();
   await v.getByRole('button',{name:/begin/i}).click();
   assert.ok((await v.locator('main').innerText()).includes('John’s recorded instructions'));
   assert.ok((await v.locator('main').innerText()).includes('10 on each side'));

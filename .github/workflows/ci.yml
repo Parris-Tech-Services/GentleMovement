@@ -13,15 +13,18 @@ jobs:
         with:
           node-version: '22'
       - run: node --check app.js
+      - run: node --check auto-mode.js
       - run: node --check programmes.js
       - run: node --check data.js
       - run: node --check clinician-report.js
       - run: node --check clinician-report-view.js
       - run: node --check movement-guides.js
-      - run: node --test domain.test.mjs clinician-report.test.mjs movement-guides.test.mjs
+      - run: node --test domain.test.mjs clinician-report.test.mjs movement-guides.test.mjs auto-mode.test.mjs
       - name: Install browser test runner
         run: npm install --no-save playwright@1.60.0
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Mobile browser exercise check-in
         run: node exercise-feedback.e2e.mjs
+      - name: Mobile Auto Mode guided session
+        run: node auto-mode.e2e.mjs
