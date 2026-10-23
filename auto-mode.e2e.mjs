@@ -5,7 +5,7 @@ import {readFile} from 'node:fs/promises';
 import {join} from 'node:path';
 import {chromium} from 'playwright';
 const mime={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.webmanifest':'application/manifest+json'};
-const allowed=new Set(['index.html','app.js','auto-mode.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','movement-guides.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
+const allowed=new Set(['index.html','app.js','auto-mode.js','premium-voice.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','movement-guides.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
 const server=createServer(async(req,res)=>{
   const file=(req.url||'/').split('?')[0].replace(/^\//,'')||'index.html';
   if(!allowed.has(file)){res.writeHead(404);res.end('Not found');return;}
