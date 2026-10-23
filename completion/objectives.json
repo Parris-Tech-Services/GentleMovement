@@ -39,6 +39,44 @@
         }
       ],
       "notes": "Commit 57fed8f addressed VoiceBank initialization race, not the complete objective. Do not close without all five evidence-backed checks."
+    },
+    {
+      "id": "SYSTEM-001",
+      "title": "Reusable autonomous completion system independently validated end-to-end",
+      "status": "open",
+      "acceptance": [
+        {
+          "id": "selftest",
+          "description": "Completion gate positive and negative tests pass on GitHub Actions",
+          "verified": false,
+          "evidence": []
+        },
+        {
+          "id": "autonomous",
+          "description": "Scheduled repair job runs with configured credentials and successfully proposes a tested repair pull request",
+          "verified": false,
+          "evidence": []
+        },
+        {
+          "id": "security",
+          "description": "Repair agent tested for secret isolation, untrusted input and pull-request-only publishing",
+          "verified": false,
+          "evidence": []
+        },
+        {
+          "id": "continuation",
+          "description": "Agent demonstrably resumes unmet functional acceptance criteria when unit tests pass",
+          "verified": false,
+          "evidence": []
+        },
+        {
+          "id": "rollout",
+          "description": "Reusable completion system deployed and verified across intended repositories",
+          "verified": false,
+          "evidence": []
+        }
+      ],
+      "notes": "Self-audit of the automation itself. No criterion may be marked verified based solely on code being committed."
     }
   ]
 }
