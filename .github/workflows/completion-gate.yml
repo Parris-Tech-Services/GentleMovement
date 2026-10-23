@@ -21,7 +21,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Self-test completion enforcement\n        run: node --test scripts/completion-gate.test.mjs\n      - name: Validate ledger and publish honest progress report
+      - name: Self-test completion enforcement
+        run: node --test scripts/completion-gate.test.mjs
+      - name: Validate ledger and publish honest progress report
         run: node scripts/completion-gate.mjs
       - name: Enforce completion only when explicitly requested
         if: ${{ contains(github.event.pull_request.labels.*.name, 'ready-for-completion') }}
