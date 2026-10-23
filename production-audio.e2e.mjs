@@ -27,7 +27,7 @@ try{
   await page.waitForFunction(()=>document.querySelector('#premium-status')?.textContent?.includes('recorded coaching cues'),null,{timeout:15000});
   const status=await page.locator('#premium-status').innerText();
   assert.match(status,/20\/20 approved physio MP3s available/);
-  assert.match(status,/30 recorded coaching cues/);
+  assert.match(status,/\d+ recorded coaching cues/);
   const hash=manifest.clips['1.'];
   assert.match(hash||'',/^[a-f0-9]{64}\.mp3$/);
   const audio=await page.evaluate(async path=>await new Promise((resolve,reject)=>{

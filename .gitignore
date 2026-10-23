@@ -1,3 +1,5 @@
 prescriptions/
 *.private.*
 patient-config.json
+
+node_modules/

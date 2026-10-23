@@ -16,3 +16,13 @@ test('one-time track planner covers every stored Auto Mode phrase and retains no
   assert.ok(!list.some(v=>/ELEVENLABS_API_KEY|joshua parris/i.test(v)));
  }
 });
+
+test('every built-in narrated phrase has an actual saved MP3',async()=>{
+ const {readFile,stat}=await import('node:fs/promises');
+ const manifest=JSON.parse(await readFile(new URL('../audio/elevenlabs/manifest.json',import.meta.url),'utf8'));
+ for(const phrase of voicePhrasePlan()){
+  assert.ok(manifest.clips[phrase],'Missing recording: '+phrase);
+  const info=await stat(new URL('../audio/elevenlabs/'+manifest.clips[phrase],import.meta.url));
+  assert.ok(info.size>1024,'Empty recording: '+phrase);
+ }
+});
