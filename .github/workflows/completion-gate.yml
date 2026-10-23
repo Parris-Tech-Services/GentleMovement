@@ -9,6 +9,8 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '17 20 * * *'
 jobs:
   completion:
     runs-on: ubuntu-latest
@@ -23,6 +25,9 @@ jobs:
         run: node scripts/completion-gate.mjs
       - name: Enforce completion only when explicitly requested
         if: ${{ contains(github.event.pull_request.labels.*.name, 'ready-for-completion') }}
+        run: node scripts/completion-gate.mjs --strict
+      - name: Escalate unfinished objectives on scheduled checks
+        if: github.event_name == 'schedule'
         run: node scripts/completion-gate.mjs --strict
       - uses: actions/upload-artifact@v4
         if: always()
