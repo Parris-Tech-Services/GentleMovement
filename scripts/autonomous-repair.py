@@ -16,8 +16,17 @@ def model(messages):
     req=urllib.request.Request("https://api.openai.com/v1/chat/completions",data=json.dumps({"model":os.environ.get("REPAIR_MODEL","gpt-4.1"),"messages":messages,"temperature":0.1}).encode(),headers={"Authorization":"Bearer "+KEY,"Content-Type":"application/json"})
     with urllib.request.urlopen(req,timeout=90) as r:return json.load(r)["choices"][0]["message"]["content"]
 def issue(body):
-    try:return api("POST",f"/repos/{REPO}/issues",{"title":"Automated completion check: unresolved verification","body":body})["html_url"]
-    except Exception as e:print("Issue creation failed:",e);return ""
+    title="Automated completion check: unresolved verification"
+    try:
+        existing=api("GET",f"/repos/{REPO}/issues?state=open&per_page=100")
+        for item in existing:
+            if item.get("title")==title and "pull_request" not in item:
+                api("PATCH",f"/repos/{REPO}/issues/{item['number']}",{"body":body})
+                return item["html_url"]
+        return api("POST",f"/repos/{REPO}/issues",{"title":title,"body":body})["html_url"]
+    except Exception as e:
+        print("Issue creation failed:",e)
+        return ""
 def main():
     ledger=json.loads((ROOT/"completion/objectives.json").read_text())
     pending=[o for o in ledger["objectives"] if o["status"]!="complete"]
@@ -29,7 +38,7 @@ def main():
         print("Tests passed, but original objectives remain OPEN. Do not claim completion or fabricate a repair.")
         print("Outstanding criteria:",[(o["id"],[a["id"] for a in o["acceptance"] if not a["verified"] or not a["evidence"]]) for o in pending])
         # Escalate unmet non-test criteria to a durable GitHub issue; a green unit test is not completion.
-        if os.environ.get("GITHUB_EVENT_NAME")=="workflow_dispatch":
+        if os.environ.get("GITHUB_EVENT_NAME") in ("workflow_dispatch","schedule"):
             issue("Automated completion inspection found passing unit tests but unresolved acceptance criteria.\\n\\n"+json.dumps(pending,indent=2)[:30000])
         return
     if not KEY:
