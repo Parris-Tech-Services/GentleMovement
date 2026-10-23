@@ -8,7 +8,7 @@ const mime={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript'
 const allowed=new Set(['index.html','app.js','auto-mode.js','coach-tracks.js','premium-voice.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','movement-guides.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
 const server=createServer(async(req,res)=>{
   const file=(req.url||'/').split('?')[0].replace(/^\//,'')||'index.html';
-  if(!allowed.has(file)&&!/^audio\/elevenlabs\/VO0(?:2[1-9]|3[0-9]|40)\.mp3$/.test(file)){res.writeHead(404);res.end('Not found');return;}
+  if(!allowed.has(file)&&file!=='audio/elevenlabs/manifest.json'&&!/^audio\/elevenlabs\/(?:VO0(?:2[1-9]|3[0-9]|40)|[a-f0-9]{64})\.mp3$/.test(file)){res.writeHead(404);res.end('Not found');return;}
   try{const bytes=await readFile(join(process.cwd(),file));const ext='.'+file.split('.').at(-1);res.writeHead(200,{'Content-Type':mime[ext]||'application/octet-stream'});res.end(bytes);}
   catch{res.writeHead(404);res.end('Missing file');}
 });
@@ -32,6 +32,20 @@ try{
   const audioResponse=await request.response();
   assert.ok(audioResponse?.ok(),'The uploaded MP3 must be served successfully');
   assert.match(audioResponse.headers()['content-type']||'',/audio\/mpeg|application\/octet-stream/);
+  // Check the additional phrase-indexed recordings in actual mobile Chromium.
+  await page.waitForFunction(()=>document.querySelector('#premium-status')?.textContent?.includes('recorded coaching cues'),{timeout:10000});
+  const dynamic=await page.evaluate(async()=>{
+    const {loadPremiumManifest,premiumAssetFor}=await import('./premium-voice.js');
+    const manifest=await loadPremiumManifest(fetch);
+    return {count:Object.keys(manifest?.clips||{}).length,src:premiumAssetFor(manifest,'1.')};
+  });
+  assert.ok(dynamic.count>=30,'The uploaded dynamic phrase pack must be indexed');
+  assert.match(dynamic.src||'',/^\.\/audio\/elevenlabs\/[a-f0-9]{64}\.mp3$/);
+  const dynamicRequest=page.waitForRequest(r=>r.url().endsWith(dynamic.src.slice(1)),{timeout:10000});
+  await page.evaluate(src=>{const clip=new Audio(src);clip.preload='auto';clip.load();},dynamic.src);
+  const dynamicResponse=await (await dynamicRequest).response();
+  assert.ok(dynamicResponse?.ok(),'A recorded dynamic cue must be served as a real MP3 in Chrome');
+  console.log('Dynamic ElevenLabs manifest and real MP3 request: PASS');
   await page.locator('nav a[href="#today"]').click();
   await page.getByRole('button',{name:/Start Auto Mode/i}).click();
   await page.getByRole('heading',{name:'Active cervical rotation'}).waitFor();
