@@ -32,7 +32,7 @@ def main():
         print("BLOCKED: OPENAI_API_KEY secret not configured; cannot autonomously propose code changes.")
         print("Tests failed:",output[-1500:]);sys.exit(2)
     # Restrict modifications to tracked source files and a single safe edit per iteration.
-    status,changes=run(["git","status","--porcelain"])
+    status,changes=run(["git","status","--porcelain","--untracked-files=no"])
     if status or changes.strip():print("Checkout dirty; refusing automated edit");sys.exit(2)
     branch="agent/completion-"+datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d-%H%M%S")
     run(["git","checkout","-b",branch])
