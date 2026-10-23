@@ -1,0 +1,38 @@
+name: Autonomous Completion Repair
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '43 20 * * *'
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+concurrency:
+  group: autonomous-completion
+  cancel-in-progress: false
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Inspect completion ledger
+        run: node scripts/completion-gate.mjs
+      - name: Autonomous test and repair attempt
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DEFAULT_BRANCH: main
+        run: python3 scripts/autonomous-repair.py
+      - name: Upload repair evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: autonomous-repair-evidence
+          path: completion/last-run.txt
+          if-no-files-found: ignore
