@@ -32,9 +32,8 @@ function say(t,force=false,onDone=null,approvedTrackId=null){
   try{speechSynthesis.speak(u)}catch{done()}
  };
  if(state.settings.voiceProvider!=='elevenlabs'){fallback();return}
- getPremiumManifest().then(manifest=>{
+ const playPremium=src=>{
   if(token!==speechToken)return;
-  const src=approvedMovementTrackPath(approvedTrackId)||premiumAssetFor(manifest,t);
   if(!src){fallback();return}
   let audio;try{audio=new Audio(src)}catch{fallback();return}
   activeAudio=audio;audio.preload='auto';audio.playbackRate=Number(state.settings.speed)||1;
@@ -42,7 +41,10 @@ function say(t,force=false,onDone=null,approvedTrackId=null){
   audio.onerror=()=>{if(token!==speechToken)return;activeAudio=null;fallback()};
   if(onDone)watchdog=setTimeout(()=>{if(token===speechToken){audio.pause();activeAudio=null;fallback()}},30000);
   audio.play().catch(()=>{if(token===speechToken){audio.pause();activeAudio=null;fallback()}});
- }).catch(fallback);
+ };
+ const approved=approvedMovementTrackPath(approvedTrackId);
+ if(approved){playPremium(approved);return} // synchronous: retain the user's playback gesture
+ getPremiumManifest().then(manifest=>playPremium(premiumAssetFor(manifest,t))).catch(fallback);
 }
 function listen(){if(!listening||speaking)return;try{recognition.start()}catch{}}
 function toggleMic(){if(listening){listening=false;recognition?.abort();render();return}const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R){notice('Speech recognition is unavailable. All actions have buttons.');return}if(!recognition){recognition=new R;recognition.lang='en-AU';recognition.continuous=false;recognition.interimResults=false;recognition.onresult=e=>{if(speaking)return;let r=e.results[e.resultIndex][0];notice('Heard: '+r.transcript);if(r.confidence&&r.confidence<.55){say('I did not catch that clearly. Please try again.');return}handleCommand(command(r.transcript))};recognition.onend=()=>{if(listening&&!speaking)setTimeout(listen,700)};recognition.onerror=e=>{if(['not-allowed','service-not-allowed','audio-capture'].includes(e.error)){listening=false;notice('Microphone unavailable. Use the buttons below.');render()}else if(e.error==='network'){listening=false;notice('Voice recognition needs a connection on this device. Use the buttons.');render()}}}listening=true;listen();render()}

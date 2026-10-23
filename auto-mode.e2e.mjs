@@ -8,7 +8,7 @@ const mime={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript'
 const allowed=new Set(['index.html','app.js','auto-mode.js','premium-voice.js','data.js','programmes.js','archive-schema.js','exercise-feedback.js','clinician-report.js','clinician-report-view.js','movement-guides.js','style.css','sw.js','icon.svg','icon-192.png','icon-512.png','manifest.webmanifest']);
 const server=createServer(async(req,res)=>{
   const file=(req.url||'/').split('?')[0].replace(/^\//,'')||'index.html';
-  if(!allowed.has(file)){res.writeHead(404);res.end('Not found');return;}
+  if(!allowed.has(file)&&!/^audio\/elevenlabs\/VO0(?:2[1-9]|3[0-9]|40)\.mp3$/.test(file)){res.writeHead(404);res.end('Not found');return;}
   try{const bytes=await readFile(join(process.cwd(),file));const ext='.'+file.split('.').at(-1);res.writeHead(200,{'Content-Type':mime[ext]||'application/octet-stream'});res.end(bytes);}
   catch{res.writeHead(404);res.end('Missing file');}
 });
@@ -25,6 +25,13 @@ try{
   await page.locator('nav a[href="#settings"]').click();
   await page.locator('#voiceProvider').selectOption('elevenlabs');
   assert.equal(await page.locator('#voiceProvider').inputValue(),'elevenlabs');
+  // A tap on the sample should request the actual uploaded MP3, not synthetic TTS.
+  const audioRequest=page.waitForRequest(r=>r.url().endsWith('/audio/elevenlabs/VO021.mp3'),{timeout:10000});
+  await page.getByRole('button',{name:'Hear a sample'}).click();
+  const request=await audioRequest;
+  const audioResponse=await request.response();
+  assert.ok(audioResponse?.ok(),'The uploaded MP3 must be served successfully');
+  assert.match(audioResponse.headers()['content-type']||'',/audio\/mpeg|application\/octet-stream/);
   await page.locator('nav a[href="#today"]').click();
   await page.getByRole('button',{name:/Start Auto Mode/i}).click();
   await page.getByRole('heading',{name:'Active cervical rotation'}).waitFor();
