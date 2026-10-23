@@ -26,7 +26,8 @@ def main():
     report=f"Run: {datetime.datetime.now(datetime.timezone.utc).isoformat()}\nRepository: {REPO}\nPending: {', '.join(o['id'] for o in pending)}\nTests: {code}\n\n{output}"
     pathlib.Path("completion/last-run.txt").write_text(report)
     if code==0:
-        print("Tests passed. Outstanding acceptance criteria still require separate evidence; no completion claim.")
+        print("Tests passed, but original objectives remain OPEN. Do not claim completion or fabricate a repair.")
+        print("Outstanding criteria:",[(o["id"],[a["id"] for a in o["acceptance"] if not a["verified"] or not a["evidence"]]) for o in pending])
         return
     if not KEY:
         print("BLOCKED: OPENAI_API_KEY secret not configured; cannot autonomously propose code changes.")
@@ -35,7 +36,10 @@ def main():
     status,changes=run(["git","status","--porcelain","--untracked-files=no"])
     if status or changes.strip():print("Checkout dirty; refusing automated edit");sys.exit(2)
     branch="agent/completion-"+datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d-%H%M%S")
-    run(["git","checkout","-b",branch])
+    b,log=run(["git","checkout","-b",branch])
+    if b:print("Could not create isolated branch:",log);sys.exit(2)
+    run(["git","config","user.name","completion-repair-bot"])
+    run(["git","config","user.email","41898282+github-actions[bot]@users.noreply.github.com"])
     for attempt in range(3):
         inventory=run(["git","ls-files"])[1]
         response=model([{"role":"system","content":"You are a careful software repair agent. Return ONLY JSON: {path: existing relative tracked source file, content: complete UTF-8 replacement file}. One file per iteration. Never edit secrets, workflows, dependency lockfiles, binaries, tests, completion ledger, or security configuration. Preserve behavior; fix the supplied failing test. If no safe fix, return {}."},{"role":"user","content":f"Repository tracked files:\n{inventory[-12000:]}\nTest output:\n{output}\nReturn one safe complete file replacement or {{}}."}])
