@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "voices:plan": "node scripts/generate-elevenlabs.mjs",
+    "voices:generate": "node scripts/generate-elevenlabs.mjs --generate"
   }
 }
