@@ -36,11 +36,17 @@ function say(t,force=false,onDone=null,approvedTrackId=null){
   try{speechSynthesis.speak(u)}catch{done()}
  };
  if(state.settings.voiceProvider!=='elevenlabs'){fallback();return}
- if(sharedVoiceBankEnabled&&!approvedTrackId&&sharedVoice.hasExact(t)){
-  sharedVoice.say(t,{rate:Number(state.settings.speed)||1}).then(result=>{
+ if(sharedVoiceBankEnabled&&!approvedTrackId){
+  // The shared manifest loads asynchronously. Wait for it before deciding a cue
+  // is absent; otherwise first-use prompts incorrectly fall through to phone TTS.
+  sharedVoice.ready.then(()=>{
    if(token!==speechToken)return;
-   if(result.status==='played')done();else if(result.status!=='cancelled')fallback();
-  }).catch(()=>{if(token===speechToken)fallback()});
+   if(!sharedVoice.hasExact(t)){playManifest();return}
+   sharedVoice.say(t,{rate:Number(state.settings.speed)||1}).then(result=>{
+    if(token!==speechToken)return;
+    if(result.status==='played')done();else if(result.status!=='cancelled')playManifest();
+   }).catch(()=>{if(token===speechToken)playManifest()});
+  }).catch(()=>{if(token===speechToken)playManifest()});
   return;
  }
  const playPremium=src=>{
@@ -53,9 +59,13 @@ function say(t,force=false,onDone=null,approvedTrackId=null){
   if(onDone)watchdog=setTimeout(()=>{if(token===speechToken){audio.pause();activeAudio=null;fallback()}},30000);
   audio.play().catch(()=>{if(token===speechToken){audio.pause();activeAudio=null;fallback()}});
  };
+ function playManifest(){
+  if(token!==speechToken)return;
+  getPremiumManifest().then(manifest=>playPremium(premiumAssetFor(manifest,t))).catch(fallback);
+ }
  const approved=approvedMovementTrackPath(approvedTrackId);
  if(approved){playPremium(approved);return} // synchronous: retain the user's playback gesture
- getPremiumManifest().then(manifest=>playPremium(premiumAssetFor(manifest,t))).catch(fallback);
+ playManifest();
 }
 async function refreshVoiceStatus(){
   const [approved,manifest]=await Promise.all([auditMovementTracks(fetch),getPremiumManifest()]);
