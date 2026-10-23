@@ -1,1 +1,9 @@
-{"name":"gentle-movement","version":"1.0.0","private":true,"type":"module","scripts":{"test":"node --test domain.test.mjs"}}
+{
+  "name": "gentle-movement",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
