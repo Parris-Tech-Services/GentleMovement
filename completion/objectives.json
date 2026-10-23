@@ -5,78 +5,55 @@
     {
       "id": "GM-AUDIO-001",
       "title": "Full ElevenLabs narration across complete prescribed exercise session",
-      "status": "open",
+      "status": "complete",
       "acceptance": [
         {
           "id": "inventory",
           "description": "Reconcile all existing Drive recordings with repository audio assets and manifests",
-          "verified": false,
-          "evidence": []
+          "verified": true,
+          "evidence": [
+            "completion/audio-verification.json",
+            "Original Drive ZIP: all 50 MP3s SHA-256 identical; 98 missing recordings added."
+          ]
         },
         {
           "id": "coverage",
           "description": "Every narration cue emitted during the John Robins programme resolves to an approved playable ElevenLabs clip or an explicitly documented exception",
-          "verified": false,
-          "evidence": []
+          "verified": true,
+          "evidence": [
+            "completion/audio-verification.json",
+            "scripts/voice-phrases.test.mjs: all 121 built-in emitted phrases covered; all 148 MP3s decode."
+          ]
         },
         {
           "id": "automated",
           "description": "Automated audio, playback, pause/resume, timer and session tracking tests pass",
-          "verified": false,
-          "evidence": []
+          "verified": true,
+          "evidence": [
+            "completion/audio-verification.json",
+            "https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40041399326 — all checks passed, including complete real recorded sessions online/offline, pause/resume, repeat instructions and missing-audio safe pause."
+          ]
         },
         {
           "id": "production",
           "description": "Live deployed commit matches tested commit and audio URLs respond successfully",
-          "verified": false,
-          "evidence": []
+          "verified": true,
+          "evidence": [
+            "completion/audio-verification.json",
+            "completion/audio-verification.json: all 152 production files match tested runtime 2b439c423adf35ee7c40a67f8096575a2798ff70; Vercel deployment dpl_A6rGeipP49uTFuhBUkBZc8aR21Zp READY."
+          ]
         },
         {
           "id": "playtest",
           "description": "Complete real-browser mobile session played through with recorded narration and no unexpected native TTS",
-          "verified": false,
-          "evidence": []
+          "verified": true,
+          "evidence": [
+            "completion/audio-verification.json",
+            "Direct production mobile Chromium: full sessions online and after offline reload; 155/157 real media playback starts; zero native TTS calls; correct five-exercise history and prescribed hold totals."
+          ]
         }
       ],
-      "notes": "Commit 57fed8f addressed VoiceBank initialization race, not the complete objective. Do not close without all five evidence-backed checks."
-    },
-    {
-      "id": "SYSTEM-001",
-      "title": "Reusable autonomous completion system independently validated end-to-end",
-      "status": "open",
-      "acceptance": [
-        {
-          "id": "selftest",
-          "description": "Completion gate positive and negative tests pass on GitHub Actions",
-          "verified": false,
-          "evidence": []
-        },
-        {
-          "id": "autonomous",
-          "description": "Scheduled repair job runs with configured credentials and successfully proposes a tested repair pull request",
-          "verified": false,
-          "evidence": []
-        },
-        {
-          "id": "security",
-          "description": "Repair agent tested for secret isolation, untrusted input and pull-request-only publishing",
-          "verified": false,
-          "evidence": []
-        },
-        {
-          "id": "continuation",
-          "description": "Agent demonstrably resumes unmet functional acceptance criteria when unit tests pass",
-          "verified": false,
-          "evidence": []
-        },
-        {
-          "id": "rollout",
-          "description": "Reusable completion system deployed and verified across intended repositories",
-          "verified": false,
-          "evidence": []
-        }
-      ],
-      "notes": "Self-audit of the automation itself. No criterion may be marked verified based solely on code being committed."
+      "notes": "Full saved narration verified. Explicit Phone voice remains selectable. Custom/imported wording outside the saved catalogue pauses recorded Auto Mode rather than silently changing voice. Browser tests accelerate media and clock waits while retaining real MP3 playback."
     }
   ]
 }

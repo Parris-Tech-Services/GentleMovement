@@ -1,6 +1,7 @@
 // Real MP3 decoding/playback through every prescribed step. Only media rate and
 // exercise-clock waits are accelerated; no fake Audio or speech completions.
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {resolve,extname} from 'node:path';
@@ -25,7 +26,10 @@ try{
  });
  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')console.log('Browser:',m.text())});
  await page.clock.install({time:new Date('2026-10-24T01:00:00Z')});
+ const appResponse=page.waitForResponse(r=>new URL(r.url()).pathname==='/app.js'&&r.ok());
  await page.goto(base+'/?voicebank=off#today');
+ const servedApp=await (await appResponse).body();
+ assert.equal(createHash('sha256').update(servedApp).digest('hex'),createHash('sha256').update(await readFile('app.js')).digest('hex'),'The browser must load the tested app version before the session begins');
  // Wait for the actual complete offline installation before testing a session.
  console.log('Loaded',base);
  await page.evaluate(()=>Promise.race([navigator.serviceWorker.ready,new Promise((_,reject)=>setTimeout(()=>reject(new Error('Offline installation timeout')),30000))]));console.log('Offline pack ready');
@@ -76,6 +80,7 @@ try{
  await failureContext.addInitScript(()=>{window.__tts=0;speechSynthesis.speak=()=>window.__tts++});
  const failurePage=await failureContext.newPage();
  await failurePage.route('**/audio/elevenlabs/VO021.mp3',r=>r.abort());
+ await failurePage.clock.install({time:new Date('2026-10-24T01:00:00Z')});
  await failurePage.goto(base+'/?voicebank=off#today');
  await failurePage.getByRole('button',{name:/Start Auto Mode/}).click();
  await failurePage.getByRole('button',{name:'Resume',exact:true}).waitFor();
