@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "project": "Gentle Movement",
+  "objectives": [
+    {
+      "id": "GM-AUDIO-001",
+      "title": "Full ElevenLabs narration across complete prescribed exercise session",
+      "status": "open",
+      "acceptance": [
+        {
+          "id": "inventory",
+          "description": "Reconcile all existing Drive recordings with repository audio assets and manifests",
+          "verified": false,
+          "evidence": []
+        },
+        {
+          "id": "coverage",
+          "description": "Every narration cue emitted during the John Robins programme resolves to an approved playable ElevenLabs clip or an explicitly documented exception",
+          "verified": false,
+          "evidence": []
+        },
+        {
+          "id": "automated",
+          "description": "Automated audio, playback, pause/resume, timer and session tracking tests pass",
+          "verified": false,
+          "evidence": []
+        },
+        {
+          "id": "production",
+          "description": "Live deployed commit matches tested commit and audio URLs respond successfully",
+          "verified": false,
+          "evidence": []
+        },
+        {
+          "id": "playtest",
+          "description": "Complete real-browser mobile session played through with recorded narration and no unexpected native TTS",
+          "verified": false,
+          "evidence": []
+        }
+      ],
+      "notes": "Commit 57fed8f addressed VoiceBank initialization race, not the complete objective. Do not close without all five evidence-backed checks."
+    }
+  ]
+}
