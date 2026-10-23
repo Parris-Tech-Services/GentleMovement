@@ -22,6 +22,10 @@ try{
   const page=await context.newPage();
   await page.clock.install({time:new Date('2026-10-23T01:00:00Z')});
   await page.goto('http://127.0.0.1:'+server.address().port+'/#today');
+  await page.locator('nav a[href="#settings"]').click();
+  await page.locator('#voiceProvider').selectOption('elevenlabs');
+  assert.equal(await page.locator('#voiceProvider').inputValue(),'elevenlabs');
+  await page.locator('nav a[href="#today"]').click();
   await page.getByRole('button',{name:/Start Auto Mode/i}).click();
   await page.getByRole('heading',{name:'Active cervical rotation'}).waitFor();
   assert.match(await page.locator('.auto-bar').innerText(),/Auto Mode running/);

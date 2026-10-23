@@ -22,6 +22,7 @@ if(!/^[A-Za-z0-9_-]{10,80}$/.test(voice))throw Error('Voice ID is invalid.');
 await mkdir(out,{recursive:true});
 let old={};
 try{old=JSON.parse(await readFile(manifestPath,'utf8'))}catch{}
+if(old.voiceId&&old.voiceId!==voice)throw Error('This voice pack was made with a different voice ID. Use the original voice ID to avoid mixing voices.');
 const clips={...old.clips};let made=0,skipped=0;
 const limit=Number(process.env.ELEVENLABS_LIMIT||phrases.length);
 if(!Number.isInteger(limit)||limit<1)throw Error('ELEVENLABS_LIMIT must be a positive integer.');
@@ -32,7 +33,7 @@ for(const text of phrases){
  const response=await fetch('https://api.elevenlabs.io/v1/text-to-speech/'+encodeURIComponent(voice)+'?output_format=mp3_44100_128',{
   method:'POST',
   headers:{'xi-api-key':key,'Content-Type':'application/json'},
-  body:JSON.stringify({text,model_id:process.env.ELEVENLABS_MODEL_ID||'eleven_flash_v2_5',voice_settings:{stability:.57,similarity_boost:.78}})
+  body:JSON.stringify({text,model_id:process.env.ELEVENLABS_MODEL_ID||'eleven_multilingual_v2',voice_settings:{stability:.57,similarity_boost:.78}})
  });
  if(!response.ok)throw Error('ElevenLabs generation stopped at phrase '+(made+1)+' (HTTP '+response.status+'). Existing MP3s are retained.');
  const bytes=Buffer.from(await response.arrayBuffer());
@@ -40,7 +41,7 @@ for(const text of phrases){
  await writeFile(path.join(out,file),bytes,{flag:'wx'});
  clips[text]=file;made++;
  // Checkpoint manifest after every paid generation, so reruns never pay twice for saved clips.
- await writeFile(manifestPath,JSON.stringify({provider:'elevenlabs',version:1,model:process.env.ELEVENLABS_MODEL_ID||'eleven_flash_v2_5',clips},null,2)+'\n');
+ await writeFile(manifestPath,JSON.stringify({provider:'elevenlabs',version:1,voiceId:voice,model:process.env.ELEVENLABS_MODEL_ID||'eleven_multilingual_v2',clips},null,2)+'\n');
  console.log('Generated '+made+' / '+phrases.length+'; previously saved '+skipped);
  await new Promise(resolve=>setTimeout(resolve,250));
 }

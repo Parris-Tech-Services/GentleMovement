@@ -1,0 +1,71 @@
+name: Generate ElevenLabs Voice Pack (Manual Only)
+on:
+  workflow_dispatch:
+    inputs:
+      generate:
+        description: 'Actually generate MP3s? Unchecked = dry-run with no charges.'
+        required: true
+        type: boolean
+        default: false
+      voice_id:
+        description: 'ElevenLabs voice ID, from your account (only needed when generating)'
+        required: false
+        type: string
+      max_clips:
+        description: 'Maximum new MP3s to generate in this run (30 to preview, 359+ for all)'
+        required: true
+        type: string
+        default: '30'
+      model_id:
+        description: 'Text-to-speech model ID'
+        required: true
+        type: choice
+        options:
+          - eleven_multilingual_v2
+          - eleven_flash_v2_5
+        default: eleven_multilingual_v2
+permissions:
+  contents: write
+concurrency:
+  group: elevenlabs-voice-pack
+  cancel-in-progress: false
+jobs:
+  generate-voice-pack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the selected branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Plan phrases without API calls or charges
+        run: npm run voices:plan
+      - name: Generate MP3s only after explicit approval
+        if: ${{ inputs.generate }}
+        continue-on-error: true
+        id: generation
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ inputs.voice_id }}
+          ELEVENLABS_LIMIT: ${{ inputs.max_clips }}
+          ELEVENLABS_MODEL_ID: ${{ inputs.model_id }}
+          GENERATE_VOICES: YES
+        run: npm run voices:generate
+      - name: Save all generated clips, including partial batches
+        if: ${{ always() && inputs.generate }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audio/elevenlabs/manifest.json
+          find audio/elevenlabs -type f -name '*.mp3' -print0 | xargs -0 -r git add --
+          if ! git diff --cached --quiet; then
+            git commit -m "Add one-off prerecorded ElevenLabs voice clips"
+            git push
+          fi
+      - name: Report partial generation errors
+        if: ${{ inputs.generate && steps.generation.outcome == 'failure' }}
+        run: |
+          echo "Audio generation stopped before completing this batch. Any completed clips were saved. Re-run the workflow to resume missing clips without re-generating existing files."
+          exit 1
