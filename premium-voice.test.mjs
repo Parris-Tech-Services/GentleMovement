@@ -39,6 +39,6 @@ test('every uploaded dynamic clip is indexed by its exact SHA-256 phrase',async(
   assert.ok(file.subarray(0,3).toString('ascii')==='ID3'||(file[0]===0xff&&(file[1]&0xe0)===0xe0),'Invalid MP3 '+filename);
  }
  const {readdir}=await import('node:fs/promises');
- const files=(await readdir('./audio/elevenlabs')).filter(x=>/^[a-f0-9]{64}\\.mp3$/.test(x));
+ const files=(await readdir('./audio/elevenlabs')).filter(x=>/^[a-f0-9]{64}\.mp3$/.test(x));
  assert.deepEqual(files.sort(),entries.map(([,file])=>file).sort(),'Every uploaded dynamic clip must have a matching manifest entry');
 });
