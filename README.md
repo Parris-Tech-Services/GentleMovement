@@ -30,3 +30,5 @@ The latest five prescribed exercises now have **schematic**, explicitly **non-cl
 
 ## Auto Mode (hands-free guided session)
 Choose **Start Auto Mode** on Today. The app speaks each movement, paces each untimed repetition with an adjustable-in-code five-second interval, counts the exact clinician-prescribed hold seconds, advances through the routine and saves the guided session automatically. Pausing, skipping, stopping and switching back to manual remain possible. An exercise with no prescribed dose receives an **optional 15-second app practice window**, clearly labelled as not prescribed. The app does not detect actual movement; auto-guided results are labelled as unverified. Keep Android Chrome open and visible for timing; sessions pause when the page becomes hidden or timing is interrupted.
+
+Auto Mode gives the full exercise instruction once, then uses short repetition cues (e.g. “Left side. Repetition three.”). It does not repeat general pacing advice with each repetition; prescribed hold timings remain spoken.

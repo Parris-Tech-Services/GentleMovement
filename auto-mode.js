@@ -7,7 +7,7 @@ export function autoPhaseDuration(phase) {
 }
 export function autoPhasePrompt(phase) {
   if (!phase) throw new TypeError('A prescribed movement step is required');
-  return `${phase.side ? phase.side + ' side. ' : ''}Repetition ${phase.rep}. ${phase.seconds ? `Hold for ${phase.seconds} seconds.` : 'Move gently at your own pace.'}`;
+  return `${phase.side ? phase.side + ' side. ' : ''}Repetition ${phase.rep}.${phase.seconds ? ` Hold for ${phase.seconds} seconds.` : ''}`;
 }
 export function autoUnspecifiedPrompt(exercise) {
   return `${exercise.name}. ${exercise.text} No timed duration was prescribed for this movement. Here is a short, optional fifteen-second practice window. Stop or pause at any time.`;
