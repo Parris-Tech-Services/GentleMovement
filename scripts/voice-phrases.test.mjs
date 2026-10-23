@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {voicePhrasePlan} from './scripts/voice-phrases.mjs';
-import {programmeArchive} from './programmes.js';
-import {phases} from './data.js';
-import {autoPhasePrompt} from './auto-mode.js';
-import {PREMIUM_SAMPLE} from './premium-voice.js';
+import {voicePhrasePlan} from './voice-phrases.mjs';
+import {programmeArchive} from '../programmes.js';
+import {phases} from '../data.js';
+import {autoPhasePrompt} from '../auto-mode.js';
+import {PREMIUM_SAMPLE} from '../premium-voice.js';
 test('one-time track planner covers every stored Auto Mode phrase and retains no secrets',()=>{
  const list=voicePhrasePlan(),sets=new Set(list);
  assert.ok(list.length>100,'there must be real variety in clips');
