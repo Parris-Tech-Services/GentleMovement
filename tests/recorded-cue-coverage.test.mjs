@@ -36,7 +36,7 @@ test('reported Auto Mode cue coverage reflects real exercises and exact captions
   }
   assert.ok(phasesChecked>0);
   console.log(JSON.stringify({totalCues:phasesChecked,approvedTrackMappings:approved,exactManifestCues:exact,unmapped:missing.length,examples:missing.slice(0,15)}));
-  // An unmapped phrase must remain visible to the QA report, not invented or silently mapped.
+  assert.deepEqual(missing,[], 'Every current Auto Mode cue must resolve to an exact recording or an approved clip; missing: '+JSON.stringify(missing.slice(0,20)));
 });
 test('recorded-only failure explicitly reports unavailable audio rather than device TTS',()=>{
   const branch=app.slice(app.indexOf('const fallback=()=>{'),app.indexOf('if(!(\'speechSynthesis\'in window))'));
