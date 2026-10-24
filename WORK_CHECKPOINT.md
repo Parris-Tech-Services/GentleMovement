@@ -1,36 +1,34 @@
-# GentleMovement work checkpoint
-Updated: 24 October 2026 (Australia/Sydney).
-Status: PARTIALLY COMPLETE — checkpoint system installed; audio integration acceptance remains open.
+# WORK_CHECKPOINT — GentleMovement audio acceptance (24 October 2026)
 
 ## Objective
-Integrate all relevant existing ElevenLabs recordings into appropriate app interactions, fully playtest this app before moving to another, deploy and verify. Catalogue meaningful missing recordings for a downloadable bulk-generation Colab with varied voices and personalities.
+Complete all remaining numbered ElevenLabs audio acceptance requirements for GentleMovement, record proofs, update the integration tracker, and do not mark device-only or unverified requirements complete.
 
-## Numbered checklist
-- [x] CP1. Add durable checkpoint instructions in AGENTS.md.
-- [x] CP2. Save this initial checkpoint to the default branch.
-- [ ] A1. Inspect current source, existing audio plan/trackers and latest Drive catalogue; reconcile each recording by exact intended meaning and asset hash.
-- [ ] A2. Integrate suitable unused recordings into their matching interactions; preserve sound/quiet settings, interruption and navigation behaviour.
-- [ ] A3. Run relevant regression checks and production build where applicable; record exact commands and results.
-- [ ] A4. Deploy and verify the deployed revision and real user-triggered audio playback end to end.
-- [ ] A5. Verify offline/interruption behaviour where supported; leave physical-device-only acceptance open until actually tested.
-- [ ] A6. Record meaningful generation gaps and link the bulk-generation notebook; update the master checklist.
+## Work completed and pushed in this continuation
+1. Added changed-repetition clinical regression (commits `eeb69a3e`, syntax fix `07a80e6f`). Actual fresh `node --test` on Vercel sandbox passed **46/46** after fix.
+2. Executed an unskipped full-five-exercise **accelerated silent timeline** against real production in Chromium/Playwright. Clock approx 100×, tick 500ms→5ms, voice disabled for timing test. Exercised indices 0–4, saved one `complete` timeline with five results, **zero browser page errors**. It does not prove audible completion. Evidence in `AUDIO_INTEGRATION_TODO.md`.
+3. Executed fresh Chromium mobile viewport (390×844; touch; DPR 2) page-load smoke test: **18 total requests, 0 MP3 requests, 0 JavaScript errors, 0 horizontal overflow**.
+4. Updated checked subtasks in `AUDIO_INTEGRATION_TODO.md`.
 
-## Evidence and pushed commits
-- Checkpoint policy commit: 2aa9d9e2812bd41afa4261e503b0d01e74cbb8c7.
-- Current repository README was fetched during checkpoint setup. It describes a 148-asset recorded pack and an accelerated recorded-session E2E script.
-- Earlier chat screenshots report previous audio integration and testing; these are prior reports, not fresh acceptance evidence.
-- Checkpoint setup changes documentation only. Its own commit is available in this file's Git history.
-- No application tests or live playback checks were run during this documentation-only setup.
+## Previously verified in this day's session
+- 148/148 existing production MP3 binaries match checked-out sources.
+- 148 MP3s decode with FFmpeg; sample mean volumes range -25 to -14.2 dB, peak max -0.3 dB.
+- 148-row canonical audit CSV includes file paths, SHA-256, captions where documented.
+- Real Chromium Auto Mode triggers VO021 playback and `playing`/advancing `currentTime`.
+- MP3 404 failure pauses Auto Mode and produces explicit recording-unavailable notice; zero device SpeechSynthesis calls.
+- Pause/resume, simulated backgrounding, offline shell startup, saved history and a five-step skip-through checked separately.
 
-## Deployment and live verification
-Known app URL from repository README: https://gentle-movement.vercel.app. Deployed revision and playback not reverified during this setup.
+## Open acceptance — do not mark complete without evidence
+- End-to-end **real-time narrated**, unskipped five-exercise session and each actual audio transition.
+- Actual phone lock/unlock, background audio, operating-system interruptions.
+- Fully proven offline MP3 playback, cache eviction/range request handling and recovery.
+- 30-second prescribed hold interruption/remainder test against a live timer.
+- Slow network/timeout/CORS/corrupt recording/retry and network-domain safeguards.
+- LUFS/silence/pronunciation/speaker consistency and optional non-destructive mastering only when justified.
+- Comprehensive keyboard/screen-reader accessibility, performance throttling and archive migration.
+- Reconcile the master tracker in ParrisVoiceBank after individual objectives pass.
 
-## Unfinished changes, blockers and failed approaches
-No local application changes were made in this session. Earlier local work may not have survived: inspect remote source before assuming it exists.
-The previous conversation reached its length limit during repeated individual binary upload calls; use batched persistence and verified checkpoints.
-No access blocker encountered for these documentation writes.
+## Test environment
+Vercel sandbox `sbx_7IQjzpheNkUQ4dk1HtNjkjsaA2IP`, project `gentle-movement`, Sydney region; GitHub checkout of `Parris-Tech-Services/GentleMovement`; Playwright Core Chromium with @sparticuz/chromium. Sandboxes expire, so provision a fresh one if necessary.
 
 ## Exact next action
-Read AGENTS.md, this checkpoint, the existing audio integration trackers and current source on the default branch. Compare them with ParrisVoiceBank/docs/DRIVE_AUDIO_RECONCILIATION_2026-10-24.csv and the latest Drive batch. Establish which previously reported changes actually reached the remote before downloading or rewriting assets.
-
-Master: https://github.com/Parris-Tech-Services/ParrisVoiceBank/blob/main/WORK_CHECKPOINT.md
+Execute an audible end-to-end accelerated Playwright Auto Mode test with recording `onended` orchestration, or a real-time full-length browser run, tracking per-exercise transitions and audio URLs. Follow with hold pause/resume and offline cached/uncached tests. Update per-task checkboxes only when proof is captured. Keep clinical prescriptions unchanged.
