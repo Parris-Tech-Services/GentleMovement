@@ -30,7 +30,7 @@
   - [ ] [YOU, optional] Confirm one physical-phone background-audio/lock-screen behaviour that emulation cannot reproduce.
 - [ ] **033** [P1] Ensure any missing or new instructions are explicitly identified rather than silently replaced by another voice
   - [x] [AI] Current complete four-programme phase catalogue checked: 160 rep/hold phases, seven untimed cues, 167/167 covered by either exact manifest text (161) or approved track (six). No current mapped-phase gaps found; newly added instructions are guarded by a failing regression assertion.
-  - [ ] [AI] Show explicit 'recording unavailable' for missing selected ElevenLabs speech; never mislabel generic TTS.
+  - [x] [AI] Real production Chromium/Playwright failure injection: intercepted all `audio/elevenlabs/*.mp3` and served HTTP 404; Start Auto Mode paused at step 0, displayed exactly `Recording unavailable. Follow the written cue. Retry with Resume, or choose Phone voice in Settings.`, and called device `speechSynthesis.speak` zero times.
   - [x] [AI] Tests fail when newly introduced clinical phase cues are unmapped; recorded-only source fallback assertion prohibits device TTS in missing-clip branch and runtime uses local assets. Actual outbound domain capture remains task 044.
 - [ ] **040** [P2] Audit voice consistency, pronunciation, volume, pauses and audio quality across all characters
   - [ ] [AI] Measure loudness, peak, duration and leading/trailing silence for every approved clip using open-source tools.
@@ -107,3 +107,5 @@
 
 - Commit `9de98f29aa7ea2474381ca75344ca1997b1f4135` introduced `tests/clinical-audio-acceptance.test.mjs`.
 - Fresh checkout, `node --test`: 45 tests passed, none failed. Validated 160 prescribed phase steps, 14 hold steps and four archived/current programmes; source durations and sides unchanged. This is **unit/source simulation**, not a full-duration browser run.
+
+- Recorded-only missing-audio browser test (production Chromium): MP3 requests forcibly returned 404. Observed `session.paused=true`, `step=0`, user-visible explicit recording-unavailable notice, and `window.speechSynthesis.speak` spy recorded `[]`. Result PASS. This confirms no silent fallback to generic phone speech in this tested missing-file path.
