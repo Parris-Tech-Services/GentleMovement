@@ -15,7 +15,7 @@
   - [x] [AI] Saved a permanent [148-row per-clip live validation report](audit/elevenlabs-148-live-2026-10-24.json), with SHA-256, lengths, transcript where available and source references. Production Chromium UI playback now verified; physical phone remains optional under task 032.
 - [ ] **030** [P1] Recheck every current physiotherapy exercise instruction, left/right cue, repetition count and hold timer
   - [ ] [AI] Export current exercise scripts, laterality, durations, rep counts, and audio cue mapping.
-  - [ ] [AI] Check actual audio voice timing at hold/repeat/left/right transitions against the current physio instruction sequence. Accelerated production five-exercise **silent** Auto Mode timeline passed; real-time complete audio transition remains unverified.
+  - [ ] [AI] Check actual real-time audio voice timing at hold/repeat/left/right transitions against current physio instructions. Accelerated full-session browser simulations passed (silent timeline and instrumented 69 audio triggers); genuine complete real-time narration remains unverified.
   - [x] [AI] `tests/clinical-audio-acceptance.test.mjs` verifies prescribed rep/hold phase counts, 160 source phase mappings, pause/resume remaining-time arithmetic, recorded-only fallback and altered-repetition count mapping; latest independent `node --test`: 46/46 passing, commit `07a80e6f4761f949bac72e78fc54182cffe5b94a`.
   - [x] [AI] Automated mapping checks assert clinical `phases()` rep/side/hold values exactly match source exercise dose and current recorded cue coverage; no dosages synthesized for ambiguous/untimed exercises (45/45 passing tests).
 - [ ] **031** [P1] Verify Auto Mode produces no accidental generic TTS when ElevenLabs is selected
@@ -127,3 +127,9 @@
 - Mobile emulation initial-load network sample: viewport 390×844, 2× device pixel ratio, touch enabled; fresh production homepage had 18 HTTP requests, zero MP3 requests, zero JavaScript page errors, zero unnamed empty buttons, and document scrollWidth equal to 390px viewport width. This is an unthrottled cold-page smoke check, not a full WCAG audit or real mobile-data performance budget.
 
 - Accelerated 30-second hold browser interruption: Chromium actually reached second exercise, first 30-second hold (`index=1`, `step=0`, `autoStage=moving`). After pressing Pause, remaining virtual 26,100ms was persisted as `autoLeft`, `autoUntil=null`. Waited a real second (60 seconds virtual), verified unchanged remaining 26,100ms while paused. Resuming preserved index/step and reset `autoUntil` to new current virtual time plus remaining time. Passed. Mocked clock, so not a real-time physical device hold test.
+
+## Instrumented full audio transition sequence — 24 October 2026
+
+- Independent Chromium/Playwright opened the live production site and clicked Start Auto Mode. Clock accelerated 150×; 500ms timer tick shortened to 4ms, media `play()` instrumented to dispatch synthetic `ended` after 1ms (no actual audio decoding in this particular test). The complete **unskipped** five-exercise sequence advanced to `session=null` and saved `status=complete` with five exercise results.
+- Observed **69 media-play triggers, 45 distinct MP3 URLs**, zero `speechSynthesis.speak` calls, zero page errors. **PASS for audio-trigger sequencing and complete simulated flow**. This is not evidence for playback duration, audibility, speaker/pronunciation fidelity or physical movement.
+- Preserve task 030/031/032 real-time narrated-playthrough requirements as OPEN until full-duration real audio session is evidenced.
