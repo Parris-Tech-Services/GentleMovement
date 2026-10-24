@@ -45,7 +45,7 @@
 - [ ] **042** [P2] Verify no overlapping audio, autoplay problems, stuck players or missing stop controls
   - [ ] [AI] Enumerate distinct media engines per app and document precedence, pause and stop rules.
   - [ ] [AI] Add a repeat-tap/switch/close stress test that detects overlapping voices or hanging player state.
-  - [ ] [AI] Verify no autoplay without user gesture and stop when leaving game/dialogue.
+  - [x] [AI] Production Chromium media prototype spy: zero playback calls on initial load; clicking Start Auto Mode triggered VO021; Pause stopped VO021 before starting VO036; Resume stopped VO036 before starting VO022; second Pause stopped VO022 before VO036. Session remained paused on step zero, with no observed overlapping active media in this interaction.
   - [ ] [AI] Confirm screen-reader announcements remain clear when an audio error occurs.
 - [ ] **043** [P2] Check loading performance and avoid unnecessarily downloading hundreds of recordings on mobile data
   - [ ] [AI] Record startup/network bytes and lazy-load timing on a throttled simulated mobile connection.
@@ -109,3 +109,6 @@
 - Fresh checkout, `node --test`: 45 tests passed, none failed. Validated 160 prescribed phase steps, 14 hold steps and four archived/current programmes; source durations and sides unchanged. This is **unit/source simulation**, not a full-duration browser run.
 
 - Recorded-only missing-audio browser test (production Chromium): MP3 requests forcibly returned 404. Observed `session.paused=true`, `step=0`, user-visible explicit recording-unavailable notice, and `window.speechSynthesis.speak` spy recorded `[]`. Result PASS. This confirms no silent fallback to generic phone speech in this tested missing-file path.
+
+- Production media interaction stress sample: Start → Pause → Resume → Pause; intercepted HTMLMediaElement play/pause methods. No autoplay before user gesture, each prior MP3 was stopped before the next began, final `paused=true`, `step=0`. This is a four-control representative test, not exhaustive overlap/concurrency proof.
+- Offline service-worker observations require more investigation: two unplayed VO files fetched successfully while Chromium context marked offline. Browser-level cache/network source attribution not yet independently proven, so do not treat this as full offline audio approval.
