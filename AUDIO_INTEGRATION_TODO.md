@@ -38,7 +38,7 @@
   - [ ] [AI] Apply non-destructive free gain/trim normalisation only with before/after hashes and source preserved.
   - [ ] [AI] Test representative character clips in the actual app/game playback mix.
 - [ ] **041** [P2] Check integrity, captions, wrong-file matches and broken URLs for each recording
-  - [ ] [AI] Generate a canonical ID→speaker→caption→URL→SHA-256 matrix with no duplicates.
+  - [x] [AI] Published [148-row source/URL/voice/caption/trigger matrix](audit/gentle-recording-matrix-2026-10-24.csv), enumerating 128 manifest-labeled dynamic files and 20 approved clinician VO tracks. Dynamic caption/voice populated; 20 curated VO captions and speaker metadata explicitly remain pending. Per-file real SHA-256 available in the prior 148-row validated report.
   - [ ] [AI] Validate all manifest references and content type/length, and audit caption versus text metadata.
   - [ ] [AI] Test fail-fast behaviour for swapped voice files, 404, CORS and corrupt ZIP; store report.
   - [ ] [AI] Do not close until all required clips in the specified scope pass.
@@ -114,3 +114,5 @@
 - Offline service-worker observations require more investigation: two unplayed VO files fetched successfully while Chromium context marked offline. Browser-level cache/network source attribution not yet independently proven, so do not treat this as full offline audio approval.
 
 - Independent audio decode/loudness scan: used packaged FFmpeg to decode all 148 approved locally checked-out MP3s with `-af volumedetect -f null -`. 148/148 succeeded, mean level range −25.0 to −14.2 dB, highest sample peak −0.3 dB, no observed digital samples above 0 dB. These are sample-based volume measurements, not LUFS/loudness-normalized nor a subjective pronunciation/speaker audit; preserve originals.
+
+- Published [gentle-recording-matrix-2026-10-24.csv](audit/gentle-recording-matrix-2026-10-24.csv) with all 148 production file identifiers, repo paths, URL references, approval/trigger/verification status and manifest captions where defined. VO021–VO040 descriptive captions and definitive voice IDs are not available from the cited manifest and are intentionally blank/pending rather than invented. The matrix itself has no measured content-hash column; consult the existing 148-row SHA report for that validation.
