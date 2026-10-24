@@ -24,9 +24,9 @@
   - [ ] [AI] Emulate missing files, slow downloads, repeated exercises and timer transitions.
   - [x] [AI] Production Chromium Auto Mode initiated `VO021.mp3` via media element; `playing` and advancing media time observed; physical-speaker/auditory listening not asserted.
 - [ ] **032** [P1] Test pausing, resuming, repeat instructions, background interruptions, offline sessions and saved history on a real phone
-  - [ ] [AI] Test pause/resume, replay/interrupt, background/tab hide, saved session and offline with virtual/real browser.
-  - [ ] [AI] Verify session timer and rep counts do not advance incorrectly after interruption.
-  - [ ] [AI] Preserve history through hard refresh and browser restarts; log reproducible results.
+  - [x] [AI] Production Chromium acceptance: pause/resume works, hard-refresh retains paused session, virtual tab `visibilitychange` pauses, and a skip-through of all five exercises saves five results as a partial (not falsely completed) session; offline refresh works after SW activation. Replay and full-duration audio transitions remain open for deeper checks.
+  - [x] [AI] Chromium verified exercise index=0 and step=0 preserved on pause, browser reload, and simulated `document.hidden` visibility interruption. Full hold-duration resume transitions not yet tested.
+  - [ ] [AI] Verify complete and partial history persists across hard refresh and a fresh browser context with the same profile; skipped-through partial history was successfully created, but cross-restart retention is not yet separately evidenced.
   - [ ] [YOU, optional] Confirm one physical-phone background-audio/lock-screen behaviour that emulation cannot reproduce.
 - [ ] **033** [P1] Ensure any missing or new instructions are explicitly identified rather than silently replaced by another voice
   - [ ] [AI] Diff the current script against the 148-clip inventory and identify missing instructions clearly.
@@ -90,3 +90,13 @@
 - Playwright with Chromium 141 on Amazon Linux 2023: loaded https://gentle-movement.vercel.app, pressed **Start Auto Mode**, observed request for `/audio/elevenlabs/VO021.mp3`, HTTP 206, browser `playing` event, `readyState=4` and media `currentTime` progressing beyond 3 seconds without a media error.
 - Latest relevant production deployment was Vercel `READY` for commit `e5624802efc7c0459cebc66223c415bdc7574178`, deployment ID `dpl_Ae8itK8yj3Cvaxijc6L54BGiDnSK`.
 - **Not yet evidenced:** full rep-to-rep/browser session journey, physical phone output, offline and pause/resume, missing-asset browser interruption, all programme transitions, CI-run status; leave remaining parent tasks open.
+
+## Production acceptance continuation — 24 October 2026
+
+- Tested Vercel browser sandbox `sbx_YLqJB8aNWkwQVNALUzEE7awaUqA4` against `https://gentle-movement.vercel.app` in actual Chromium / Playwright.
+- Pause → resume maintained index=0, step=0 without unexpected advancement. Paused session also persisted across full page reload.
+- Clicking Skip on each of the five programme exercises traversed indexes 0,1,2,3,4 and produced exactly one saved partial history record with five results. No JavaScript page errors occurred. This is **not** proof that all 167 timed steps play automatically to completion.
+- Emulated a hidden document by dispatching `visibilitychange`: Auto Mode switched to paused=true, preserving index and step at zero. Physical background operation / lock screen remains unverified.
+- Found and fixed offline PWA initial-start failure. Previous service worker waited for 148 MP3s before activating, which prevented offline refresh during installation. Commit [114094bf](https://github.com/Parris-Tech-Services/GentleMovement/commit/114094bf06eccbb3c12570c9cd0da8029dd0e332) activates after precaching the smaller app shell and caches subsequent successful requests opportunistically. On new production deployment, `navigator.serviceWorker.controller` became active, `caches.keys()` contained `gentle-movement-v15-shell-first`, and offline browser reload succeeded with paused index zero retained. Offline **audio** for all clips is not guaranteed: partial HTTP 206 audio responses and eviction must be separately addressed.
+- Re-ran `node --test` after the service worker update: 42 pass, zero fail.
+- Outstanding: full-duration unskipped Auto Mode and all transitions; mobile hardware/lock screen; offline audio coverage, mobile network throttling, fresh-profile persisted history, error injection, keyboard/a11y audits and other numbered tasks. Do not mark task 032 complete from emulation alone.
