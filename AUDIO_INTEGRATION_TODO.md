@@ -9,10 +9,10 @@
 ## Tasks relevant to this repository (14)
 
 - [ ] **029** [P1] Independently confirm the documented 148-recording voice pack is completely accessible in production
-  - [ ] [AI] Find Gentle Movement's canonical voice manifest and enumerate its claimed 148 entries.
-  - [ ] [AI] Request each production asset (headers, length, MIME), compare transcript/sha and report missing or duplicates.
+  - [x] [AI] Enumerated the exact 128 dynamic manifest entries and 20 approved VO021–VO040 tracks; source SHA 987a15b5.
+  - [x] [AI] Verified all 148 production MP3s (HTTP success, MIME, bytes, full SHA-256) match local source, with no unindexed local clips; [self-hosted CI run 40056982862](https://github.com/joshualparris/JoshMemory/actions/runs/40056982862).
   - [ ] [AI] Test actual on-device browser speech controls for a representative pack, not just URL availability.
-  - [ ] [AI] Save a 148-row report and mark complete only when every required entry is verified.
+  - [x] [AI] Saved a permanent [148-row per-clip live validation report](audit/elevenlabs-148-live-2026-10-24.json), with SHA-256, lengths, transcript where available and source references. Parent remains open until real UI playback is tested.
 - [ ] **030** [P1] Recheck every current physiotherapy exercise instruction, left/right cue, repetition count and hold timer
   - [ ] [AI] Export current exercise scripts, laterality, durations, rep counts, and audio cue mapping.
   - [ ] [AI] Check voice timing at hold/repeat/left/right transitions against the current physio instruction sequence.
