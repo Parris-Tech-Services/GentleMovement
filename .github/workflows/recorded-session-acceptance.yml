@@ -1,0 +1,36 @@
+name: GentleMovement recorded-session acceptance
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/recorded-session-acceptance.yml"
+      - "recorded-session.e2e.mjs"
+      - "tests/clinical-audio-acceptance.test.mjs"
+      - "auto-mode.js"
+      - "app.js"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: gentle-recorded-session-acceptance
+  cancel-in-progress: false
+jobs:
+  acceptance:
+    if: github.repository == 'Parris-Tech-Services/GentleMovement'
+    runs-on: [self-hosted, Windows, X64, parristech]
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Clinical timing and recorded-only regression
+        run: node --test tests/clinical-audio-acceptance.test.mjs
+      - name: Install Chromium testing tools
+        run: npm install --no-save playwright@1.60.0
+      - name: Install Chromium browser
+        run: npx playwright install chromium
+      - name: Decode real MP3s across complete online and offline sessions
+        run: node recorded-session.e2e.mjs
