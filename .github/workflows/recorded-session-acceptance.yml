@@ -18,7 +18,7 @@ concurrency:
 jobs:
   acceptance:
     if: github.repository == 'Parris-Tech-Services/GentleMovement'
-    runs-on: [self-hosted, Windows, X64, parristech]
+    runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
       - name: Install Chromium testing tools
         run: npm install --no-save playwright@1.60.0
       - name: Install Chromium browser
-        run: npx playwright install chromium
+        run: npx playwright install --with-deps chromium
       - name: Wall-clock 30-second hold with real recorded audio
         run: node real-time-hold.e2e.mjs
       - name: Decode real MP3s across complete online and offline sessions
