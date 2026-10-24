@@ -1,5 +1,8 @@
 # WORK_CHECKPOINT — GentleMovement audio acceptance (24 October 2026)
 
+**Task designation update (2026-10-25):** Each of the existing 55 subtasks now has a stable `GM-<parent>.<sequence>` ID. **Next AI work: GM-031.01**, then GM-031.03, then GM-030.02; follow ordered [TASK_TRIAGE.md](TASK_TRIAGE.md) and the [central 55-task registry](https://github.com/Parris-Tech-Services/ParrisVoiceBank/blob/main/docs/GENTLE_MOVEMENT_AUDIO_TASK_INDEX.md). **20 completed / 35 open**; 14 original parent numbers untouched. Earlier descriptive "next action" notes below are historical and are superseded by the prioritized queue.
+
+
 ## Objective
 Complete all remaining numbered ElevenLabs audio acceptance requirements for GentleMovement, record proofs, update the integration tracker, and do not mark device-only or unverified requirements complete.
 
