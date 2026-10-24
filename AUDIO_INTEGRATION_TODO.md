@@ -8,11 +8,11 @@
 
 ## Tasks relevant to this repository (14)
 
-- [ ] **029** [P1] Independently confirm the documented 148-recording voice pack is completely accessible in production
+- [x] **029** [P1] Independently confirm the documented 148-recording voice pack is completely accessible in production
   - [x] [AI] Enumerated the exact 128 dynamic manifest entries and 20 approved VO021–VO040 tracks; source SHA 987a15b5.
   - [x] [AI] Verified all 148 production MP3s (HTTP success, MIME, bytes, full SHA-256) match local source, with no unindexed local clips; [self-hosted CI run 40056982862](https://github.com/joshualparris/JoshMemory/actions/runs/40056982862).
-  - [ ] [AI] Test actual on-device browser speech controls for a representative pack, not just URL availability.
-  - [x] [AI] Saved a permanent [148-row per-clip live validation report](audit/elevenlabs-148-live-2026-10-24.json), with SHA-256, lengths, transcript where available and source references. Parent remains open until real UI playback is tested.
+  - [x] [AI] Tested production Auto Mode in headless Chromium/Playwright on 2026-10-24: user pressed Start Auto Mode; `audio/elevenlabs/VO021.mp3` returned HTTP 206; HTMLMediaElement `playing` and advancing `timeupdate` (over 3 seconds), `readyState=4`, no audio error. This is genuine Chromium playback verification, not a physical-device loudspeaker listening test.
+  - [x] [AI] Saved a permanent [148-row per-clip live validation report](audit/elevenlabs-148-live-2026-10-24.json), with SHA-256, lengths, transcript where available and source references. Production Chromium UI playback now verified; physical phone remains optional under task 032.
 - [ ] **030** [P1] Recheck every current physiotherapy exercise instruction, left/right cue, repetition count and hold timer
   - [ ] [AI] Export current exercise scripts, laterality, durations, rep counts, and audio cue mapping.
   - [ ] [AI] Check voice timing at hold/repeat/left/right transitions against the current physio instruction sequence.
@@ -20,9 +20,9 @@
   - [ ] [AI] Confirm no medical instruction changes are invented to fit an audio clip.
 - [ ] **031** [P1] Verify Auto Mode produces no accidental generic TTS when ElevenLabs is selected
   - [ ] [AI] Trace VoiceBank/ElevenLabs selection through Auto Mode and every speech fallback branch.
-  - [ ] [AI] Assert selected recorded-only mode never silently speaks via device SpeechSynthesis.
+  - [x] [AI] Automated `node --test` on real repository checkout: 42/42 passed, including the recorded-only fallback assertion and all 167 current Auto Mode cues (161 exact manifest and six approved mappings); source commit e5624802efc7c0459cebc66223c415bdc7574178.
   - [ ] [AI] Emulate missing files, slow downloads, repeated exercises and timer transitions.
-  - [ ] [AI] Test real production Auto Mode in Chrome; record exact audible source or an explicit unavailable message.
+  - [x] [AI] Production Chromium Auto Mode initiated `VO021.mp3` via media element; `playing` and advancing media time observed; physical-speaker/auditory listening not asserted.
 - [ ] **032** [P1] Test pausing, resuming, repeat instructions, background interruptions, offline sessions and saved history on a real phone
   - [ ] [AI] Test pause/resume, replay/interrupt, background/tab hide, saved session and offline with virtual/real browser.
   - [ ] [AI] Verify session timer and rep counts do not advance incorrectly after interruption.
@@ -81,3 +81,12 @@
 <!-- NO_COST_SUBTASKS_V1 -->
 
 **Ownership:** `[AI]` = connected-tool implementation and testing; `[YOU]` = only essential account/device work. No paid services. See the master task checklist for global policy and evidence.
+
+## Independent execution evidence — 24 October 2026
+
+- Vercel Sydney sandbox `sbx_Qi8xuQYmJtp3v92RHy7p2T43kore`, temporary `node24` checkout of GitHub `main` at `e5624802efc7c0459cebc66223c415bdc7574178`.
+- `node --test`: **42 passed, zero failed**, including 167/167 mapped current Auto Mode cues.
+- `fetch` of the production URL for all **148 MP3 recordings**, byte-for-byte compared against the checked-out GitHub files: **148 passed, zero missing or mismatched**. Filename hashes are prompt IDs, not necessarily the MP3 file SHA-256; this test compared actual binaries.
+- Playwright with Chromium 141 on Amazon Linux 2023: loaded https://gentle-movement.vercel.app, pressed **Start Auto Mode**, observed request for `/audio/elevenlabs/VO021.mp3`, HTTP 206, browser `playing` event, `readyState=4` and media `currentTime` progressing beyond 3 seconds without a media error.
+- Latest relevant production deployment was Vercel `READY` for commit `e5624802efc7c0459cebc66223c415bdc7574178`, deployment ID `dpl_Ae8itK8yj3Cvaxijc6L54BGiDnSK`.
+- **Not yet evidenced:** full rep-to-rep/browser session journey, physical phone output, offline and pause/resume, missing-asset browser interruption, all programme transitions, CI-run status; leave remaining parent tasks open.
