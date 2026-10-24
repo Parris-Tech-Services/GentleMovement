@@ -2,9 +2,15 @@ name: Gentle Movement CI
 # Automatic runs paused to cap GitHub Actions costs; use Run workflow when needed.
 on:
   workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: gentle-movement-manual-ci
+  cancel-in-progress: false
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Windows, X64, parristech]
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
