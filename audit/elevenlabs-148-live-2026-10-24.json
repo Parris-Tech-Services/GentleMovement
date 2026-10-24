@@ -1,0 +1,1348 @@
+{
+  "status": "PASS",
+  "sourceSha": "987a15b5c514a85fcc2a4e4d890f9879198434a0",
+  "time": "2026-10-24T03:07:22.824Z",
+  "production": "https://gentle-movement.vercel.app",
+  "localClips": 148,
+  "dynamicClips": 128,
+  "approvedTracks": 20,
+  "sharedVoiceBankClips": 30,
+  "liveVerified": 148,
+  "rows": [
+    {
+      "id": "a526ea58a4e81a7c3cefe401140f5a8ff4b04e13447a925bfe4a84f68cf194fd",
+      "text": "0 movement steps left.",
+      "path": "audio/elevenlabs/a526ea58a4e81a7c3cefe401140f5a8ff4b04e13447a925bfe4a84f68cf194fd.mp3",
+      "bytes": 33061,
+      "sha256": "bd6a93c91b30735962eeb191fd29917ce6ae4e450719b5fa700a43d405788bd3",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "a4993f8691d9260046029c0df568026684824be4f2dcb0360c7888bdecb9e641",
+      "text": "1 movement steps left.",
+      "path": "audio/elevenlabs/a4993f8691d9260046029c0df568026684824be4f2dcb0360c7888bdecb9e641.mp3",
+      "bytes": 30972,
+      "sha256": "523d6c46dce79a2ae5cef38cb8bab929e04857d25b5960d144d1578e83aae9c0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "449e3f63a50ee518ef0293be731d3e778757f06a0f02369db66626a346a3bea5",
+      "text": "1 of 10.",
+      "path": "audio/elevenlabs/449e3f63a50ee518ef0293be731d3e778757f06a0f02369db66626a346a3bea5.mp3",
+      "bytes": 18851,
+      "sha256": "109ffd6ce6c188e09e67b951a3654b3ade9f877582b16632a38b10d2cf6727e5",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "c977dbe785221d34114d345fdf8ff4e18bb4af66750751dbea29407f9738735f",
+      "text": "1.",
+      "path": "audio/elevenlabs/c977dbe785221d34114d345fdf8ff4e18bb4af66750751dbea29407f9738735f.mp3",
+      "bytes": 10910,
+      "sha256": "245ab4d6405d96840eef010d5cf0af262bfbb3870c4c271aae58b8f8d8b9c9c3",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "d91cbe43caacfbb26100ff56b7afe3638cfb41bf2a5f88464f4cd43943cc47c9",
+      "text": "10 movement steps left.",
+      "path": "audio/elevenlabs/d91cbe43caacfbb26100ff56b7afe3638cfb41bf2a5f88464f4cd43943cc47c9.mp3",
+      "bytes": 27210,
+      "sha256": "4ea085a0550994767877d5e19ab2d7686c29b8380f6256d3c496a69bb7849da1",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "a4094da3f0f6f71ae06ab85731587d3d4a9f77b5430050feb7a2d8bbdf0b3e0a",
+      "text": "11 movement steps left.",
+      "path": "audio/elevenlabs/a4094da3f0f6f71ae06ab85731587d3d4a9f77b5430050feb7a2d8bbdf0b3e0a.mp3",
+      "bytes": 27628,
+      "sha256": "9c5da16f957d1db74ec9607ff9f340353af63a49ec292fd6435f6e62f06a6ba9",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "c1dee661383a979f59e0681cb611e0cc6f1a309577806c505f7434b237d284fd",
+      "text": "12 movement steps left.",
+      "path": "audio/elevenlabs/c1dee661383a979f59e0681cb611e0cc6f1a309577806c505f7434b237d284fd.mp3",
+      "bytes": 29300,
+      "sha256": "f37688e686b6fd2652c2fa584b5818d2b388c371c4dcb7da17994dc7de741e69",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "cd20d045337d4b9eeb6497484a4304998ce5b1c3a8a90ed8f35048e86e7641d2",
+      "text": "13 movement steps left.",
+      "path": "audio/elevenlabs/cd20d045337d4b9eeb6497484a4304998ce5b1c3a8a90ed8f35048e86e7641d2.mp3",
+      "bytes": 29300,
+      "sha256": "807d915b3716c54d675be3848bea0b7bc90ed949df8d76e41e717f1d34132044",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "3d146c22216cb4818bab25bf13c0913c657b4bbadd5354f45d4f3d720c7b9f6e",
+      "text": "14 movement steps left.",
+      "path": "audio/elevenlabs/3d146c22216cb4818bab25bf13c0913c657b4bbadd5354f45d4f3d720c7b9f6e.mp3",
+      "bytes": 30972,
+      "sha256": "abeb39f2d00c5ad73dd7bbba807c7ad0db7ccb692cf2b14fcfd467bb05774b8a",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "607f1a8e691300ee17e79d9a653556ad04279f2157df0c082ae08a46eadccb04",
+      "text": "15 movement steps left.",
+      "path": "audio/elevenlabs/607f1a8e691300ee17e79d9a653556ad04279f2157df0c082ae08a46eadccb04.mp3",
+      "bytes": 30972,
+      "sha256": "0af497353aac974ceba2e7eb198cecc6208d452c9d2b353f9ce69663f27014da",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "55b1ebebd75edbdf773e189c8989a0a56057a6499ac8f579997bcc1b06395806",
+      "text": "16 movement steps left.",
+      "path": "audio/elevenlabs/55b1ebebd75edbdf773e189c8989a0a56057a6499ac8f579997bcc1b06395806.mp3",
+      "bytes": 27628,
+      "sha256": "4cc0e8f804a254b7c3321bcc8e7e878a61a7ead0faa2e9171cbd0fa6c3fb13dd",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "27920a2e96d2b3ab75faa7c50a5bfa413d7d98d2878b7349c6a13a4fa5d3e41a",
+      "text": "17 movement steps left.",
+      "path": "audio/elevenlabs/27920a2e96d2b3ab75faa7c50a5bfa413d7d98d2878b7349c6a13a4fa5d3e41a.mp3",
+      "bytes": 32225,
+      "sha256": "5aeaca355ea6009328464242a94306af61a41c895138a44400f332285382647d",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "0e48a2450d9cb07efbed504db6440e4db95551155326ea217cb34ed4fdf6de21",
+      "text": "18 movement steps left.",
+      "path": "audio/elevenlabs/0e48a2450d9cb07efbed504db6440e4db95551155326ea217cb34ed4fdf6de21.mp3",
+      "bytes": 30972,
+      "sha256": "82bd8d612a4c53f1b5a1535d9dd87ba1672423da13b925250c6b67965d8c0316",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "6b2a160f2563ae80c58c5748fc921d33de8b79a5a0abad3ea833417c8a742408",
+      "text": "19 movement steps left.",
+      "path": "audio/elevenlabs/6b2a160f2563ae80c58c5748fc921d33de8b79a5a0abad3ea833417c8a742408.mp3",
+      "bytes": 30136,
+      "sha256": "7f1c6d299eeb8e7bfab38f1f54da31f0e5da0e977931fcc49a92f224125e9b4d",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "4fa88b112c8c9362dc7d606a32350666eaa9c4b0b41daa17353c0b41f6517ca9",
+      "text": "2 movement steps left.",
+      "path": "audio/elevenlabs/4fa88b112c8c9362dc7d606a32350666eaa9c4b0b41daa17353c0b41f6517ca9.mp3",
+      "bytes": 27210,
+      "sha256": "2d4af1d2a2cb7e821787cd6e21f0083e10c11e1c0ac49972bb275d2899647b47",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "3619369310902194e3de5ba014a6370a116e6b7dbabe2f95b9dda4c2b1479e7a",
+      "text": "2 of 10.",
+      "path": "audio/elevenlabs/3619369310902194e3de5ba014a6370a116e6b7dbabe2f95b9dda4c2b1479e7a.mp3",
+      "bytes": 18015,
+      "sha256": "5fcd1ed0fe021dc60b708420aeec67a30bb7adec4062de50f1e042afe2069e03",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "6bc54f13bea593dc5e1c8e6b16249e669d1ce99cbeac65f2a10f36e1d86f1fd4",
+      "text": "2.",
+      "path": "audio/elevenlabs/6bc54f13bea593dc5e1c8e6b16249e669d1ce99cbeac65f2a10f36e1d86f1fd4.mp3",
+      "bytes": 12163,
+      "sha256": "209ce19b8598f00cfb4bd96bc63852c988d4e5efaa37e0658cedd72558c64791",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "a568c7804b66ae685643fce3ca4114b1acd2a1f50ccd8e90772124d9c506f4b5",
+      "text": "20 movement steps left.",
+      "path": "audio/elevenlabs/a568c7804b66ae685643fce3ca4114b1acd2a1f50ccd8e90772124d9c506f4b5.mp3",
+      "bytes": 30136,
+      "sha256": "eec90e677764d786790777673e7d740203e2b5679c006165e38decbef4fd2671",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "98792fac93df324714c04970aa6c2082c1658a4fcb39eb9d6ce684b0550bdd32",
+      "text": "3 movement steps left.",
+      "path": "audio/elevenlabs/98792fac93df324714c04970aa6c2082c1658a4fcb39eb9d6ce684b0550bdd32.mp3",
+      "bytes": 27628,
+      "sha256": "ff13b8bb07291f0b1ec0bf3e924646e53e618b5aa3417844c3892f535f0ad60b",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "2f88bc3b92d55724de7312b4b57b0cd303a8392828e5cf406b9a0d6648e94c73",
+      "text": "3 of 10.",
+      "path": "audio/elevenlabs/2f88bc3b92d55724de7312b4b57b0cd303a8392828e5cf406b9a0d6648e94c73.mp3",
+      "bytes": 18015,
+      "sha256": "319f51bdf4391df27b8d3757725ac7dcad88751db69c42550c69f11b3dfd37b0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "267c23695b6e8fc29bd88b9f5d1962d3d208fa9c2fafd974614e6ab3b84fa55c",
+      "text": "3.",
+      "path": "audio/elevenlabs/267c23695b6e8fc29bd88b9f5d1962d3d208fa9c2fafd974614e6ab3b84fa55c.mp3",
+      "bytes": 13835,
+      "sha256": "8009c4472804336e1a87e1d994db085d634156cd75b948fd39fc6df94868a3af",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "fcacba7c9926e22812c7f2188a002810178c15a4d4263adcbe7a7cd0ece77a62",
+      "text": "4 movement steps left.",
+      "path": "audio/elevenlabs/fcacba7c9926e22812c7f2188a002810178c15a4d4263adcbe7a7cd0ece77a62.mp3",
+      "bytes": 29300,
+      "sha256": "bba11e2920c9d1e70a682c3c2320c473096c25a7700cb2a9f562b55634a79776",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "623acdbb76a5da403a79e1de576b4f26bfb23e165124e500f87af113b386a1a1",
+      "text": "4 of 10.",
+      "path": "audio/elevenlabs/623acdbb76a5da403a79e1de576b4f26bfb23e165124e500f87af113b386a1a1.mp3",
+      "bytes": 17597,
+      "sha256": "5ec934eebc943fce5b90e42256f4b53dca3f07bb5402ed1e5776a59ecd9100e6",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "23f663630e2f28250c09d7a0c370f55eebf635772f9ce27e46797ab8ef297f4b",
+      "text": "4.",
+      "path": "audio/elevenlabs/23f663630e2f28250c09d7a0c370f55eebf635772f9ce27e46797ab8ef297f4b.mp3",
+      "bytes": 13835,
+      "sha256": "bc7a24eb8aff7ae2e7e041701b5235cbf6bc40c22623e7d10297898610282fbb",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "13d27788ef98a4b7b4e833107e31e6ac7676a0534e3d7eb8cdb538ddcdca8114",
+      "text": "5 movement steps left.",
+      "path": "audio/elevenlabs/13d27788ef98a4b7b4e833107e31e6ac7676a0534e3d7eb8cdb538ddcdca8114.mp3",
+      "bytes": 26374,
+      "sha256": "c23b7b379a18b6bef775838d4907bd873516949ff4be5a877f1ef0b911b4517d",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "5cded22e28aa33c8f5f35c5806e2c8b53c6a1c03810cb18677718f4fd7f0ec74",
+      "text": "5 of 10. Halfway through the count.",
+      "path": "audio/elevenlabs/5cded22e28aa33c8f5f35c5806e2c8b53c6a1c03810cb18677718f4fd7f0ec74.mp3",
+      "bytes": 43510,
+      "sha256": "98fa0c763b316f6764289575012f0ad2292702a52e9f9d78643482e96e0f4ca9",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "854999adad8d2a77d63e8d7f8213757f87bc78696ff36eba7dce8896d940899a",
+      "text": "5. Halfway through the count.",
+      "path": "audio/elevenlabs/854999adad8d2a77d63e8d7f8213757f87bc78696ff36eba7dce8896d940899a.mp3",
+      "bytes": 39749,
+      "sha256": "c2281478bbb213548fbc2fe2a3653fe166c3e365062d5c2de2ac72db181753bf",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "7edcd43104bd19d6b447fd386efedd8822f3c78c68cd942d1e00bfaf77317298",
+      "text": "6 movement steps left.",
+      "path": "audio/elevenlabs/7edcd43104bd19d6b447fd386efedd8822f3c78c68cd942d1e00bfaf77317298.mp3",
+      "bytes": 30136,
+      "sha256": "53ae4ef5790225c00afd9f783f4da73632e06b6124f9dd9e3b4344d97ddb9418",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "074544ee19dd03ab59da94119d2f37098e449483acab03f341210dac42b0ff8a",
+      "text": "6 of 10.",
+      "path": "audio/elevenlabs/074544ee19dd03ab59da94119d2f37098e449483acab03f341210dac42b0ff8a.mp3",
+      "bytes": 18015,
+      "sha256": "cfda84e11351441ec72ce062b61bdd90e24d32c0d3cf8ed0b24e5e3294c60ec8",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "d80edd7fb074b51d1fbf46a3dcf5cae5237ceb888dcdd8bd1b7df117d53afdc4",
+      "text": "6.",
+      "path": "audio/elevenlabs/d80edd7fb074b51d1fbf46a3dcf5cae5237ceb888dcdd8bd1b7df117d53afdc4.mp3",
+      "bytes": 11327,
+      "sha256": "a269b3ab3182d4638f5b4682b8754c385a4abadc1c3e11fe450d87ee638782ec",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "a50aa8b9a9806899e1d67d0d09c1ce40221cb0dffc52483e8e6da18ff1753a38",
+      "text": "7.",
+      "path": "audio/elevenlabs/a50aa8b9a9806899e1d67d0d09c1ce40221cb0dffc52483e8e6da18ff1753a38.mp3",
+      "bytes": 30125,
+      "sha256": "fcccc1092b662c4e1ae7307d738f31c3f06c1a04da231477fe7e3783492dba8e",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "540dd397b2d380dcc3f59796c4facc43379929f1a3b5e6cc9a218274391b635b",
+      "text": "5.",
+      "path": "audio/elevenlabs/540dd397b2d380dcc3f59796c4facc43379929f1a3b5e6cc9a218274391b635b.mp3",
+      "bytes": 31379,
+      "sha256": "7795473d0ad6760584fc3a2df6f813671332d0d55a7aa49a2d3f770ecded6cfa",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "e3b7e7a038be142c2a042fc1f7374d00fe4caaf7b6b65a3175e33d11644b7499",
+      "text": "10.",
+      "path": "audio/elevenlabs/e3b7e7a038be142c2a042fc1f7374d00fe4caaf7b6b65a3175e33d11644b7499.mp3",
+      "bytes": 30961,
+      "sha256": "529d35763c5f0b9b824e8b8b45b08df1611ea2be5529ff8d28c6962bd3f65bae",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "99a1b84b98650fd4581b7156cd830ef74402cc54b6b834b677c269a41e731915",
+      "text": "9.",
+      "path": "audio/elevenlabs/99a1b84b98650fd4581b7156cd830ef74402cc54b6b834b677c269a41e731915.mp3",
+      "bytes": 30961,
+      "sha256": "70d33ca9261e6481ccd238882c58dd8b872e8f1ea4f9afb888b1f501800d8185",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "dd178d70407735f0b66e280b00f3034f122ed297a19b6544963be343b2404415",
+      "text": "9 movement steps left.",
+      "path": "audio/elevenlabs/dd178d70407735f0b66e280b00f3034f122ed297a19b6544963be343b2404415.mp3",
+      "bytes": 47262,
+      "sha256": "d85607d0509ea97c1dfaff4ef6f22bb1e933c77bbf34d9ff200472c05ef20b55",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "6ce012fd1056714b493ab0a7b473923e52b597bdb7cde60a0d97ef6f54e60c4d",
+      "text": "8.",
+      "path": "audio/elevenlabs/6ce012fd1056714b493ab0a7b473923e52b597bdb7cde60a0d97ef6f54e60c4d.mp3",
+      "bytes": 28453,
+      "sha256": "354fea00158dfe733d3ce4ec833a1f560aba31560fe7c9a12d70aea5f59ae450",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "d6184559baa01304913d96e2f0c194e6c45781a0fcf41e39504dfaee1ecf5f47",
+      "text": "7 movement steps left.",
+      "path": "audio/elevenlabs/d6184559baa01304913d96e2f0c194e6c45781a0fcf41e39504dfaee1ecf5f47.mp3",
+      "bytes": 47262,
+      "sha256": "6b4dd97a93d7c055363280dd80d735bf412f5be7486d770531404fb4eaddde90",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "08a13a763e4ebd0561497707aaca1b475b102a4870e19e9f7c94bbb93e62b805",
+      "text": "10. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/08a13a763e4ebd0561497707aaca1b475b102a4870e19e9f7c94bbb93e62b805.mp3",
+      "bytes": 58964,
+      "sha256": "ad14d9664d85ea0dada61db879ba808c0a0bd4596ee3e33aa622322fcce7be3b",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "a96b5e0eb2268dc6128dd347ab19e49f75e309aaf5de5c2e4bfca6df0e9b8450",
+      "text": "Active cervical rotation. Turn your head left and right, each only to around 4–5 out of 10 discomfort. Complete ten movements each side.",
+      "path": "audio/elevenlabs/a96b5e0eb2268dc6128dd347ab19e49f75e309aaf5de5c2e4bfca6df0e9b8450.mp3",
+      "bytes": 183098,
+      "sha256": "f2d5fc101ca29bd60bb708c5cc5640e7a2495aa206ac8246e29fdbeefd1534c0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "2cef1d08af1a85a6c7a3577ab162f299571b0d8831f9891ff9a5f6bb84b0997c",
+      "text": "8 movement steps left.",
+      "path": "audio/elevenlabs/2cef1d08af1a85a6c7a3577ab162f299571b0d8831f9891ff9a5f6bb84b0997c.mp3",
+      "bytes": 47262,
+      "sha256": "24247cb00315ad0b58f5aa5e7542052e497e8ee53b7151536c461e3638e7c564",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "aa8cd2b237fd3ae7a4bfc6d8a7174b01d64da7a540175a3462de3ba0fdbecc3a",
+      "text": "A little movement, at your own pace. We will take it gently.",
+      "path": "audio/elevenlabs/aa8cd2b237fd3ae7a4bfc6d8a7174b01d64da7a540175a3462de3ba0fdbecc3a.mp3",
+      "bytes": 82788,
+      "sha256": "f3b0d3a15defe61c0419384953a81927ed2e40fc87a80d43c738aeb58864deba",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "897df3b02051ee6497c690b5f963d58e33be5aa9b4083719b93e39df8345d26f",
+      "text": "Bring your chin towards your chest ten times, then hold the tenth repetition for 30 seconds.",
+      "path": "audio/elevenlabs/897df3b02051ee6497c690b5f963d58e33be5aa9b4083719b93e39df8345d26f.mp3",
+      "bytes": 132525,
+      "sha256": "73c09c94504609f8f007a1924926985e50f93cf21b9cec62e44cc03041d82f18",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "ae4634a234574bdc203f2ef19d2f1bee2455e2d10f2e263beb0006e5ac4cc4fb",
+      "text": "Left, 1.",
+      "path": "audio/elevenlabs/ae4634a234574bdc203f2ef19d2f1bee2455e2d10f2e263beb0006e5ac4cc4fb.mp3",
+      "bytes": 35141,
+      "sha256": "4b4659627f63921c988a815fd49c16709e85b04f2c76fe9eca9a98177d376cc0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "736881346694dc7d797f860fb8be65b50822c3c91302fba87eade6e8c1457179",
+      "text": "Cervical retraction (lying chin tuck). Perform the chin tuck while lying, as John demonstrated. The June summary does not specify repetitions. No timed duration was prescribed for this movement. Here is a short, optional fifteen-second practice window. Stop or pause at any time.",
+      "path": "audio/elevenlabs/736881346694dc7d797f860fb8be65b50822c3c91302fba87eade6e8c1457179.mp3",
+      "bytes": 359895,
+      "sha256": "812d02c818f4e3ffd49bbdcfa604562cdd75c50b7f3e4ccf60baf53eb638e0e3",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "54bb2fb4378628df52885864eae31e0fd7b3be6df98bccaf3fe26e8b1e63c3b9",
+      "text": "Cervical retraction. Ten neck retractions, holding the tenth for 30 seconds, once daily.",
+      "path": "audio/elevenlabs/54bb2fb4378628df52885864eae31e0fd7b3be6df98bccaf3fe26e8b1e63c3b9.mp3",
+      "bytes": 119151,
+      "sha256": "c436db15fc1b57436bb8d4fd48f5f51b51e040b398afb3bca6020efb2f73b1a9",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "fb115409da02a65baf6268017121285c46da08b94a4c2b8aaaef68cd937d22de",
+      "text": "Hold finished. Release, then say rep done.",
+      "path": "audio/elevenlabs/fb115409da02a65baf6268017121285c46da08b94a4c2b8aaaef68cd937d22de.mp3",
+      "bytes": 64398,
+      "sha256": "52c252fb9dc6a4bb53988f5dbd8bb2c6a883a3afaca1313178e58cb13ef2be44",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "af947fd27dfe5681a07ab9530113dec36bd2063a0cc62c5cde257875ae459c11",
+      "text": "Left, 1. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/af947fd27dfe5681a07ab9530113dec36bd2063a0cc62c5cde257875ae459c11.mp3",
+      "bytes": 57711,
+      "sha256": "d01b80497a465f4cf87059bd15d9c490b0312bd6312830be69d57ef625adafdc",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "b61aced0a4395b56ea05ddc22e64e8d764d9b76a55a2ff0f5e5c3cede6d0a8f4",
+      "text": "Child’s pose. Move gently into the child’s pose stretch within a comfortable range. No duration was specified. No timed duration was prescribed for this movement. Here is a short, optional fifteen-second practice window. Stop or pause at any time.",
+      "path": "audio/elevenlabs/b61aced0a4395b56ea05ddc22e64e8d764d9b76a55a2ff0f5e5c3cede6d0a8f4.mp3",
+      "bytes": 362403,
+      "sha256": "83c15407d4ffbf3f799f10418f2d905659e9a346bcc29f9f52729c314bab3961",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "59d8b6c8721ab14cee8e19fdf0e592b6c6ba16dbc10eaf58edb5f31dd2f13f23",
+      "text": "I did not catch that clearly. Please try again.",
+      "path": "audio/elevenlabs/59d8b6c8721ab14cee8e19fdf0e592b6c6ba16dbc10eaf58edb5f31dd2f13f23.mp3",
+      "bytes": 64398,
+      "sha256": "301a97172fe43d69f57cde3f856f381c301222a5ffcb6fd2ff17bec727ae3cb0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "21dc61b7029486a92d213e2f74489b800e8826bfe737bba7cd7fc0666f9b9c0a",
+      "text": "Doorway pectoral stretch. Use a doorway chest stretch as tolerated. No count or hold duration was recorded. No timed duration was prescribed for this movement. Here is a short, optional fifteen-second practice window. Stop or pause at any time.",
+      "path": "audio/elevenlabs/21dc61b7029486a92d213e2f74489b800e8826bfe737bba7cd7fc0666f9b9c0a.mp3",
+      "bytes": 344431,
+      "sha256": "bfdef803e8a95bdab6153ebebaa0c0dc21c3cb8b42d90e71320cd888ed43eb0b",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "27b8bf6a5b99869f322aabd3617b29dffd44ba76320affdc9b2cbce058288061",
+      "text": "Chin tucks. Ten chin tucks, with 30-second holds described in the 31 March summary.",
+      "path": "audio/elevenlabs/27b8bf6a5b99869f322aabd3617b29dffd44ba76320affdc9b2cbce058288061.mp3",
+      "bytes": 135033,
+      "sha256": "fe0b7f0b8cd616d400f4d0f85a0ede99b0068fef684c5c52d84136b8bf4dc6f4",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "31049a835c3f2b8ec36d97a07fc2f06ea9dda8e93092d2d506ecdbf8c40e1cac",
+      "text": "Left, 10.",
+      "path": "audio/elevenlabs/31049a835c3f2b8ec36d97a07fc2f06ea9dda8e93092d2d506ecdbf8c40e1cac.mp3",
+      "bytes": 38067,
+      "sha256": "7fa14d23336c28511b0224eca2109d66adbc3e8c2d88788ba905441dc7ddc385",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "8aab15f6a75a39744e0ea88a208a4f24bad156c40c7b63e11ab46de1be77fd68",
+      "text": "Continuing your exercise.",
+      "path": "audio/elevenlabs/8aab15f6a75a39744e0ea88a208a4f24bad156c40c7b63e11ab46de1be77fd68.mp3",
+      "bytes": 47262,
+      "sha256": "f3e9214e83a08380ddaf05685aa428f787eb5a1e55e3bc20a7d4b38de3486e57",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "9dbeebb4b2569692675d81076032596520578c1a21a6c4768e478d05c1d02ab0",
+      "text": "Left, 2.",
+      "path": "audio/elevenlabs/9dbeebb4b2569692675d81076032596520578c1a21a6c4768e478d05c1d02ab0.mp3",
+      "bytes": 35141,
+      "sha256": "c58315ab36c9b995e8539b3ecfbbaab3ab47557b8a1ae67912d34154bfb88cc0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "48d884d7fa7008ed78b70e122d7a10df774ae5dd9755e22fcec9ec249c32e24e",
+      "text": "Left, 8.",
+      "path": "audio/elevenlabs/48d884d7fa7008ed78b70e122d7a10df774ae5dd9755e22fcec9ec249c32e24e.mp3",
+      "bytes": 40574,
+      "sha256": "77a1141b5deb8f6e0c2db18565f44cce0ccab9209ceafe23024288e78f27bb44",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "644bbd0405763828103010f0d8ecc585bc025be944aaff6678f5b5bbbe11a74b",
+      "text": "Left, 4. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/644bbd0405763828103010f0d8ecc585bc025be944aaff6678f5b5bbbe11a74b.mp3",
+      "bytes": 61890,
+      "sha256": "63df156c6d5a4e4e3d3bf13dd6a56046ac933d90226c958afc9c33cfe39ca413",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "ace0396272fac8e8a4aea27e2651df3975b281dfb15151e9967f39180dbb6e16",
+      "text": "Left, 3.",
+      "path": "audio/elevenlabs/ace0396272fac8e8a4aea27e2651df3975b281dfb15151e9967f39180dbb6e16.mp3",
+      "bytes": 38902,
+      "sha256": "fee6dcc83f54cdbee53e227ce62da58ca0d811e547a98d2d154ebc166ad7cc5b",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "c500fda0dd98d9266b95874b1f812548dd76d2f089ddb68dabb47046211f1334",
+      "text": "Left, 3. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/c500fda0dd98d9266b95874b1f812548dd76d2f089ddb68dabb47046211f1334.mp3",
+      "bytes": 60636,
+      "sha256": "425d51c451412a99af562f09dee8b3481119ef8e765e6686940eed4b2cacb4e9",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "de6d24bffa1a57f5d2e6ec1ac51f0148536386eae100f7935966f33313d4f009",
+      "text": "Left, 2. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/de6d24bffa1a57f5d2e6ec1ac51f0148536386eae100f7935966f33313d4f009.mp3",
+      "bytes": 58129,
+      "sha256": "ccf21db786a323b825f91c994f910d9d6b18e94c42b25d77b9b230f982d75f52",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "4c04f0a02ee352a731d34a10ddc663519f469e4b9cf8fcdb7d802d5c0cd8ee65",
+      "text": "Left, 4.",
+      "path": "audio/elevenlabs/4c04f0a02ee352a731d34a10ddc663519f469e4b9cf8fcdb7d802d5c0cd8ee65.mp3",
+      "bytes": 35977,
+      "sha256": "bd71c4e52ee21fd86a3cbb8135d0391ab48688cc2cc5f9d31540c02a03d8eb86",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "f0ba400a6961876ceb5b1a9ce1d1fb53f65183156a96801501a9f4ac0b374b07",
+      "text": "Left, 9.",
+      "path": "audio/elevenlabs/f0ba400a6961876ceb5b1a9ce1d1fb53f65183156a96801501a9f4ac0b374b07.mp3",
+      "bytes": 35141,
+      "sha256": "2dae21fa2f839ca93096c14ec8b0c1ef658f449fa21f58e559a1cd15327f1c2d",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "7fa0e1a0f946f32d9b91f089dbb5722821d8fff133619ac791b2b0a92c2be571",
+      "text": "Left, 5.",
+      "path": "audio/elevenlabs/7fa0e1a0f946f32d9b91f089dbb5722821d8fff133619ac791b2b0a92c2be571.mp3",
+      "bytes": 38067,
+      "sha256": "4b762ff52db8bdf7f32a7b96892f012060b69aaed8f15c88938fb048ce33a286",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "0aa523299388e0b8ad944f85c004f498cd14ad9f4baa62a87dbf35bf9bf58753",
+      "text": "Lie down and roll the knees side to side gently. No dose was specified for this date.",
+      "path": "audio/elevenlabs/0aa523299388e0b8ad944f85c004f498cd14ad9f4baa62a87dbf35bf9bf58753.mp3",
+      "bytes": 113299,
+      "sha256": "a9c8e61c2be2f390932079d813fb384c965892a515403a4b3b566c9684ba8ce1",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "f5bc59351291e324937b46b84a9d1308aae06debecf6f9883b6579477bd1013a",
+      "text": "Left, 5. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/f5bc59351291e324937b46b84a9d1308aae06debecf6f9883b6579477bd1013a.mp3",
+      "bytes": 61890,
+      "sha256": "7bf078e1a3729a4b8f6368722d1c52c20de283fb4536d5ecd561dc463d450356",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "0789b8eddefa44902520f86922e340691b3c328aca36ebff9723114cf7d8ae95",
+      "text": "Look in a mirror and gently self-correct your head and neck into a neutral position. No repetition count was prescribed.",
+      "path": "audio/elevenlabs/0789b8eddefa44902520f86922e340691b3c328aca36ebff9723114cf7d8ae95.mp3",
+      "bytes": 148826,
+      "sha256": "024ef23de679fb05e8734f7675b6b609c0b4cdc2ccb09993a67e49c678bef1ef",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "6c84462f2c44cb9d90a5ed961b10c8f4102e48efc78e530032f5274d45acace5",
+      "text": "Lumbar rocking. Use the rocking movements demonstrated during treatment. Exact technique and dose not recorded. No timed duration was prescribed for this movement. Here is a short, optional fifteen-second practice window. Stop or pause at any time.",
+      "path": "audio/elevenlabs/6c84462f2c44cb9d90a5ed961b10c8f4102e48efc78e530032f5274d45acace5.mp3",
+      "bytes": 349028,
+      "sha256": "259ca9637a976770a66ae9243aca7a5dc3443a255a9dd7ac39bcd336a1671c12",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "a6771fdd7efc3c94e26e18af7ada683cc5e23c0aa75de51911392a3494426c01",
+      "text": "Left, 6.",
+      "path": "audio/elevenlabs/a6771fdd7efc3c94e26e18af7ada683cc5e23c0aa75de51911392a3494426c01.mp3",
+      "bytes": 38067,
+      "sha256": "d2c2394b5ffce7c0e8cc062035e35fcb0daa7101ab92165560ec8e9a9b7e2539",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "621413cbd8dffdb3de2633c538de8d1eabffa533044618e852e7870adade6fc6",
+      "text": "Mirror posture drill. Look in a mirror and gently self-correct your head and neck into a neutral position. No repetition count was prescribed. No timed duration was prescribed for this movement. Here is a short, optional fifteen-second practice window. Stop or pause at any time.",
+      "path": "audio/elevenlabs/621413cbd8dffdb3de2633c538de8d1eabffa533044618e852e7870adade6fc6.mp3",
+      "bytes": 346520,
+      "sha256": "069419a90e2352e5a985e75d0f4751a3b3e13d077f9add0103782529b0ed9efc",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "2c4d048aa173cd58a104b60a73df0cc3ac8e243a9904653bd2565ab5dc72c0b6",
+      "text": "Left, 7.",
+      "path": "audio/elevenlabs/2c4d048aa173cd58a104b60a73df0cc3ac8e243a9904653bd2565ab5dc72c0b6.mp3",
+      "bytes": 44336,
+      "sha256": "a7c9f038d0e7ff1c2287e69d26aa0f488d74c203450decc27ea49809324a374d",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "95763c4dfba3f0769f7604bb720491f07ccb8cb051a3656ed9291ba23b3c22c8",
+      "text": "Lumbar rotations / knee rolling. While lying down, roll knees side to side ten times, one to three times daily.",
+      "path": "audio/elevenlabs/95763c4dfba3f0769f7604bb720491f07ccb8cb051a3656ed9291ba23b3c22c8.mp3",
+      "bytes": 160111,
+      "sha256": "664cfb58fe24fcd1dcb923bc13ab02e149462aca0de9b9142aea41bfd355fd78",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "cb332456366cf21507087b48d86acf0ef88112a14c93eb7a1be4d27ab483f5bc",
+      "text": "Move gently into the child’s pose stretch within a comfortable range. No duration was specified.",
+      "path": "audio/elevenlabs/cb332456366cf21507087b48d86acf0ef88112a14c93eb7a1be4d27ab483f5bc.mp3",
+      "bytes": 130436,
+      "sha256": "51219ae2d6e8788874ef596f2d7d26192ca705419334d8e1646740c6e9bfc8e4",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "d9c7e41ad8aa9de80fd77d02a5f75a4d3c8d07a1b0ed7001a5a432977c1ed7d3",
+      "text": "Perform the chin tuck while lying, as John demonstrated. The June summary does not specify repetitions.",
+      "path": "audio/elevenlabs/d9c7e41ad8aa9de80fd77d02a5f75a4d3c8d07a1b0ed7001a5a432977c1ed7d3.mp3",
+      "bytes": 136287,
+      "sha256": "f0a036dadb47c2e2e4c33b035cedfcd18bb742f849349e03806864e98cef9b82",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "86992fa6feec4f02b9cf62b3c063100969bde640b0690018c1eff6cb864b0b58",
+      "text": "Move at your own pace. Say rep done after each movement.",
+      "path": "audio/elevenlabs/86992fa6feec4f02b9cf62b3c063100969bde640b0690018c1eff6cb864b0b58.mp3",
+      "bytes": 84878,
+      "sha256": "615dc6d76bd16a4c0ee8316d131dd94aca63afb095f17c7a446425f1d8be9386",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "3bdcd800b396d0af69ad6b5331d241aaffc13d242acfab2b90180710d482ca5c",
+      "text": "Perform ten supine cervical retractions, holding the tenth for 30 seconds.",
+      "path": "audio/elevenlabs/3bdcd800b396d0af69ad6b5331d241aaffc13d242acfab2b90180710d482ca5c.mp3",
+      "bytes": 95327,
+      "sha256": "65cee87dbdfa8bddaaabe75a9686090e3a5b31b1312996ee0d9ed1b06f341374",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "2d518f9b0a8df5fe07774861f3b61d85e74efa4d522a44f20a7c709212dc6777",
+      "text": "Passive cervical flexion. Bring your chin towards your chest ten times, then hold the tenth repetition for 30 seconds.",
+      "path": "audio/elevenlabs/2d518f9b0a8df5fe07774861f3b61d85e74efa4d522a44f20a7c709212dc6777.mp3",
+      "bytes": 147572,
+      "sha256": "49310d0bd2000765703485aa475143b99d470f36fdd7e6b0fe7b428bb7d15868",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "3475991c4d4db104df77a29708ddeee4e96777da43141796f77d6e8a577ec12d",
+      "text": "Passive rotation holds. Turn gently to one side using the technique you were shown; hold about 30 seconds. Repeat five times on each side.",
+      "path": "audio/elevenlabs/3475991c4d4db104df77a29708ddeee4e96777da43141796f77d6e8a577ec12d.mp3",
+      "bytes": 201071,
+      "sha256": "88309859eb9d283a9240fb0e20dc433022fa6fd6a5423adbff7e7f8d4ddb2e67",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "ea3b07eb3e35e0520905cd18c5071edf60184ee1bb17db39e98ec00b709d6595",
+      "text": "Perform ten prone lumbar extension press-ups each day, only within a comfortable range, using the technique corrected during your appointment.",
+      "path": "audio/elevenlabs/ea3b07eb3e35e0520905cd18c5071edf60184ee1bb17db39e98ec00b709d6595.mp3",
+      "bytes": 155513,
+      "sha256": "56b104794d64aa0e6d28cf28d79a7c39094fc90b8ce269c178e2d307bede7aa4",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "4095c0ccbd2c7f4e24e89a7b860669b6bdef1e503a1d4191aba8b322920c9eb4",
+      "text": "Place your fingers under the back of your head for support; gently extend your neck ten times.",
+      "path": "audio/elevenlabs/4095c0ccbd2c7f4e24e89a7b860669b6bdef1e503a1d4191aba8b322920c9eb4.mp3",
+      "bytes": 112463,
+      "sha256": "df6f835ae48054c9526c957f1d6c3637c791095c1c9e964b263f71fb0488a89e",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "d7e55a2a494de790c3bc83ca8c0dc4af8e9e2c4cbee176f87328f2055622e1da",
+      "text": "Pausing is fine. Resume when you are ready, or stop the session if the exercise is aggravating your symptoms.",
+      "path": "audio/elevenlabs/d7e55a2a494de790c3bc83ca8c0dc4af8e9e2c4cbee176f87328f2055622e1da.mp3",
+      "bytes": 151751,
+      "sha256": "1df0ce7cde6fd93d69e358a2794fc013941721fd02a92fe1a715f6bdceb64895",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "06db6eb62c85b1b779bdaa7df1c470382676a4db4a67efe13d5bbfef586f907c",
+      "text": "Perform ten chin tucks in lying, morning and evening, holding the last repetition for 30 seconds.",
+      "path": "audio/elevenlabs/06db6eb62c85b1b779bdaa7df1c470382676a4db4a67efe13d5bbfef586f907c.mp3",
+      "bytes": 131271,
+      "sha256": "ad19e0d4f81cf25b9711fa38587c0c738b7ca73aa2d1f356889d776a5cd2531a",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "08d2155f800a859269a803e67167c7129dd498bfe09818a621ebac4e056626af",
+      "text": "Resume when you are ready. Start the hold timer when you are in position.",
+      "path": "audio/elevenlabs/08d2155f800a859269a803e67167c7129dd498bfe09818a621ebac4e056626af.mp3",
+      "bytes": 88640,
+      "sha256": "173e6cc27d404e7336660489d22df04469cc7d4bc7ec414bca817701a9e1ebf3",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "7cb9663c645c68e45b57ccb71d6ad78825a3ff6abc6fc54ce58174e3f9291213",
+      "text": "Prone lumbar extension (press-ups). Perform ten prone lumbar extension press-ups each day, only within a comfortable range, using the technique corrected during your appointment.",
+      "path": "audio/elevenlabs/7cb9663c645c68e45b57ccb71d6ad78825a3ff6abc6fc54ce58174e3f9291213.mp3",
+      "bytes": 216535,
+      "sha256": "a1381ef341dc40589fb426f6d37c3c1ddc71b6cd51d9d9a0769b19c3f3065fed",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "e411d239e0df13117043b67c2e65a13a5e9daa554c5461925d158746596e9893",
+      "text": "Raise both arms overhead at a wall for ten movements once daily as demonstrated.",
+      "path": "audio/elevenlabs/e411d239e0df13117043b67c2e65a13a5e9daa554c5461925d158746596e9893.mp3",
+      "bytes": 107448,
+      "sha256": "d6367a89b40a9236328bb807f025bc924bba2cf7d6dccb20fc340032cb4e52c5",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "3a01fee83d3b060fe104cd603465369df13a4fe50098a398ed191673fd170b9e",
+      "text": "Right, 2. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/3a01fee83d3b060fe104cd603465369df13a4fe50098a398ed191673fd170b9e.mp3",
+      "bytes": 61890,
+      "sha256": "4a8921f6f19481be6d92dbf752e180efce7c16603cc04d264ae2016d3da65268",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "7e141716266698abb6280e9a393ab635e84d56cfd4fc8827b527336c11cd00ba",
+      "text": "Right, 3.",
+      "path": "audio/elevenlabs/7e141716266698abb6280e9a393ab635e84d56cfd4fc8827b527336c11cd00ba.mp3",
+      "bytes": 38902,
+      "sha256": "e73876ef274bc90ebd91349ff28e939f6878dcfb025e2045d6d43c5359beb6f6",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "b6a79d2d036538e7b25f2d8cea8114a49deffd61cea4768e4a98b04c30a2d948",
+      "text": "Right, 1.",
+      "path": "audio/elevenlabs/b6a79d2d036538e7b25f2d8cea8114a49deffd61cea4768e4a98b04c30a2d948.mp3",
+      "bytes": 39738,
+      "sha256": "e07d45126ad9022bd43c6bec05dbe59d6711ec553ddd2acac060f31d577b2b98",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "6f6e87afdd3cebf945ccc03a736a5428f7ca3f8f6daa2103b34f9cff20b6e948",
+      "text": "Repetitions recorded. Say done when ready.",
+      "path": "audio/elevenlabs/6f6e87afdd3cebf945ccc03a736a5428f7ca3f8f6daa2103b34f9cff20b6e948.mp3",
+      "bytes": 60636,
+      "sha256": "7a054b75e2b89d3bc61abe49a3a2fd9f3695886867d18ddddd0b5ab70cab3f73",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "b9b8e03005caff0a15865f5238b0f90b0f17f10b5be314cd0736c63b2d976fa5",
+      "text": "Right, 3. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/b9b8e03005caff0a15865f5238b0f90b0f17f10b5be314cd0736c63b2d976fa5.mp3",
+      "bytes": 59800,
+      "sha256": "7feafd5e40c66a2ec7fb54b730d0cf701a8db7cbb81d0bcf9e703947eb5cd5bb",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "1d12656f19e4ce73566c7194fd5b580a9d0581ba0882c4c43abdca4ec4d2d07b",
+      "text": "Right, 4.",
+      "path": "audio/elevenlabs/1d12656f19e4ce73566c7194fd5b580a9d0581ba0882c4c43abdca4ec4d2d07b.mp3",
+      "bytes": 36813,
+      "sha256": "6df4347a60e379b7e734a6433e3a001a48f4bac3b617ee50da0bdb1dbee7c5f1",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "56213f8f96a1e312bc5d1d17ace4b902b007c254fa2228bb4c7ce1c96a58dc9e",
+      "text": "Right, 10.",
+      "path": "audio/elevenlabs/56213f8f96a1e312bc5d1d17ace4b902b007c254fa2228bb4c7ce1c96a58dc9e.mp3",
+      "bytes": 33051,
+      "sha256": "e76afbb6015fa2a5ba955980417ff5cb20f42570ebb553fddc19b0bad9766050",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "0c809e57657c29810732278055a1b8d9a4b05c6e4e335784522b82aa04a8515f",
+      "text": "Right, 1. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/0c809e57657c29810732278055a1b8d9a4b05c6e4e335784522b82aa04a8515f.mp3",
+      "bytes": 58964,
+      "sha256": "912ed6f7a88f7a767055f50e300373a0f7fea84103930286d31af4fcfa56715e",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "c84da3829dd8065c4c55279461556c435d51506cede7d0b8fa5438e0ade84435",
+      "text": "Right, 4. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/c84da3829dd8065c4c55279461556c435d51506cede7d0b8fa5438e0ade84435.mp3",
+      "bytes": 61472,
+      "sha256": "d73fb30d51c7ce287ede8ca59e550019fa5b12bf33f33f01c88303fe1c2c6c7f",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "d9f54813710a12b7200be8f08525be64ea78fb4457352bbe6480e79e52092c64",
+      "text": "Right, 2.",
+      "path": "audio/elevenlabs/d9f54813710a12b7200be8f08525be64ea78fb4457352bbe6480e79e52092c64.mp3",
+      "bytes": 35977,
+      "sha256": "4474c7054ab5c6d1ef2194e17e637b9ad36cb75f235243ce5b7d3a19a7c298d0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "2a92255826394f47c3fe82abc79ca04d505d588d70a14b460768b10210c11ac9",
+      "text": "Right, 5. Hold for 30 seconds.",
+      "path": "audio/elevenlabs/2a92255826394f47c3fe82abc79ca04d505d588d70a14b460768b10210c11ac9.mp3",
+      "bytes": 63562,
+      "sha256": "be6f195ebc3ac6ea25c4732b4828bc0d7160147a4c0726a051a98f9b52921685",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "bf3193d4acee6cf522dd9b6f713cd82d2f609701c24a9ac86a5f13489c58ae94",
+      "text": "Right, 5.",
+      "path": "audio/elevenlabs/bf3193d4acee6cf522dd9b6f713cd82d2f609701c24a9ac86a5f13489c58ae94.mp3",
+      "bytes": 37649,
+      "sha256": "99478e1395cbe14e8d2c911c2c72ebc483f4e0e6cf7b3a9af84878e61201bec0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "1d496441945d268715d5c63709ee7420bcc45c735810d41f541cc80ea3e3e590",
+      "text": "Right, 6.",
+      "path": "audio/elevenlabs/1d496441945d268715d5c63709ee7420bcc45c735810d41f541cc80ea3e3e590.mp3",
+      "bytes": 36813,
+      "sha256": "873087cb0df08ed37370e15ac0f90e6d38b9727527b92f08d47f575dc033e2cf",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "b3c04b38bed9d3d0b34cae78608ea76bff4f266bf732a9b8dcfdd024849219ea",
+      "text": "Right, 7.",
+      "path": "audio/elevenlabs/b3c04b38bed9d3d0b34cae78608ea76bff4f266bf732a9b8dcfdd024849219ea.mp3",
+      "bytes": 35977,
+      "sha256": "a00985063aab50809bb793b5e7b11b8dd64bf73b98655e5f69cd203976c050c0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "be1a931db8e342ac8ec1ee6d482a7c2e767c2595866e7cdd083db91921690a68",
+      "text": "Say confirm to skip this exercise, or cancel.",
+      "path": "audio/elevenlabs/be1a931db8e342ac8ec1ee6d482a7c2e767c2595866e7cdd083db91921690a68.mp3",
+      "bytes": 64398,
+      "sha256": "5c2c7b55a2944d36d361b6dde0b09e0801a18973dfa8f5d8e9d7d67c29741737",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "00113fae6014e6e2220f0dcf83c6697f1bc31e65ff2a4a9236068b573622e952",
+      "text": "Right, 9.",
+      "path": "audio/elevenlabs/00113fae6014e6e2220f0dcf83c6697f1bc31e65ff2a4a9236068b573622e952.mp3",
+      "bytes": 34723,
+      "sha256": "16a0184d58e49d103ef5b44f9d0e9aa83345c2992638ba0d4e4d34f6bed8f16a",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "397394d5a8b321d1f1f68607eccea6a5dd6fb0e6f077d0debf0c0934d2b20c50",
+      "text": "Say confirm to mark the exercise complete, or cancel.",
+      "path": "audio/elevenlabs/397394d5a8b321d1f1f68607eccea6a5dd6fb0e6f077d0debf0c0934d2b20c50.mp3",
+      "bytes": 71085,
+      "sha256": "4672c7650a0dbc975c46ef66cf72e3a20304aab0ba7ceafbbb344a413a7fa3ec",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "97301b1d9aa9fa48257650a31899d718cbc50fa20e7f3479e454eafc3c23334d",
+      "text": "Right, 8.",
+      "path": "audio/elevenlabs/97301b1d9aa9fa48257650a31899d718cbc50fa20e7f3479e454eafc3c23334d.mp3",
+      "bytes": 40574,
+      "sha256": "a1d46557d79ca98ce6bed14e592ab435ac454b608c3bc20c196fa9345174e422",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "ee75b00d22eda13423ea53216c71cc3730325a451525c0d86265a364f87b74c1",
+      "text": "Session saved. Take care, and keep going gently.",
+      "path": "audio/elevenlabs/ee75b00d22eda13423ea53216c71cc3730325a451525c0d86265a364f87b74c1.mp3",
+      "bytes": 74011,
+      "sha256": "57883a12207f7557682feeaa22f8a144a353db7f7d00f72a5faf0d95338782da",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "5c0057b00dc88083b05bd52a7a19eb3a74949a05d4cb3d3691869ab361cef3c1",
+      "text": "Rolling knees side to side. Lie down and roll the knees side to side gently. No dose was specified for this date. No timed duration was prescribed for this movement. Here is a short, optional fifteen-second practice window. Stop or pause at any time.",
+      "path": "audio/elevenlabs/5c0057b00dc88083b05bd52a7a19eb3a74949a05d4cb3d3691869ab361cef3c1.mp3",
+      "bytes": 369508,
+      "sha256": "3746a73c390444b2ac17b6069c9dad073a28b6e4b88c742e8da56cef1089bf6e",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "69eb935894f395ab15c83e6999b4797abd372316b50132dd2b4b086adee81264",
+      "text": "Standing overhead wall stretch. Raise both arms overhead at a wall for ten movements once daily as demonstrated.",
+      "path": "audio/elevenlabs/69eb935894f395ab15c83e6999b4797abd372316b50132dd2b4b086adee81264.mp3",
+      "bytes": 136287,
+      "sha256": "39c2db5aae0f43413540e9f638b42160d52a3862433f4c83f6945b3463d273da",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "f8db45bab03a784ab34f3b2d5116cab708b3e4861f172b0ff5319ecbb9f4ed1e",
+      "text": "Session stopped. If this triggers a headache or significant pain, contact your clinician.",
+      "path": "audio/elevenlabs/f8db45bab03a784ab34f3b2d5116cab708b3e4861f172b0ff5319ecbb9f4ed1e.mp3",
+      "bytes": 108284,
+      "sha256": "624e7c37f1bf34d5b4aa6b44d303c417423b8032e03e51f75c5248fb89d0e1fe",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "cce9caf0c911cc48b4b48e130909d80b6d5f46c24355b8f6c5998af28527b3c1",
+      "text": "Stop exercising and contact your clinician if you have a headache or significant pain.",
+      "path": "audio/elevenlabs/cce9caf0c911cc48b4b48e130909d80b6d5f46c24355b8f6c5998af28527b3c1.mp3",
+      "bytes": 108702,
+      "sha256": "d62c460e2c0db3481f7c1a18094f40f9f06953ba18ea34113293f2a65ce285be",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "558839b165585ffceefeef68f39af0e49e89ca256c4fa842aecf00a08479cdaa",
+      "text": "Supine cervical extension. Use the lying neck extension movement demonstrated by your physiotherapist. No dose was recorded. No timed duration was prescribed for this movement. Here is a short, optional fifteen-second practice window. Stop or pause at any time.",
+      "path": "audio/elevenlabs/558839b165585ffceefeef68f39af0e49e89ca256c4fa842aecf00a08479cdaa.mp3",
+      "bytes": 365747,
+      "sha256": "a26c17d9b5f0d48ac0fa4daf21d0e1aa33c90dd4d521d6a55e29ba5d501c5bed",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "aa06ff13f8689f44d3efd9e77f1d57f11a9c0caae9fc3848755d3e80ab6a829b",
+      "text": "Supine cervical retraction. Perform ten supine cervical retractions, holding the tenth for 30 seconds.",
+      "path": "audio/elevenlabs/aa06ff13f8689f44d3efd9e77f1d57f11a9c0caae9fc3848755d3e80ab6a829b.mp3",
+      "bytes": 138377,
+      "sha256": "1b6080c2a56a8f7401ce85e52a3abbeed5f938329545da4a711db15aeed898e1",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "b86ac6c12494f031affdc08ca28fe9435e4a42f280283e16c05ee0b0eb4be1cb",
+      "text": "Say confirm to finish the session, or cancel.",
+      "path": "audio/elevenlabs/b86ac6c12494f031affdc08ca28fe9435e4a42f280283e16c05ee0b0eb4be1cb.mp3",
+      "bytes": 64816,
+      "sha256": "23b482fd4cacc48d1d53cd948047037cc4c5ea4e53c8e458d4200db67571299b",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "0edfe8fee66ff0f3fce05263cb75056ee1a9d414840e5ada14d5bf56fa920f15",
+      "text": "Supine cervical rotations. Ten supine neck rotations and a 30-second end-range hold, once daily.",
+      "path": "audio/elevenlabs/0edfe8fee66ff0f3fce05263cb75056ee1a9d414840e5ada14d5bf56fa920f15.mp3",
+      "bytes": 133361,
+      "sha256": "45429ffe88af7f3f0abcb0ea44052dca93e7a93185e32a15db68b5b2216964d7",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "9b43de00d82d85330c81f2cb13b99bd0446deec2145aa477a15eb46ab25e6db5",
+      "text": "Supine chin tucks. Perform ten chin tucks in lying, morning and evening, holding the last repetition for 30 seconds.",
+      "path": "audio/elevenlabs/9b43de00d82d85330c81f2cb13b99bd0446deec2145aa477a15eb46ab25e6db5.mp3",
+      "bytes": 160111,
+      "sha256": "df81174a54d16ff28001fbdd3250fe9113b23863db6afa04c30a1bb5a3e6b347",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "850bbb323c0173c8a06973a8d35d9e5a28cc2e3a6147424b7374e900cf69757a",
+      "text": "Ten supine neck rotations and a 30-second end-range hold, once daily.",
+      "path": "audio/elevenlabs/850bbb323c0173c8a06973a8d35d9e5a28cc2e3a6147424b7374e900cf69757a.mp3",
+      "bytes": 108284,
+      "sha256": "4f81ff51646eb207ad710d4e391d21fafdeee5405c4e1ac7e8834b527f279ce1",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "d770038b3090ca0e27e7d18900266cb6a6dfdabc2d6457aae125998f11ea4801",
+      "text": "Ten seconds remain on this hold.",
+      "path": "audio/elevenlabs/d770038b3090ca0e27e7d18900266cb6a6dfdabc2d6457aae125998f11ea4801.mp3",
+      "bytes": 54785,
+      "sha256": "82ab1e0692534751f4a416ad02f419fc29d295453c38bcec61dced031e444f30",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "a16b4f3024cc86a92039b21ef339d467f450d20026d3ffd3bd89c43866e4f4cd",
+      "text": "Supine neck rotations. Turn the neck to end of comfortable range ten times per side, each morning and evening, with 30-second holds at end range both directions.",
+      "path": "audio/elevenlabs/a16b4f3024cc86a92039b21ef339d467f450d20026d3ffd3bd89c43866e4f4cd.mp3",
+      "bytes": 204832,
+      "sha256": "c92d9e8121c97e6405d69398e7045cc1ec6ca620586fcf5d520cd45ce6b04330",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "a3ee0ffb95326b82a3a08936f2e5aa7ff2812a52798241979a554d586bb7587a",
+      "text": "Supported cervical extension. Place your fingers under the back of your head for support; gently extend your neck ten times.",
+      "path": "audio/elevenlabs/a3ee0ffb95326b82a3a08936f2e5aa7ff2812a52798241979a554d586bb7587a.mp3",
+      "bytes": 145064,
+      "sha256": "abc6798a93119f36c0063ee88e1ad7809f644ecde1c5ff4c5c60ce46b7acd259",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "191452029757a45a27df8997ee97b8ecc649fa3df21e71738d13929e3ece1ef3",
+      "text": "Ten neck retractions, holding the tenth for 30 seconds, once daily.",
+      "path": "audio/elevenlabs/191452029757a45a27df8997ee97b8ecc649fa3df21e71738d13929e3ece1ef3.mp3",
+      "bytes": 94909,
+      "sha256": "63f96f2bdf5534a01562088e839d63513f4e568b8fd966af8847951080fbe9ed",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "6e2f014fcb70803714ae4bf542ef4477b78f969a321b93638de14571d5a1dd3e",
+      "text": "The counter is not finished. If you completed the exercise yourself, say confirm to record it manually, or cancel.",
+      "path": "audio/elevenlabs/6e2f014fcb70803714ae4bf542ef4477b78f969a321b93638de14571d5a1dd3e.mp3",
+      "bytes": 140884,
+      "sha256": "a67641355440f6ef8d7544963b0fa855c66d82b07013d786cdaa0fe78d1c6ca4",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "dc11b588267fb1cd37cd3bb07f91130182062dc2cb2fb0086c7f266a1eb5caec",
+      "text": "Time for your exercises. We will take it gently. Say I am ready to begin.",
+      "path": "audio/elevenlabs/dc11b588267fb1cd37cd3bb07f91130182062dc2cb2fb0086c7f266a1eb5caec.mp3",
+      "bytes": 102850,
+      "sha256": "e1d6f338f23150ef0379f704216a70dd5ca9575bfdbb317ab4b8655a16bbc585",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "29183832a64b9f7d1ffc79e97b455bba0073c0b87929c5d057c9ab080ced7eac",
+      "text": "Use a doorway chest stretch as tolerated. No count or hold duration was recorded.",
+      "path": "audio/elevenlabs/29183832a64b9f7d1ffc79e97b455bba0073c0b87929c5d057c9ab080ced7eac.mp3",
+      "bytes": 104940,
+      "sha256": "4afdf577516efe064a1a2ea1e44147ceedc77a3d241285fa72f0750e0feb0567",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "fa065eae7f035feba86cfb1f9b84a6eec39e72f1de56d8218a9c7fb287d12c71",
+      "text": "Turn your head left and right, each only to around 4–5 out of 10 discomfort. Complete ten movements each side.",
+      "path": "audio/elevenlabs/fa065eae7f035feba86cfb1f9b84a6eec39e72f1de56d8218a9c7fb287d12c71.mp3",
+      "bytes": 143810,
+      "sha256": "3b754faf1dbaab0edc88862c0a360cb0933a209d0a0fd0662831c692866b36d8",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "badd07dc67c6b8d54132d511d4c4b221aa64bb49b6a38c75c2226a4bdd64a883",
+      "text": "Ten chin tucks, with 30-second holds described in the 31 March summary.",
+      "path": "audio/elevenlabs/badd07dc67c6b8d54132d511d4c4b221aa64bb49b6a38c75c2226a4bdd64a883.mp3",
+      "bytes": 102850,
+      "sha256": "3180a1fdab13a5cb7d1c2c5bea608c52ad2723da54626365d3b2df6b96d78970",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "d3f2003f6187ee8e0ca3245f64f6e85178842f6594b839bba84a1d0940ac28f6",
+      "text": "While lying down, roll knees side to side ten times, one to three times daily.",
+      "path": "audio/elevenlabs/d3f2003f6187ee8e0ca3245f64f6e85178842f6594b839bba84a1d0940ac28f6.mp3",
+      "bytes": 102850,
+      "sha256": "f8e8a0580e2fa39dcadefc7c92929fd646995971eda5fb52aec4fb8bf519ebcb",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "4975783ab9db6b74090382481ab045e26edc9bd231524fc310952fd6682fdc09",
+      "text": "Use the lying neck extension movement demonstrated by your physiotherapist. No dose was recorded.",
+      "path": "audio/elevenlabs/4975783ab9db6b74090382481ab045e26edc9bd231524fc310952fd6682fdc09.mp3",
+      "bytes": 121658,
+      "sha256": "2f6d6d99b0a7ba121e83b9d91380308b2f5c5f3c53db7af7c29490a011907f47",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "b86f25f65e5c31b430ef39fa118a25a2d2374948b91a9c650df3cb05ba18ae6c",
+      "text": "Turn the neck to end of comfortable range ten times per side, each morning and evening, with 30-second holds at end range both directions.",
+      "path": "audio/elevenlabs/b86f25f65e5c31b430ef39fa118a25a2d2374948b91a9c650df3cb05ba18ae6c.mp3",
+      "bytes": 162200,
+      "sha256": "ad65c2f05e37520ba8e50499682fe4351f7be0c8fc8045e300117d03461da1e5",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "fc86c25095090fa37d13d17d714aeab3d448b9f245416c392930888f611d9ac8",
+      "text": "Turn gently to one side using the technique you were shown; hold about 30 seconds. Repeat five times on each side.",
+      "path": "audio/elevenlabs/fc86c25095090fa37d13d17d714aeab3d448b9f245416c392930888f611d9ac8.mp3",
+      "bytes": 144646,
+      "sha256": "0b47f97446da851b68a486b71ebff7fe7f377464239ca364ff0b0f01a13a7d9d",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "44eccf9bca73e328509cf417f1ec59db4a4ed6e8cd29905394ef79d260582646",
+      "text": "Your guided routine is finished. Well done for taking time to move gently.",
+      "path": "audio/elevenlabs/44eccf9bca73e328509cf417f1ec59db4a4ed6e8cd29905394ef79d260582646.mp3",
+      "bytes": 96999,
+      "sha256": "37847f3febc228cb50d54d836bbe979a222bf947b443973dde5f713adb7e22d2",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "d8291bf7df492b336ed364066fb73cbe6962d2a18c183525e12b0286e43f2b01",
+      "text": "Use the rocking movements demonstrated during treatment. Exact technique and dose not recorded.",
+      "path": "audio/elevenlabs/d8291bf7df492b336ed364066fb73cbe6962d2a18c183525e12b0286e43f2b01.mp3",
+      "bytes": 117061,
+      "sha256": "0865a6fda6326062480b6206f32f49e5cec09a3d375f04576fda4c8857bfd1ac",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "e5b3ed2a2ead7c9e171b10458461d6fc9e0400452a271eea5b67a65c5c9a9fd8",
+      "text": "Well done. Say confirm to save your session, or add a comfort rating first.",
+      "path": "audio/elevenlabs/e5b3ed2a2ead7c9e171b10458461d6fc9e0400452a271eea5b67a65c5c9a9fd8.mp3",
+      "bytes": 103686,
+      "sha256": "0caf46704c1bc7629773b8b14c95044aa7146b5e76a7c548e47b54844e021e5e",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO021",
+      "text": null,
+      "path": "audio/elevenlabs/VO021.mp3",
+      "bytes": 142138,
+      "sha256": "5c356a95ff32d97402b3c1b4eb5366af789a632765181c4a79574c116efc2ddd",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO022",
+      "text": null,
+      "path": "audio/elevenlabs/VO022.mp3",
+      "bytes": 186870,
+      "sha256": "79277d35059617d4e21c7a4f07817e23860ce29e2ea797fc836d752f06be53e2",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO023",
+      "text": null,
+      "path": "audio/elevenlabs/VO023.mp3",
+      "bytes": 136297,
+      "sha256": "98651c74307755576098449316d3f93fbb0f1b0adc964538f28efcfdcc69e647",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO024",
+      "text": null,
+      "path": "audio/elevenlabs/VO024.mp3",
+      "bytes": 121251,
+      "sha256": "2795ac2177a30b80f7f3f42cec5fd055e438797c1c84df2f343dc619ca016e05",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO025",
+      "text": null,
+      "path": "audio/elevenlabs/VO025.mp3",
+      "bytes": 107876,
+      "sha256": "3c74929af966f9a403758c6409a341a74602f21c38be0de854e7393439e6d49b",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO026",
+      "text": null,
+      "path": "audio/elevenlabs/VO026.mp3",
+      "bytes": 153434,
+      "sha256": "e50340a3e2ec8eb5f02f9137efe79b3b2e434e3c6c9e41a4f4b562459158e3b0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO027",
+      "text": null,
+      "path": "audio/elevenlabs/VO027.mp3",
+      "bytes": 18015,
+      "sha256": "6b7de200301f108d4eed106c03ce4789a76d8d096f3d1753c39318c542ff2dd5",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO028",
+      "text": null,
+      "path": "audio/elevenlabs/VO028.mp3",
+      "bytes": 27210,
+      "sha256": "a2b65f1383571c97c43a606dbdc9426fd754db9255c110a2d76df864ea01fbd1",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO029",
+      "text": null,
+      "path": "audio/elevenlabs/VO029.mp3",
+      "bytes": 17597,
+      "sha256": "7ec3dcb7ad3cc2fa40af525973e23593f689aa355ba74b92d4fa2eb9182288d0",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO030",
+      "text": null,
+      "path": "audio/elevenlabs/VO030.mp3",
+      "bytes": 17597,
+      "sha256": "6f17c96bb9ddab8581491032a883c5d92914f7ff7077c962efd8c2c8f0ca5b10",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO031",
+      "text": null,
+      "path": "audio/elevenlabs/VO031.mp3",
+      "bytes": 65662,
+      "sha256": "e6148d5f78bafeaf8210a5922ddce93004009760071555d5feec00dc3f517469",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO032",
+      "text": null,
+      "path": "audio/elevenlabs/VO032.mp3",
+      "bytes": 35987,
+      "sha256": "a54bbeb048b320dd9ac692783676484720a23be0b4e231e01bf6cb8b861dfc2c",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO033",
+      "text": null,
+      "path": "audio/elevenlabs/VO033.mp3",
+      "bytes": 69424,
+      "sha256": "a058352f803051e0dbb96b48443157ebb529041da6a9f6a8436deab2c8a92c9e",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO034",
+      "text": null,
+      "path": "audio/elevenlabs/VO034.mp3",
+      "bytes": 37659,
+      "sha256": "066618b08f2568994e787f4ccfabafd770fec66ec1899ef75632f8361c108720",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO035",
+      "text": null,
+      "path": "audio/elevenlabs/VO035.mp3",
+      "bytes": 64826,
+      "sha256": "e243cdba62c27870a5d47eff66c18a9186241a7e051fcc5d9876b712f5214b10",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO036",
+      "text": null,
+      "path": "audio/elevenlabs/VO036.mp3",
+      "bytes": 126684,
+      "sha256": "3abe9456a4884713ebdd3d12cbd1ced9d6321fca01009091f169d67b856f7d5a",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO037",
+      "text": null,
+      "path": "audio/elevenlabs/VO037.mp3",
+      "bytes": 119161,
+      "sha256": "ca4df698f4bd5732dff2005d05cbfc38f427c2b4553bf18a89acde5dd6136cba",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO038",
+      "text": null,
+      "path": "audio/elevenlabs/VO038.mp3",
+      "bytes": 115399,
+      "sha256": "e62face9ccc3aa0cdc64868030708f4b308a6b3fb32cd035c66fc55568dba62e",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO039",
+      "text": null,
+      "path": "audio/elevenlabs/VO039.mp3",
+      "bytes": 132536,
+      "sha256": "31524b5346c8d0ed4c0cd2d13c6189722821b335498f8a0cf1a6f08be4dca397",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    },
+    {
+      "id": "VO040",
+      "text": null,
+      "path": "audio/elevenlabs/VO040.mp3",
+      "bytes": 142149,
+      "sha256": "1ccbdc68d80732b15a63c79c6b59b8b0620f0431a2680e76709c5c0c7f3c1901",
+      "verifiedLocal": true,
+      "liveStatus": "verified"
+    }
+  ],
+  "sourceRepository": "Parris-Tech-Services/GentleMovement",
+  "githubRun": "https://github.com/joshualparris/JoshMemory/actions/runs/40056982862",
+  "note": "Each production MP3 compared byte-for-byte with the local approved recording; actual browser playback and UI interactions not certified."
+}
