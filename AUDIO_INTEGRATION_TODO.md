@@ -2,6 +2,8 @@
 
 **Status:** OPEN / NOT YET VERIFIED. **Last inventoried:** 2026-10-24. This document is a task tracker, not evidence that the changes or playtests are done.
 
+**Triage and unique subtasks:** [TASK_TRIAGE.md](TASK_TRIAGE.md) · [Central VoiceBank 55-task register](https://github.com/Parris-Tech-Services/ParrisVoiceBank/blob/main/docs/GENTLE_MOVEMENT_AUDIO_TASK_INDEX.md). **Next AI item: GM-031.01**. Existing global parent numbers and completion checkboxes are unchanged.
+
 **Global tracker:** https://github.com/Parris-Tech-Services/ParrisVoiceBank/blob/main/AUDIO_INTEGRATION_MASTER_TODO.md
 
 **Rules:** Global numbers are stable (001–048); check a task off only after recording the passing tests and real production verification. Reuse existing ElevenLabs assets rather than regenerating paid speech. Manual workflows are preferred to save GitHub Actions usage. Do not play audio automatically or mislabel generic TTS as a recording.
@@ -9,74 +11,74 @@
 ## Tasks relevant to this repository (14)
 
 - [x] **029** [P1] Independently confirm the documented 148-recording voice pack is completely accessible in production
-  - [x] [AI] Enumerated the exact 128 dynamic manifest entries and 20 approved VO021–VO040 tracks; source SHA 987a15b5.
-  - [x] [AI] Verified all 148 production MP3s (HTTP success, MIME, bytes, full SHA-256) match local source, with no unindexed local clips; [self-hosted CI run 40056982862](https://github.com/joshualparris/JoshMemory/actions/runs/40056982862).
-  - [x] [AI] Tested production Auto Mode in headless Chromium/Playwright on 2026-10-24: user pressed Start Auto Mode; `audio/elevenlabs/VO021.mp3` returned HTTP 206; HTMLMediaElement `playing` and advancing `timeupdate` (over 3 seconds), `readyState=4`, no audio error. This is genuine Chromium playback verification, not a physical-device loudspeaker listening test.
-  - [x] [AI] Saved a permanent [148-row per-clip live validation report](audit/elevenlabs-148-live-2026-10-24.json), with SHA-256, lengths, transcript where available and source references. Production Chromium UI playback now verified; physical phone remains optional under task 032.
+  - [x] **GM-029.01** [AI] Enumerated the exact 128 dynamic manifest entries and 20 approved VO021–VO040 tracks; source SHA 987a15b5.
+  - [x] **GM-029.02** [AI] Verified all 148 production MP3s (HTTP success, MIME, bytes, full SHA-256) match local source, with no unindexed local clips; [self-hosted CI run 40056982862](https://github.com/joshualparris/JoshMemory/actions/runs/40056982862).
+  - [x] **GM-029.03** [AI] Tested production Auto Mode in headless Chromium/Playwright on 2026-10-24: user pressed Start Auto Mode; `audio/elevenlabs/VO021.mp3` returned HTTP 206; HTMLMediaElement `playing` and advancing `timeupdate` (over 3 seconds), `readyState=4`, no audio error. This is genuine Chromium playback verification, not a physical-device loudspeaker listening test.
+  - [x] **GM-029.04** [AI] Saved a permanent [148-row per-clip live validation report](audit/elevenlabs-148-live-2026-10-24.json), with SHA-256, lengths, transcript where available and source references. Production Chromium UI playback now verified; physical phone remains optional under task 032.
 - [ ] **030** [P1] Recheck every current physiotherapy exercise instruction, left/right cue, repetition count and hold timer
-  - [x] [AI] Exported all four archived/current programmes to [167-row clinical cue matrix](audit/clinical-cue-matrix-2026-10-24.csv), containing exercise instructions, side, repetition, prescribed hold seconds, and exact recorded cue caption; committed `f3f1a7e1c7df4758aaa77a61689c282aace61a31`.
-  - [ ] [AI] Check actual real-time audio voice timing at hold/repeat/left/right transitions against current physio instructions. Accelerated full-session browser simulations passed (silent timeline and instrumented 69 audio triggers); genuine complete real-time narration remains unverified.
-  - [x] [AI] `tests/clinical-audio-acceptance.test.mjs` verifies prescribed rep/hold phase counts, 160 source phase mappings, pause/resume remaining-time arithmetic, recorded-only fallback and altered-repetition count mapping; latest independent `node --test`: 46/46 passing, commit `07a80e6f4761f949bac72e78fc54182cffe5b94a`.
-  - [x] [AI] Automated mapping checks assert clinical `phases()` rep/side/hold values exactly match source exercise dose and current recorded cue coverage; no dosages synthesized for ambiguous/untimed exercises (45/45 passing tests).
+  - [x] **GM-030.01** [AI] Exported all four archived/current programmes to [167-row clinical cue matrix](audit/clinical-cue-matrix-2026-10-24.csv), containing exercise instructions, side, repetition, prescribed hold seconds, and exact recorded cue caption; committed `f3f1a7e1c7df4758aaa77a61689c282aace61a31`.
+  - [ ] **GM-030.02** [AI] Check actual real-time audio voice timing at hold/repeat/left/right transitions against current physio instructions. Accelerated full-session browser simulations passed (silent timeline and instrumented 69 audio triggers); genuine complete real-time narration remains unverified.
+  - [x] **GM-030.03** [AI] `tests/clinical-audio-acceptance.test.mjs` verifies prescribed rep/hold phase counts, 160 source phase mappings, pause/resume remaining-time arithmetic, recorded-only fallback and altered-repetition count mapping; latest independent `node --test`: 46/46 passing, commit `07a80e6f4761f949bac72e78fc54182cffe5b94a`.
+  - [x] **GM-030.04** [AI] Automated mapping checks assert clinical `phases()` rep/side/hold values exactly match source exercise dose and current recorded cue coverage; no dosages synthesized for ambiguous/untimed exercises (45/45 passing tests).
 - [ ] **031** [P1] Verify Auto Mode produces no accidental generic TTS when ElevenLabs is selected
-  - [ ] [AI] Trace VoiceBank/ElevenLabs selection through Auto Mode and every speech fallback branch.
-  - [x] [AI] Automated `node --test` on real repository checkout: 42/42 passed, including the recorded-only fallback assertion and all 167 current Auto Mode cues (161 exact manifest and six approved mappings); source commit e5624802efc7c0459cebc66223c415bdc7574178.
-  - [ ] [AI] Emulate missing files, slow downloads, repeated exercises and timer transitions.
-  - [x] [AI] Production Chromium Auto Mode initiated `VO021.mp3` via media element; `playing` and advancing media time observed; physical-speaker/auditory listening not asserted.
+  - [ ] **GM-031.01** [AI] Trace VoiceBank/ElevenLabs selection through Auto Mode and every speech fallback branch.
+  - [x] **GM-031.02** [AI] Automated `node --test` on real repository checkout: 42/42 passed, including the recorded-only fallback assertion and all 167 current Auto Mode cues (161 exact manifest and six approved mappings); source commit e5624802efc7c0459cebc66223c415bdc7574178.
+  - [ ] **GM-031.03** [AI] Emulate missing files, slow downloads, repeated exercises and timer transitions.
+  - [x] **GM-031.04** [AI] Production Chromium Auto Mode initiated `VO021.mp3` via media element; `playing` and advancing media time observed; physical-speaker/auditory listening not asserted.
 - [ ] **032** [P1] Test pausing, resuming, repeat instructions, background interruptions, offline sessions and saved history on a real phone
-  - [x] [AI] Production Chromium acceptance: pause/resume works, hard-refresh retains paused session, virtual tab `visibilitychange` pauses, and a skip-through of all five exercises saves five results as a partial (not falsely completed) session; offline refresh works after SW activation. Replay and full-duration audio transitions remain open for deeper checks.
-  - [x] [AI] Chromium verified exercise index=0 and step=0 preserved on pause, browser reload, and simulated `document.hidden` visibility interruption. Live 30-second hold pause/resume now validated under 60× accelerated Chromium clock; physical real-time remains unverified.
-  - [x] [AI] Verified production partial-session history remained `status=partial` with five results after page reload and after closing the tab and opening a new tab in the same browser context; UI also reported partial/stopped history. A wholly new browser profile does not share localStorage by design.
-  - [ ] [YOU, optional] Confirm one physical-phone background-audio/lock-screen behaviour that emulation cannot reproduce.
+  - [x] **GM-032.01** [AI] Production Chromium acceptance: pause/resume works, hard-refresh retains paused session, virtual tab `visibilitychange` pauses, and a skip-through of all five exercises saves five results as a partial (not falsely completed) session; offline refresh works after SW activation. Replay and full-duration audio transitions remain open for deeper checks.
+  - [x] **GM-032.02** [AI] Chromium verified exercise index=0 and step=0 preserved on pause, browser reload, and simulated `document.hidden` visibility interruption. Live 30-second hold pause/resume now validated under 60× accelerated Chromium clock; physical real-time remains unverified.
+  - [x] **GM-032.03** [AI] Verified production partial-session history remained `status=partial` with five results after page reload and after closing the tab and opening a new tab in the same browser context; UI also reported partial/stopped history. A wholly new browser profile does not share localStorage by design.
+  - [ ] **GM-032.04** [YOU, optional] Confirm one physical-phone background-audio/lock-screen behaviour that emulation cannot reproduce.
 - [ ] **033** [P1] Ensure any missing or new instructions are explicitly identified rather than silently replaced by another voice
-  - [x] [AI] Current complete four-programme phase catalogue checked: 160 rep/hold phases, seven untimed cues, 167/167 covered by either exact manifest text (161) or approved track (six). No current mapped-phase gaps found; newly added instructions are guarded by a failing regression assertion.
-  - [x] [AI] Real production Chromium/Playwright failure injection: intercepted all `audio/elevenlabs/*.mp3` and served HTTP 404; Start Auto Mode paused at step 0, displayed exactly `Recording unavailable. Follow the written cue. Retry with Resume, or choose Phone voice in Settings.`, and called device `speechSynthesis.speak` zero times.
-  - [x] [AI] Tests fail when newly introduced clinical phase cues are unmapped; recorded-only source fallback assertion prohibits device TTS in missing-clip branch and runtime uses local assets. Actual outbound domain capture remains task 044.
+  - [x] **GM-033.01** [AI] Current complete four-programme phase catalogue checked: 160 rep/hold phases, seven untimed cues, 167/167 covered by either exact manifest text (161) or approved track (six). No current mapped-phase gaps found; newly added instructions are guarded by a failing regression assertion.
+  - [x] **GM-033.02** [AI] Real production Chromium/Playwright failure injection: intercepted all `audio/elevenlabs/*.mp3` and served HTTP 404; Start Auto Mode paused at step 0, displayed exactly `Recording unavailable. Follow the written cue. Retry with Resume, or choose Phone voice in Settings.`, and called device `speechSynthesis.speak` zero times.
+  - [x] **GM-033.03** [AI] Tests fail when newly introduced clinical phase cues are unmapped; recorded-only source fallback assertion prohibits device TTS in missing-clip branch and runtime uses local assets. Actual outbound domain capture remains task 044.
 - [ ] **040** [P2] Audit voice consistency, pronunciation, volume, pauses and audio quality across all characters
-  - [x] [AI] Ran FFmpeg `volumedetect` and duration decode across all 148 approved production-source MP3 files in the independent Sydney sandbox on 2026-10-24: 148/148 decoded, mean-volume range −25.0 to −14.2 dB, highest maximum peak −0.3 dB, no failed decodes. Leading/trailing silence requires follow-up `silencedetect` analysis.
-  - [ ] [AI] Flag speaker changes, clipped audio, pronunciation errors and long pauses for listening review.
-  - [ ] [AI] Apply non-destructive free gain/trim normalisation only with before/after hashes and source preserved.
-  - [ ] [AI] Test representative character clips in the actual app/game playback mix.
+  - [x] **GM-040.01** [AI] Ran FFmpeg `volumedetect` and duration decode across all 148 approved production-source MP3 files in the independent Sydney sandbox on 2026-10-24: 148/148 decoded, mean-volume range −25.0 to −14.2 dB, highest maximum peak −0.3 dB, no failed decodes. Leading/trailing silence requires follow-up `silencedetect` analysis.
+  - [ ] **GM-040.02** [AI] Flag speaker changes, clipped audio, pronunciation errors and long pauses for listening review.
+  - [ ] **GM-040.03** [AI] Apply non-destructive free gain/trim normalisation only with before/after hashes and source preserved.
+  - [ ] **GM-040.04** [AI] Test representative character clips in the actual app/game playback mix.
 - [ ] **041** [P2] Check integrity, captions, wrong-file matches and broken URLs for each recording
-  - [x] [AI] Published [148-row source/URL/voice/caption/trigger matrix](audit/gentle-recording-matrix-2026-10-24.csv), enumerating 128 manifest-labeled dynamic files and 20 approved clinician VO tracks. Dynamic caption/voice populated; 20 curated VO captions and speaker metadata explicitly remain pending. Per-file real SHA-256 available in the prior 148-row validated report.
-  - [ ] [AI] Validate all manifest references and content type/length, and audit caption versus text metadata.
-  - [ ] [AI] Test fail-fast behaviour for swapped voice files, 404, CORS and corrupt ZIP; store report.
-  - [ ] [AI] Do not close until all required clips in the specified scope pass.
+  - [x] **GM-041.01** [AI] Published [148-row source/URL/voice/caption/trigger matrix](audit/gentle-recording-matrix-2026-10-24.csv), enumerating 128 manifest-labeled dynamic files and 20 approved clinician VO tracks. Dynamic caption/voice populated; 20 curated VO captions and speaker metadata explicitly remain pending. Per-file real SHA-256 available in the prior 148-row validated report.
+  - [ ] **GM-041.02** [AI] Validate all manifest references and content type/length, and audit caption versus text metadata.
+  - [ ] **GM-041.03** [AI] Test fail-fast behaviour for swapped voice files, 404, CORS and corrupt ZIP; store report.
+  - [ ] **GM-041.04** [AI] Do not close until all required clips in the specified scope pass.
 - [ ] **042** [P2] Verify no overlapping audio, autoplay problems, stuck players or missing stop controls
-  - [ ] [AI] Enumerate distinct media engines per app and document precedence, pause and stop rules.
-  - [ ] [AI] Add a repeat-tap/switch/close stress test that detects overlapping voices or hanging player state.
-  - [x] [AI] Production Chromium media prototype spy: zero playback calls on initial load; clicking Start Auto Mode triggered VO021; Pause stopped VO021 before starting VO036; Resume stopped VO036 before starting VO022; second Pause stopped VO022 before VO036. Session remained paused on step zero, with no observed overlapping active media in this interaction.
-  - [ ] [AI] Confirm screen-reader announcements remain clear when an audio error occurs.
+  - [ ] **GM-042.01** [AI] Enumerate distinct media engines per app and document precedence, pause and stop rules.
+  - [ ] **GM-042.02** [AI] Add a repeat-tap/switch/close stress test that detects overlapping voices or hanging player state.
+  - [x] **GM-042.03** [AI] Production Chromium media prototype spy: zero playback calls on initial load; clicking Start Auto Mode triggered VO021; Pause stopped VO021 before starting VO036; Resume stopped VO036 before starting VO022; second Pause stopped VO022 before VO036. Session remained paused on step zero, with no observed overlapping active media in this interaction.
+  - [ ] **GM-042.04** [AI] Confirm screen-reader announcements remain clear when an audio error occurs.
 - [ ] **043** [P2] Check loading performance and avoid unnecessarily downloading hundreds of recordings on mobile data
-  - [ ] [AI] Record startup/network bytes and lazy-load timing on a throttled simulated mobile connection.
-  - [ ] [AI] Ensure packs download on explicit interaction, cache selectively and respect audio settings.
-  - [x] [AI] Live Chromium mobile-viewport (390×844) clean initial load: only 18 total requests, 17 performance resources, and **zero MP3 requests** before a user action. No page errors or horizontal overflow (scrollWidth=viewport=390); storage-pressure/eviction remains separately open.
-  - [ ] [AI] Add performance budgets and compare measurements after optimisation.
+  - [ ] **GM-043.01** [AI] Record startup/network bytes and lazy-load timing on a throttled simulated mobile connection.
+  - [ ] **GM-043.02** [AI] Ensure packs download on explicit interaction, cache selectively and respect audio settings.
+  - [x] **GM-043.03** [AI] Live Chromium mobile-viewport (390×844) clean initial load: only 18 total requests, 17 performance resources, and **zero MP3 requests** before a user action. No page errors or horizontal overflow (scrollWidth=viewport=390); storage-pressure/eviction remains separately open.
+  - [ ] **GM-043.04** [AI] Add performance budgets and compare measurements after optimisation.
 - [ ] **044** [P2] Test fallback and retry behaviour without unexpected ElevenLabs API calls or costs
-  - [ ] [AI] Simulate offline, rate limits, 404, timeout, CORS denial and decode failure for every playback API. **Done subsets:** 404 and intercepted `internetdisconnected` MP3 request failures in production Chromium both paused Auto Mode and showed explicit recording-unavailable text. Rate limits, decode failures, true device offline caching and every playback API still pending.
-  - [ ] [AI] Assert graceful retry/disabled control with accurate voice source label.
-  - [ ] [AI] Log outbound request domains and prove no unplanned ElevenLabs/paid API calls.
-  - [ ] [AI] Preserve working offline alternatives only where approved, with no disguised device TTS.
+  - [ ] **GM-044.01** [AI] Simulate offline, rate limits, 404, timeout, CORS denial and decode failure for every playback API. **Done subsets:** 404 and intercepted `internetdisconnected` MP3 request failures in production Chromium both paused Auto Mode and showed explicit recording-unavailable text. Rate limits, decode failures, true device offline caching and every playback API still pending.
+  - [ ] **GM-044.02** [AI] Assert graceful retry/disabled control with accurate voice source label.
+  - [ ] **GM-044.03** [AI] Log outbound request domains and prove no unplanned ElevenLabs/paid API calls.
+  - [ ] **GM-044.04** [AI] Preserve working offline alternatives only where approved, with no disguised device TTS.
 - [ ] **045** [P2] Check accessibility, keyboard controls, reduced-motion preferences and screen-reader labels
-  - [x] [AI] Automated axe-core WCAG2 AA / WCAG2.1 AA tests in Chromium on Today/Settings/Progress: initial color-contrast failures; fixed `--muted` light-theme colour #64756d→#52635b (commit `cc104b7ccd93c184a05bfe6b9d745133778681ad`); reran local updated-build axe scans: zero reported WCAG AA violations across these three screens. Deeper session screen reader and focus audits remain open.
-  - [ ] [AI] Test keyboard-only controls and switch to reduced-motion mode where relevant.
-  - [ ] [AI] Inspect mobile hit targets and long translated/recorded captions for overflow.
-  - [ ] [AI] Retest screen-reader relevant semantics after fixes.
+  - [x] **GM-045.01** [AI] Automated axe-core WCAG2 AA / WCAG2.1 AA tests in Chromium on Today/Settings/Progress: initial color-contrast failures; fixed `--muted` light-theme colour #64756d→#52635b (commit `cc104b7ccd93c184a05bfe6b9d745133778681ad`); reran local updated-build axe scans: zero reported WCAG AA violations across these three screens. Deeper session screen reader and focus audits remain open.
+  - [ ] **GM-045.02** [AI] Test keyboard-only controls and switch to reduced-motion mode where relevant.
+  - [ ] **GM-045.03** [AI] Inspect mobile hit targets and long translated/recorded captions for overflow.
+  - [ ] **GM-045.04** [AI] Retest screen-reader relevant semantics after fixes.
 - [ ] **046** [P2] Run project builds, automated tests, real-browser journeys and production smoke tests
-  - [ ] [AI] Record per-app build, unit, integration, browser and deployed smoke commands in a single evidence matrix.
-  - [ ] [AI] Run lowest-cost tests first, then real browser journeys (Chrome mobile/desktop) without generating speech.
-  - [ ] [AI] Gate deployment on the relevant tests; attach SHA, exit logs, network/audio proof and URL.
-  - [ ] [AI] Distinguish an independent test from GitHub Actions execution and never claim CI green when runner was blocked.
+  - [ ] **GM-046.01** [AI] Record per-app build, unit, integration, browser and deployed smoke commands in a single evidence matrix.
+  - [ ] **GM-046.02** [AI] Run lowest-cost tests first, then real browser journeys (Chrome mobile/desktop) without generating speech.
+  - [ ] **GM-046.03** [AI] Gate deployment on the relevant tests; attach SHA, exit logs, network/audio proof and URL.
+  - [ ] **GM-046.04** [AI] Distinguish an independent test from GitHub Actions execution and never claim CI green when runner was blocked.
 - [ ] **047** [P2] Confirm save/load, offline support and core gameplay remain unchanged where audio was added
-  - [ ] [AI] Snapshot test saves/progress before audio features and verify backwards-compatible restores.
-  - [ ] [AI] Test offline startup and cached/missing audio without breaking gameplay, exercise tracking or school-safe app features.
-  - [ ] [AI] Check changing voice settings does not change game data, achievements or scores.
-  - [ ] [AI] Perform a production upgrade/reload regression on each affected app.
+  - [ ] **GM-047.01** [AI] Snapshot test saves/progress before audio features and verify backwards-compatible restores.
+  - [ ] **GM-047.02** [AI] Test offline startup and cached/missing audio without breaking gameplay, exercise tracking or school-safe app features.
+  - [ ] **GM-047.03** [AI] Check changing voice settings does not change game data, achievements or scores.
+  - [ ] **GM-047.04** [AI] Perform a production upgrade/reload regression on each affected app.
 - [ ] **048** [P2] Publish a central audit showing clip ID, voice, source, destination, gameplay trigger, review status and test outcome
-  - [ ] [AI] Consolidate all accessible audio manifests into one versioned inventory with ID, source, speaker, text, hash, game, trigger and deployed URL.
-  - [ ] [AI] Link QA evidence (CI/build/browser/devices), confidence level, review status and unresolved blockers per clip.
-  - [ ] [AI] Publish a machine-readable CSV/JSON and human audit in VoiceBank with source references.
-  - [ ] [AI] Reconcile all 48 task checkboxes from actual proof; leave missing/private/inaccessible items explicitly OPEN.
+  - [ ] **GM-048.01** [AI] Consolidate all accessible audio manifests into one versioned inventory with ID, source, speaker, text, hash, game, trigger and deployed URL.
+  - [ ] **GM-048.02** [AI] Link QA evidence (CI/build/browser/devices), confidence level, review status and unresolved blockers per clip.
+  - [ ] **GM-048.03** [AI] Publish a machine-readable CSV/JSON and human audit in VoiceBank with source references.
+  - [ ] **GM-048.04** [AI] Reconcile all 48 task checkboxes from actual proof; leave missing/private/inaccessible items explicitly OPEN.
 
 <!-- NO_COST_SUBTASKS_V1 -->
 
