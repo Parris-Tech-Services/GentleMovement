@@ -1,8 +1,7 @@
 name: Autonomous Completion Repair
+# Automatic runs paused to cap GitHub Actions costs; use Run workflow when needed.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '43 20 * * *'
 permissions:
   contents: write
   pull-requests: write
