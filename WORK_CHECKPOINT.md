@@ -18,6 +18,10 @@ Complete all remaining numbered ElevenLabs audio acceptance requirements for Gen
 - MP3 404 failure pauses Auto Mode and produces explicit recording-unavailable notice; zero device SpeechSynthesis calls.
 - Pause/resume, simulated backgrounding, offline shell startup, saved history and a five-step skip-through checked separately.
 
+## Further completed after original checkpoint
+
+- Full five-exercise **instrumented audio-trigger** simulated browser session: live production page, 150× clock, media element play stub emitting completed events; all five exercises finished without Skip; 69 clip-play triggers, 45 distinct URLs, 0 generic TTS calls, zero JS page errors, saved `complete` with five exercise results. Evidence in `AUDIO_INTEGRATION_TODO.md`, commit `a046c05538250433f68fa1d874c1e4d215c017c4`. Media was *synthetically ended*; real-time audibility not implied.
+
 ## Open acceptance — do not mark complete without evidence
 - End-to-end **real-time narrated**, unskipped five-exercise session and each actual audio transition.
 - Actual phone lock/unlock, background audio, operating-system interruptions.
@@ -32,4 +36,4 @@ Complete all remaining numbered ElevenLabs audio acceptance requirements for Gen
 Vercel sandbox `sbx_7IQjzpheNkUQ4dk1HtNjkjsaA2IP`, project `gentle-movement`, Sydney region; GitHub checkout of `Parris-Tech-Services/GentleMovement`; Playwright Core Chromium with @sparticuz/chromium. Sandboxes expire, so provision a fresh one if necessary.
 
 ## Exact next action
-Execute an audible end-to-end accelerated Playwright Auto Mode test with recording `onended` orchestration, or a real-time full-length browser run, tracking per-exercise transitions and audio URLs. Follow with hold pause/resume and offline cached/uncached tests. Update per-task checkboxes only when proof is captured. Keep clinical prescriptions unchanged.
+The synthetic media-ended full-flow test is now complete. Next execute a **real-time full-duration browser session with actual MP3 decoding** (and verify specific hold/repetition transitions); then physical phone and offline-media failure cases. Follow with hold pause/resume and offline cached/uncached tests. Update per-task checkboxes only when proof is captured. Keep clinical prescriptions unchanged.
