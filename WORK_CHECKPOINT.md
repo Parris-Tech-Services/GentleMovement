@@ -42,5 +42,11 @@ Complete all remaining numbered ElevenLabs audio acceptance requirements for Gen
 ## Test environment
 Vercel sandbox `sbx_7IQjzpheNkUQ4dk1HtNjkjsaA2IP`, project `gentle-movement`, Sydney region; GitHub checkout of `Parris-Tech-Services/GentleMovement`; Playwright Core Chromium with @sparticuz/chromium. Sandboxes expire, so provision a fresh one if necessary.
 
+## Deployment blocker found
+
+- Vercel project `prj_Iz2b2EFDuwedtPhr0FP3WXepociQ` is currently serving older `style.css` with light-theme `--muted:#64756d` even though GitHub has committed contrast fix `cc104b7` using `#52635b`.
+- Explicit production deploy request for GitHub commit `45352950c176acbd45e0811f827bc7947b8f5f7b` was rejected: **HTTP 402** `payment_required`, Vercel quota `api-deployments-free-per-day`, more than 100 in a 24-hour window; retry after 86400 seconds. **DO NOT CLAIM THIS FIX IS DEPLOYED**. Do not attempt to bypass quotas or raise paid usage without user approval.
+- GitHub changes and local axe/browser tests succeeded; production contrast fix remains pending release. Existing production audio release remains available.
+
 ## Exact next action
 The synthetic media-ended full-flow test is now complete. Next execute a **real-time full-duration browser session with actual MP3 decoding** (and verify specific hold/repetition transitions); then physical phone and offline-media failure cases. Follow with hold pause/resume and offline cached/uncached tests. Update per-task checkboxes only when proof is captured. Keep clinical prescriptions unchanged.
