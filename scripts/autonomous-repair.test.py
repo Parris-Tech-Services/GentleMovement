@@ -22,6 +22,6 @@ class RunnerTests(unittest.TestCase):
         self.assertIn("for attempt in range(3)",source)
     def test_repair_only_opens_review_pr(self):
         source=pathlib.Path(repair.__file__).read_text()
-        self.assertIn('"/pulls"',source)
+        self.assertIn('api("POST",f"/repos/{REPO}/pulls"',source)
         self.assertNotIn('"/merges"',source)
 if __name__=="__main__":unittest.main()
