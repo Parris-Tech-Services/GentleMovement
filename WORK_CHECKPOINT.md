@@ -7,7 +7,8 @@ Complete all remaining numbered ElevenLabs audio acceptance requirements for Gen
 1. Added changed-repetition clinical regression (commits `eeb69a3e`, syntax fix `07a80e6f`). Actual fresh `node --test` on Vercel sandbox passed **46/46** after fix.
 2. Executed an unskipped full-five-exercise **accelerated silent timeline** against real production in Chromium/Playwright. Clock approx 100×, tick 500ms→5ms, voice disabled for timing test. Exercised indices 0–4, saved one `complete` timeline with five results, **zero browser page errors**. It does not prove audible completion. Evidence in `AUDIO_INTEGRATION_TODO.md`.
 3. Executed fresh Chromium mobile viewport (390×844; touch; DPR 2) page-load smoke test: **18 total requests, 0 MP3 requests, 0 JavaScript errors, 0 horizontal overflow**.
-4. Updated checked subtasks in `AUDIO_INTEGRATION_TODO.md`.
+4. Accelerated 30-second hold pause/resume in actual Chromium: reached index 1, step 0 hold, paused with 26,100ms remaining, simulated 60 seconds while paused with no progress, resumed same index/step and preserved remaining time. Evidence in tracker, commit `0b61faefa7cb2937da38f7eeaaeda63bb24adb81`.
+5. Updated checked subtasks in `AUDIO_INTEGRATION_TODO.md`.
 
 ## Previously verified in this day's session
 - 148/148 existing production MP3 binaries match checked-out sources.
