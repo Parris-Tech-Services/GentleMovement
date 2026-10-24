@@ -9,7 +9,11 @@ def api(method,path,data=None):
     with urllib.request.urlopen(req,timeout=30) as r:return json.load(r)
 def run(cmd,timeout=240):
     try:
-        env=os.environ.copy()\n        # Child processes execute repository-controlled code: never inherit agent credentials.\n        for secret in ("OPENAI_API_KEY","GH_TOKEN","GITHUB_TOKEN","ACTIONS_RUNTIME_TOKEN"):\n            env.pop(secret,None)\n        p=subprocess.run(cmd,capture_output=True,text=True,timeout=timeout,env=env)
+        env=os.environ.copy()
+        # Child processes execute repository-controlled code: never inherit agent credentials.
+        for secret in ("OPENAI_API_KEY","GH_TOKEN","GITHUB_TOKEN","ACTIONS_RUNTIME_TOKEN"):
+            env.pop(secret,None)
+        p=subprocess.run(cmd,capture_output=True,text=True,timeout=timeout,env=env)
         return p.returncode,(p.stdout+"\n"+p.stderr)[-14000:]
     except Exception as e:return 124,str(e)
 def model(messages):
