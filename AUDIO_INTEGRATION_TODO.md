@@ -50,7 +50,7 @@
 - [ ] **043** [P2] Check loading performance and avoid unnecessarily downloading hundreds of recordings on mobile data
   - [ ] [AI] Record startup/network bytes and lazy-load timing on a throttled simulated mobile connection.
   - [ ] [AI] Ensure packs download on explicit interaction, cache selectively and respect audio settings.
-  - [ ] [AI] Verify bundles do not fetch all 300 clips on every page load or exhaust storage.
+  - [x] [AI] Live Chromium mobile-viewport (390×844) clean initial load: only 18 total requests, 17 performance resources, and **zero MP3 requests** before a user action. No page errors or horizontal overflow (scrollWidth=viewport=390); storage-pressure/eviction remains separately open.
   - [ ] [AI] Add performance budgets and compare measurements after optimisation.
 - [ ] **044** [P2] Test fallback and retry behaviour without unexpected ElevenLabs API calls or costs
   - [ ] [AI] Simulate offline, rate limits, 404, timeout, CORS denial and decode failure for every playback API.
@@ -123,3 +123,5 @@
 
 - Created independent Vercel Sydney sandbox `sbx_7IQjzpheNkUQ4dk1HtNjkjsaA2IP`; Chromium via Playwright opened actual production `https://gentle-movement.vercel.app/`.
 - Used `page.addInitScript` to set `settings.voice=false` and accelerate the client clock approximately 100× and the 500ms tick interval to 5ms. Clicked the actual **Start Auto Mode** button; **never** clicked Skip. Observed all exercise indices `[0,1,2,3,4]`, an automatically saved session with `status=complete` and five results, and zero `pageerror` events. This proves timeline progression under a mocked clock, **not** real-time audio playback or movement confirmation. Do not use this result to close end-to-end audible playback or physical device items.
+
+- Mobile emulation initial-load network sample: viewport 390×844, 2× device pixel ratio, touch enabled; fresh production homepage had 18 HTTP requests, zero MP3 requests, zero JavaScript page errors, zero unnamed empty buttons, and document scrollWidth equal to 390px viewport width. This is an unthrottled cold-page smoke check, not a full WCAG audit or real mobile-data performance budget.
