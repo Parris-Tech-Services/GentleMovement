@@ -33,7 +33,7 @@
   - [x] [AI] Real production Chromium/Playwright failure injection: intercepted all `audio/elevenlabs/*.mp3` and served HTTP 404; Start Auto Mode paused at step 0, displayed exactly `Recording unavailable. Follow the written cue. Retry with Resume, or choose Phone voice in Settings.`, and called device `speechSynthesis.speak` zero times.
   - [x] [AI] Tests fail when newly introduced clinical phase cues are unmapped; recorded-only source fallback assertion prohibits device TTS in missing-clip branch and runtime uses local assets. Actual outbound domain capture remains task 044.
 - [ ] **040** [P2] Audit voice consistency, pronunciation, volume, pauses and audio quality across all characters
-  - [ ] [AI] Measure loudness, peak, duration and leading/trailing silence for every approved clip using open-source tools.
+  - [x] [AI] Ran FFmpeg `volumedetect` and duration decode across all 148 approved production-source MP3 files in the independent Sydney sandbox on 2026-10-24: 148/148 decoded, mean-volume range −25.0 to −14.2 dB, highest maximum peak −0.3 dB, no failed decodes. Leading/trailing silence requires follow-up `silencedetect` analysis.
   - [ ] [AI] Flag speaker changes, clipped audio, pronunciation errors and long pauses for listening review.
   - [ ] [AI] Apply non-destructive free gain/trim normalisation only with before/after hashes and source preserved.
   - [ ] [AI] Test representative character clips in the actual app/game playback mix.
@@ -112,3 +112,5 @@
 
 - Production media interaction stress sample: Start → Pause → Resume → Pause; intercepted HTMLMediaElement play/pause methods. No autoplay before user gesture, each prior MP3 was stopped before the next began, final `paused=true`, `step=0`. This is a four-control representative test, not exhaustive overlap/concurrency proof.
 - Offline service-worker observations require more investigation: two unplayed VO files fetched successfully while Chromium context marked offline. Browser-level cache/network source attribution not yet independently proven, so do not treat this as full offline audio approval.
+
+- Independent audio decode/loudness scan: used packaged FFmpeg to decode all 148 approved locally checked-out MP3s with `-af volumedetect -f null -`. 148/148 succeeded, mean level range −25.0 to −14.2 dB, highest sample peak −0.3 dB, no observed digital samples above 0 dB. These are sample-based volume measurements, not LUFS/loudness-normalized nor a subjective pronunciation/speaker audit; preserve originals.
