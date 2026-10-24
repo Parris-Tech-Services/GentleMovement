@@ -58,7 +58,7 @@
   - [ ] [AI] Log outbound request domains and prove no unplanned ElevenLabs/paid API calls.
   - [ ] [AI] Preserve working offline alternatives only where approved, with no disguised device TTS.
 - [ ] **045** [P2] Check accessibility, keyboard controls, reduced-motion preferences and screen-reader labels
-  - [ ] [AI] Run automated accessibility assertions for labels, focus, aria-pressed/status and heading structure.
+  - [x] [AI] Automated axe-core WCAG2 AA / WCAG2.1 AA tests in Chromium on Today/Settings/Progress: initial color-contrast failures; fixed `--muted` light-theme colour #64756d→#52635b (commit `cc104b7ccd93c184a05bfe6b9d745133778681ad`); reran local updated-build axe scans: zero reported WCAG AA violations across these three screens. Deeper session screen reader and focus audits remain open.
   - [ ] [AI] Test keyboard-only controls and switch to reduced-motion mode where relevant.
   - [ ] [AI] Inspect mobile hit targets and long translated/recorded captions for overflow.
   - [ ] [AI] Retest screen-reader relevant semantics after fixes.
@@ -133,3 +133,5 @@
 - Independent Chromium/Playwright opened the live production site and clicked Start Auto Mode. Clock accelerated 150×; 500ms timer tick shortened to 4ms, media `play()` instrumented to dispatch synthetic `ended` after 1ms (no actual audio decoding in this particular test). The complete **unskipped** five-exercise sequence advanced to `session=null` and saved `status=complete` with five exercise results.
 - Observed **69 media-play triggers, 45 distinct MP3 URLs**, zero `speechSynthesis.speak` calls, zero page errors. **PASS for audio-trigger sequencing and complete simulated flow**. This is not evidence for playback duration, audibility, speaker/pronunciation fidelity or physical movement.
 - Preserve task 030/031/032 real-time narrated-playthrough requirements as OPEN until full-duration real audio session is evidenced.
+
+- Accessibility test: @axe-core/playwright on production previously flagged serious text contrast (5 nodes Today, 1 Settings, 3 Progress). Edited light theme `--muted` to #52635b; local HTTP-served checkout of the new commit rechecked all three screens with WCAG2 AA and WCAG2.1 AA tags: `violations=[]` for each. This validates automated scanner scope, not full manual/physical accessibility or production-alias deployment.
