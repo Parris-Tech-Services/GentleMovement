@@ -38,6 +38,23 @@ test('timed hold resumes from preserved remaining seconds rather than full clini
  assert.match(app,/s\.autoUntil=Date\.now\(\)\+s\.autoLeft/);
  assert.match(app,/if\(document\.hidden\|\|now-s\.autoUntil>2500\)/);
 });
+test('modified repetition count must not be silently treated as a known recording',()=>{
+ const current=programmes[0].exercises.find(e=>e.sides&&e.reps);
+ assert.ok(current);
+ const changed={...current,reps:current.reps+1};
+ const original=phases(current),extended=phases(changed);
+ assert.equal(extended.length,original.length+2);
+ assert.equal(extended.at(-2).side,'Left');
+ assert.equal(extended.at(-1).side,'Right');
+ assert.equal(extended.at(-1).rep,changed.reps);
+ // The transcript is clinical data, not a place to invent a new prescribed dose.
+ assert.equal(changed.text,current.text);
+ const newCue=autoPhasePrompt(extended.at(-1));
+ assert.ok(newCue.includes(String(changed.reps)));
+ // A changed dose is only deliverable if the exact required clip really exists.
+ const resolved=premiumAssetFor(manifest,newCue);
+ assert.equal(resolved===null||/^\\.\\/audio\\/elevenlabs\\/[a-f0-9]{64}\\.mp3$/.test(resolved),true);
+});
 test('recorded-only mode never invokes device TTS from its failure branch',()=>{
  const i=app.indexOf('const fallback=()=>{');const j=app.indexOf("if(!('speechSynthesis'in window))",i);
  assert.ok(i>0&&j>i);
