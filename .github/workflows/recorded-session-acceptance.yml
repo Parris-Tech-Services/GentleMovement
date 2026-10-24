@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/recorded-session-acceptance.yml"
       - "recorded-session.e2e.mjs"
+      - "real-time-hold.e2e.mjs"
       - "tests/clinical-audio-acceptance.test.mjs"
       - "auto-mode.js"
       - "app.js"
@@ -32,5 +33,7 @@ jobs:
         run: npm install --no-save playwright@1.60.0
       - name: Install Chromium browser
         run: npx playwright install chromium
+      - name: Wall-clock 30-second hold with real recorded audio
+        run: node real-time-hold.e2e.mjs
       - name: Decode real MP3s across complete online and offline sessions
         run: node recorded-session.e2e.mjs
