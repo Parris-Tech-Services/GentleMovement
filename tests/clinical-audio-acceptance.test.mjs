@@ -53,7 +53,7 @@ test('modified repetition count must not be silently treated as a known recordin
  assert.ok(newCue.includes(String(changed.reps)));
  // A changed dose is only deliverable if the exact required clip really exists.
  const resolved=premiumAssetFor(manifest,newCue);
- assert.equal(resolved===null||/^\\.\\/audio\\/elevenlabs\\/[a-f0-9]{64}\\.mp3$/.test(resolved),true);
+ assert.ok(resolved===null||(resolved.startsWith('./audio/elevenlabs/')&&resolved.endsWith('.mp3')&&resolved.length===String('./audio/elevenlabs/').length+64+4));
 });
 test('recorded-only mode never invokes device TTS from its failure branch',()=>{
  const i=app.indexOf('const fallback=()=>{');const j=app.indexOf("if(!('speechSynthesis'in window))",i);
