@@ -53,7 +53,7 @@
   - [x] [AI] Live Chromium mobile-viewport (390×844) clean initial load: only 18 total requests, 17 performance resources, and **zero MP3 requests** before a user action. No page errors or horizontal overflow (scrollWidth=viewport=390); storage-pressure/eviction remains separately open.
   - [ ] [AI] Add performance budgets and compare measurements after optimisation.
 - [ ] **044** [P2] Test fallback and retry behaviour without unexpected ElevenLabs API calls or costs
-  - [ ] [AI] Simulate offline, rate limits, 404, timeout, CORS denial and decode failure for every playback API.
+  - [ ] [AI] Simulate offline, rate limits, 404, timeout, CORS denial and decode failure for every playback API. **Done subsets:** 404 and intercepted `internetdisconnected` MP3 request failures in production Chromium both paused Auto Mode and showed explicit recording-unavailable text. Rate limits, decode failures, true device offline caching and every playback API still pending.
   - [ ] [AI] Assert graceful retry/disabled control with accurate voice source label.
   - [ ] [AI] Log outbound request domains and prove no unplanned ElevenLabs/paid API calls.
   - [ ] [AI] Preserve working offline alternatives only where approved, with no disguised device TTS.
@@ -135,3 +135,6 @@
 - Preserve task 030/031/032 real-time narrated-playthrough requirements as OPEN until full-duration real audio session is evidenced.
 
 - Accessibility test: @axe-core/playwright on production previously flagged serious text contrast (5 nodes Today, 1 Settings, 3 Progress). Edited light theme `--muted` to #52635b; local HTTP-served checkout of the new commit rechecked all three screens with WCAG2 AA and WCAG2.1 AA tags: `violations=[]` for each. This validates automated scanner scope, not full manual/physical accessibility or production-alias deployment.
+
+- Session screen accessibility: after CSS contrast change, local Chromium 390×844 viewport opened a real Auto Mode session and paused it; axe-core WCAG2 AA/2.1 AA yielded zero violations, with one `incomplete: color-contrast` requiring human verification. Do not equate automated scan with full WCAG signoff.
+- Disconnected-audio branch: production Chromium with Service Workers blocked and MP3 requests aborted using `internetdisconnected` produced `session.paused=true`, `step=0`, and the explicit `Recording unavailable` notice. Device/network offline MP3 availability is not established by this test.
