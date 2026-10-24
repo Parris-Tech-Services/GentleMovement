@@ -22,6 +22,13 @@ Complete all remaining numbered ElevenLabs audio acceptance requirements for Gen
 
 - Full five-exercise **instrumented audio-trigger** simulated browser session: live production page, 150× clock, media element play stub emitting completed events; all five exercises finished without Skip; 69 clip-play triggers, 45 distinct URLs, 0 generic TTS calls, zero JS page errors, saved `complete` with five exercise results. Evidence in `AUDIO_INTEGRATION_TODO.md`, commit `a046c05538250433f68fa1d874c1e4d215c017c4`. Media was *synthetically ended*; real-time audibility not implied.
 
+## Additional 24 October evidence
+
+- Audio-flow full-length **simulated** run: 69 media play triggers (45 unique MP3 URLs), all five exercises, one saved complete timeline, no browser page exceptions or phone TTS; media `ended` events were simulated, not audible.
+- Accessibility: axe-core WCAG2 AA / 2.1 AA scan flagged insufficient light-theme text contrast on Today, Settings and Progress. Fixed CSS to `--muted:#52635b` (`cc104b7`); scanned updated local checkout: zero WCAG AA violations on those three screens. Verified automated tests, not real screen-reader or deployed production alias.
+- Browser playback failure simulation: blocked Service Workers and aborted all MP3 requests with `internetdisconnected`, confirmed Auto Mode paused at step=0 and displayed an explicit `Recording unavailable` warning.
+- Caveat: Chromium context `setOffline(true)` sometimes still returned unplayed MP3s successfully despite cleared CacheStorage, so it is not credible proof of offline cache coverage. Explicit request-abort test is the reliable verified failure condition.
+
 ## Open acceptance — do not mark complete without evidence
 - End-to-end **real-time narrated**, unskipped five-exercise session and each actual audio transition.
 - Actual phone lock/unlock, background audio, operating-system interruptions.
