@@ -16,7 +16,7 @@
 - [ ] **030** [P1] Recheck every current physiotherapy exercise instruction, left/right cue, repetition count and hold timer
   - [ ] [AI] Export current exercise scripts, laterality, durations, rep counts, and audio cue mapping.
   - [ ] [AI] Check voice timing at hold/repeat/left/right transitions against the current physio instruction sequence.
-  - [x] [AI] Added `tests/clinical-audio-acceptance.test.mjs` and passed `node --test` (45/45) for prescribed rep/hold phase counts, 160 existing phase mappings, pause/resume remaining-time arithmetic and recorded-only fallback; source commit `9de98f29aa7ea2474381ca75344ca1997b1f4135`. Tests of changed rep counts remain a follow-up.
+  - [x] [AI] `tests/clinical-audio-acceptance.test.mjs` verifies prescribed rep/hold phase counts, 160 source phase mappings, pause/resume remaining-time arithmetic, recorded-only fallback and altered-repetition count mapping; latest independent `node --test`: 46/46 passing, commit `07a80e6f4761f949bac72e78fc54182cffe5b94a`.
   - [x] [AI] Automated mapping checks assert clinical `phases()` rep/side/hold values exactly match source exercise dose and current recorded cue coverage; no dosages synthesized for ambiguous/untimed exercises (45/45 passing tests).
 - [ ] **031** [P1] Verify Auto Mode produces no accidental generic TTS when ElevenLabs is selected
   - [ ] [AI] Trace VoiceBank/ElevenLabs selection through Auto Mode and every speech fallback branch.
@@ -116,3 +116,5 @@
 - Independent audio decode/loudness scan: used packaged FFmpeg to decode all 148 approved locally checked-out MP3s with `-af volumedetect -f null -`. 148/148 succeeded, mean level range −25.0 to −14.2 dB, highest sample peak −0.3 dB, no observed digital samples above 0 dB. These are sample-based volume measurements, not LUFS/loudness-normalized nor a subjective pronunciation/speaker audit; preserve originals.
 
 - Published [gentle-recording-matrix-2026-10-24.csv](audit/gentle-recording-matrix-2026-10-24.csv) with all 148 production file identifiers, repo paths, URL references, approval/trigger/verification status and manifest captions where defined. VO021–VO040 descriptive captions and definitive voice IDs are not available from the cited manifest and are intentionally blank/pending rather than invented. The matrix now includes the actual verified MP3 SHA-256 and byte length for every one of its 148 rows, reconciled from the original independent per-file validation report.
+
+- Continuation regression: added changed repetition count test; corrected an initial test-only malformed regex caught by actual Node run; final `node --test` 46 passing, zero failing at commit `07a80e6f4761f949bac72e78fc54182cffe5b94a`. This does not certify unskipped long-duration playback.
