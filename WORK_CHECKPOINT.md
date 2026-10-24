@@ -50,3 +50,11 @@ Vercel sandbox `sbx_7IQjzpheNkUQ4dk1HtNjkjsaA2IP`, project `gentle-movement`, Sy
 
 ## Exact next action
 The synthetic media-ended full-flow test is now complete. Next execute a **real-time full-duration browser session with actual MP3 decoding** (and verify specific hold/repetition transitions); then physical phone and offline-media failure cases. Follow with hold pause/resume and offline cached/uncached tests. Update per-task checkboxes only when proof is captured. Keep clinical prescriptions unchanged.
+
+## 25 October 2026 — task 030 full-media acceptance attempt
+
+- Resumed from the numbered checklist without changing clinical prescriptions or recording IDs. The existing `recorded-session.e2e.mjs` exercises actual decoded MP3s with media playback rate 8× and virtual timer advances; it does **not** prove full wall-clock-duration narration or physical phone behaviour.
+- Fixed cross-platform local-file path validation in `recorded-session.e2e.mjs` from POSIX slash to Node `path.sep`; commit [248d57f](https://github.com/Parris-Tech-Services/GentleMovement/commit/248d57f60cd59e3fb03a1029e142bb9ccb129a6c). This allows the existing test HTTP file server to handle paths on the Windows self-hosted runner.
+- Created [recorded-session-acceptance.yml](https://github.com/Parris-Tech-Services/GentleMovement/blob/main/.github/workflows/recorded-session-acceptance.yml), commit [9f8d5d6](https://github.com/Parris-Tech-Services/GentleMovement/commit/9f8d5d61266ee40f55a3a45f90d06e894cd54dd9), using `[self-hosted,Windows,X64,parristech]` with clinical Node checks and actual Chromium MP3 online/offline/missing-clip journeys. This avoids paid GitHub-hosted CI.
+- GitHub successfully created [run #40126871251](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40126871251); **queued, no runner assigned** at last check. No assertion of a passed browser test yet. Existing prior Pages deployments passing are separate evidence and cannot close task 030.
+- Original task 030 and unresolved recorded-only, physical device, quality and production checks remain open until matching test reports exist. Next action: inspect #40126871251 steps and logs, fix actual failures, rerun with evidence, then tick only covered subtasks.
