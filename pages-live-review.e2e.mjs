@@ -5,6 +5,7 @@ import {readFile} from 'node:fs/promises';
 import {chromium} from 'playwright';
 const url='https://parris-tech-services.github.io/GentleMovement/';
 const expected=createHash('sha256').update(await readFile('app.js')).digest('hex');
+const expectedProgramme=createHash('sha256').update(await readFile('programmes.js')).digest('hex');
 const browser=await chromium.launch({headless:true});
 try{
  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
