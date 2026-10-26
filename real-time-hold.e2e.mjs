@@ -43,9 +43,8 @@ try {
   const rootUrl='http://127.0.0.1:'+server.address().port;
   await page.goto(rootUrl+'/?voicebank=off#today',{waitUntil:'domcontentloaded'});
   await page.getByRole('button',{name:/Start Auto Mode/}).click();
-  // This test uses real wall-clock time. An expired dated programme asks for
-  // explicit acknowledgement; do not freeze Date.now() during hold timings.
-  if(await page.getByRole('button',{name:'Continue Auto Mode'}).count())await page.getByRole('button',{name:'Continue Auto Mode'}).click();
+  // The initial frequent-exercise schedule is not an expiry date.
+  assert.equal(await page.locator('dialog[open]').count(),0);
   await page.getByRole('button',{name:'Skip',exact:true}).click();
   await page.waitForFunction(()=>{
     const s=JSON.parse(localStorage.getItem('gentle-motion-v1')).session;
