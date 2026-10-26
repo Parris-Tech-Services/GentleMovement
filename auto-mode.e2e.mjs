@@ -71,29 +71,23 @@ try{
   assert.match(record.notes,/not detected or independently verified/);
   console.log('Auto Mode mobile no-tap progression, pause/resume and save: PASS');
 
-  // The 22 October course expired after 26 October Sydney time.
-  // Expiry must warn and require an explicit choice, not permanently block Auto Mode.
+  // 27 October: a 3–4-day initial schedule did not mean the exercises expired.
   await page.clock.setFixedTime(new Date('2026-10-26T22:00:00Z'));
   await page.goto('http://127.0.0.1:'+server.address().port+'/#today');
   await page.getByRole('button',{name:/Start Auto Mode/}).click();
-  assert.match(await page.locator('dialog[open]').innerText(),/old programme|review due/i);
-  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('gentle-motion-v1')).session),null,'Review must not silently start a session');
-  await page.getByRole('button',{name:'Continue Auto Mode'}).click();
-  const afterReview=await page.evaluate(()=>JSON.parse(localStorage.getItem('gentle-motion-v1')).session);
-  assert.equal(afterReview?.auto,true,'User may explicitly resume saved Auto Mode after the review warning');
-  assert.equal(afterReview?.programme,'robins-2026-10-22');
+  assert.equal(await page.locator('dialog[open]').count(),0,'No unsupported clinical expiry prompt');
+  const ongoing=await page.evaluate(()=>JSON.parse(localStorage.getItem('gentle-motion-v1')).session);
+  assert.equal(ongoing?.auto,true,'Auto Mode must launch on 27 October');
+  assert.equal(ongoing?.programme,'robins-2026-10-22');
   assert.match(await page.locator('.auto-bar').innerText(),/Auto Mode running/);
-  assert.match(await page.locator('.session .note').first().innerText(),/not a renewed prescription/);
-  // Manual start should retain the optional before-session check-in after acknowledgement.
-  await page.evaluate(()=>{const state=JSON.parse(localStorage.getItem('gentle-motion-v1'));state.session=null;localStorage.setItem('gentle-motion-v1',JSON.stringify(state));});
+  await page.evaluate(()=>{const saved=JSON.parse(localStorage.getItem('gentle-motion-v1'));saved.session=null;localStorage.setItem('gentle-motion-v1',JSON.stringify(saved));});
   await page.reload();
   await page.getByRole('button',{name:'Start manually'}).click();
-  await page.getByRole('button',{name:'Continue manually'}).click();
   assert.match(await page.locator('dialog[open]').innerText(),/Before we begin/);
   await page.getByRole('button',{name:'Let’s begin'}).click();
-  const manualAfterReview=await page.evaluate(()=>JSON.parse(localStorage.getItem('gentle-motion-v1')).session);
-  assert.equal(manualAfterReview?.auto,false);
-  console.log('Expired programme acknowledgement: Auto Mode and manual start PASS');
+  const manual=await page.evaluate(()=>JSON.parse(localStorage.getItem('gentle-motion-v1')).session);
+  assert.equal(manual?.auto,false);
+  console.log('No fabricated expiry: Auto Mode and manual start PASS');
   await context.close();
 }finally{
   await browser.close();
