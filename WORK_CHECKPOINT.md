@@ -70,3 +70,12 @@ The synthetic media-ended full-flow test is now complete. Next execute a **real-
 - At latest check [#40127260233](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40127260233) is **pending** with no completion conclusion. **Do not claim timing/audio success** from a committed test alone. The 20/55 previously checked subtask baseline is unchanged; none newly marked complete until actual run results.
 
 **Exact next action:** Review run #40127260233 and its per-step logs, fix browser test issues, rerun and capture timestamps; tick the specific task-030 substep only after faithful evidence. If Actions cannot schedule, use a reviewed non-billable browser environment; never substitute a mocked full session as a real-time clinical test.
+
+
+## 27 October 2026 — review-gate Auto Mode fix (new user-requested task)
+
+- **Symptom:** Programme from 22 October expired after 26 October (Australia/Sydney), causing `Start Auto Mode` and `Start manually` to display a close-only review dialog. User could not start the saved neck routine.
+- **Root cause:** `startAutoMode()` called `start()` on expiry, and `start()` always returned after a non-actionable review warning.
+- **Fix:** Both entry paths show a review warning with an explicit continuation choice. Auto continuation starts hands-free mode; manual continuation retains the pre-session check-in. Prescription, expiry, warnings, and reminder suppression are unchanged. Review-due status remains visible in Today and session views; no renewed clinician approval is implied. Cache version bumped to v16.
+- **Regression:** Extend `auto-mode.e2e.mjs` with 27 October simulated Sydney date, no silent start, explicit auto start and manual start after acknowledgement. Existing in-period Auto Mode test remains.
+- **Status:** PARTIALLY COMPLETE pending automated test execution, successful GitHub persistence, Vercel deployment and live mobile verification. Do not claim deployed until checked.

@@ -1,4 +1,4 @@
-const CACHE='gentle-movement-v15-shell-first';
+const CACHE='gentle-movement-v16-shell-first';
 const FILES=['./voicebank/src/index.js','./voicebank/src/browser.js','./voicebank/adapters/gentle-movement.js','./audio/voicebank-manifest.json','./','./index.html','./app.js','./auto-mode.js','./premium-voice.js','./coach-tracks.js','./data.js','./programmes.js','./exercise-feedback.js','./clinician-report.js','./clinician-report-view.js','./movement-guides.js','./archive-schema.js','./style.css','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./audio/elevenlabs/manifest.json'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
