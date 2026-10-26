@@ -1,0 +1,26 @@
+name: Clinical programme stop-date regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - "programmes.js"
+      - "domain.test.mjs"
+      - ".github/workflows/clinical-plan-regression.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify source and clinician-plan dates
+        run: |
+          node --check programmes.js
+          node --check domain.test.mjs
+          node --test domain.test.mjs
