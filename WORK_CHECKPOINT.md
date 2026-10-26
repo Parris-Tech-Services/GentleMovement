@@ -86,3 +86,10 @@ The synthetic media-ended full-flow test is now complete. Next execute a **real-
 - Initial existing recorded-session Actions job [#40406730969](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40406730969) failed on **its old wall-clock test setup**: `real-time-hold.e2e.mjs` clicked `Skip` before acknowledging the now-due review modal. This tests the newly exposed review behaviour, not a syntax or build error.
 - Corrected that wall-clock test to explicitly acknowledge the review when shown. Added the new 27 October Auto Mode/browser test to the automatically triggered public repository Actions acceptance workflow, before long audio tests. It will exercise both continuation paths and original within-period flow. **Results pending; do not claim passed until observed.**
 - The Vercel production release initially showed `QUEUED`; recheck after the latest commit and report actual state, not just a GitHub push.
+
+
+### 27 October public-release validation
+- At commit `01b75afb25369a0ee337583e1ff30a6ee2994c46`, GitHub Actions mobile expired-programme Auto Mode regression **PASS** and real-wall-clock 30-second hold **PASS** (run [#40407131982](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40407131982)); full recorded session test still executing at the time of this note.
+- GitHub Pages deployment for the same commit succeeded; the deployment job explicitly reported environment URL `https://parris-tech-services.github.io/GentleMovement/`.
+- Added `pages-live-review.e2e.mjs`, an independent mobile-Chromium test against the actual published URL, checks exact source SHA, review acknowledgement, running Auto Mode and no JS exceptions. Linked it into free public GitHub Actions; **live interaction outcome pending the Actions run**.
+- Vercel deployments for the fix still reported `QUEUED`, not READY. GitHub Pages is the proven publication fallback; do not claim the Vercel alias has updated.

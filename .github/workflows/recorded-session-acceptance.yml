@@ -39,6 +39,8 @@ jobs:
           node --test domain.test.mjs auto-mode.test.mjs
       - name: Mobile Auto Mode and expired programme review regression
         run: node auto-mode.e2e.mjs
+      - name: Live GitHub Pages mobile start after review
+        run: node pages-live-review.e2e.mjs
       - name: Wall-clock 30-second hold with real recorded audio
         run: node real-time-hold.e2e.mjs
       - name: Decode real MP3s across complete online and offline sessions
