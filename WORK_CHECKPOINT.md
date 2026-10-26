@@ -93,3 +93,17 @@ The synthetic media-ended full-flow test is now complete. Next execute a **real-
 - GitHub Pages deployment for the same commit succeeded; the deployment job explicitly reported environment URL `https://parris-tech-services.github.io/GentleMovement/`.
 - Added `pages-live-review.e2e.mjs`, an independent mobile-Chromium test against the actual published URL, checks exact source SHA, review acknowledgement, running Auto Mode and no JS exceptions. Linked it into free public GitHub Actions; **live interaction outcome pending the Actions run**.
 - Vercel deployments for the fix still reported `QUEUED`, not READY. GitHub Pages is the proven publication fallback; do not claim the Vercel alias has updated.
+
+
+## 27 October 2026 — tested resolution of review gate (updated evidence)
+
+**VERIFIED COMPLETE — GitHub Pages published mobile experience.** Source commit `963deff7b07cd2df4b440529da7f060a86f6c04a` includes the review acknowledgement and online test. Production URL: https://parris-tech-services.github.io/GentleMovement/
+
+- Github Pages workflow [#40407131557](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40407131557) deployed previous code commit `01b75afb25369a0ee337583e1ff30a6ee2994c46`, which includes the functional changes. New Pages workflow for `963deff7` also triggered.
+- Automated regression run [#40407131982](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40407131982): JavaScript syntax/core tests **PASS**, mobile Auto Mode including 27 Oct review acknowledgement and manual continuation **PASS**, real 30-second hold **PASS**, real recorded audio online and offline **PASS**. This earlier run completed successfully.
+- New run [#40407643818](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40407643818): public GitHub Pages mobile Chromium acceptance **PASS** including checking published app.js SHA matches checkout, dismissal/acknowledgment choice, `session.auto===true`, session heading and no page exceptions. This establishes production Pages interaction rather than only localhost results. Remaining steps of the newest full audio workflow were in progress when last checked.
+- Prescription dates/holds and automatic reminder suppression remain unchanged. User can explicitly opt into the old dated plan after review warning. This does not claim an updated clinician plan.
+- **PARTIALLY COMPLETE — Vercel production alias** (`https://gentle-movement.vercel.app`) still had newer Git-triggered deployments **QUEUED** despite successful Pages publication. No proof the Vercel alias serves updated code. Do not mark that particular host complete.
+- No physical Samsung device/browser lock-screen test performed. Hands-free playback remains subject to browser/device limits documented in existing audio tracker. Those original audio tasks remain open where not otherwise verified.
+
+Next: if Vercel deploys, verify exact release SHA and live modal flow there before declaring the original alias updated; otherwise use GitHub Pages as the supported live entrypoint.
