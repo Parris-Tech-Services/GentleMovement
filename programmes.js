@@ -6,8 +6,7 @@ export const programmeArchive=[
     "source": "John Robins · Activate Physiotherapy",
     "frequency": "Approximately every two hours while awake for 3–4 days from 22 October 2026, plus before bed and if awake overnight.",
     "precaution": "Work gently. For active rotation, John advised about 4–5/10 discomfort, not more. Stop if you develop significantly worsening or new concerning symptoms. Contact the clinic if still troublesome on 26–27 October.",
-    "expiresOn": "2026-10-26",
-    "review": "Review with Activate Physiotherapy on 26–27 October if symptoms persist.",
+    "review": "Contact the clinic if symptoms are still troublesome on 26–27 October. The first 3–4 days describe exercise frequency, not an expiry date.",
     "exercises": [
       {
         "name": "Active cervical rotation",
