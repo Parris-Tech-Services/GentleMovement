@@ -9,6 +9,10 @@ on:
       - "tests/clinical-audio-acceptance.test.mjs"
       - "auto-mode.js"
       - "app.js"
+      - "programmes.js"
+      - "domain.test.mjs"
+      - "auto-mode.e2e.mjs"
+      - "pages-live-review.e2e.mjs"
   workflow_dispatch:
 permissions:
   contents: read
@@ -39,7 +43,7 @@ jobs:
           node --test domain.test.mjs auto-mode.test.mjs
       - name: Mobile Auto Mode and expired programme review regression
         run: node auto-mode.e2e.mjs
-      - name: Live GitHub Pages mobile start after review
+      - name: Live GitHub Pages direct Auto Mode start
         run: node pages-live-review.e2e.mjs
       - name: Wall-clock 30-second hold with real recorded audio
         run: node real-time-hold.e2e.mjs
