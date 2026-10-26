@@ -33,6 +33,12 @@ jobs:
         run: npm install --no-save playwright@1.60.0
       - name: Install Chromium browser
         run: npx playwright install --with-deps chromium
+      - name: Validate JavaScript syntax and core logic
+        run: |
+          node --check app.js
+          node --test domain.test.mjs auto-mode.test.mjs
+      - name: Mobile Auto Mode and expired programme review regression
+        run: node auto-mode.e2e.mjs
       - name: Wall-clock 30-second hold with real recorded audio
         run: node real-time-hold.e2e.mjs
       - name: Decode real MP3s across complete online and offline sessions

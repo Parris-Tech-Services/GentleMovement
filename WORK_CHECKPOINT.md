@@ -79,3 +79,10 @@ The synthetic media-ended full-flow test is now complete. Next execute a **real-
 - **Fix:** Both entry paths show a review warning with an explicit continuation choice. Auto continuation starts hands-free mode; manual continuation retains the pre-session check-in. Prescription, expiry, warnings, and reminder suppression are unchanged. Review-due status remains visible in Today and session views; no renewed clinician approval is implied. Cache version bumped to v16.
 - **Regression:** Extend `auto-mode.e2e.mjs` with 27 October simulated Sydney date, no silent start, explicit auto start and manual start after acknowledgement. Existing in-period Auto Mode test remains.
 - **Status:** PARTIALLY COMPLETE pending automated test execution, successful GitHub persistence, Vercel deployment and live mobile verification. Do not claim deployed until checked.
+
+
+### 27 October follow-up validation
+- GitHub commit `24144ce75c9183dce6cbad75141aacdf7265e56b` pushed on `main`; automated Pages build passed.
+- Initial existing recorded-session Actions job [#40406730969](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40406730969) failed on **its old wall-clock test setup**: `real-time-hold.e2e.mjs` clicked `Skip` before acknowledging the now-due review modal. This tests the newly exposed review behaviour, not a syntax or build error.
+- Corrected that wall-clock test to explicitly acknowledge the review when shown. Added the new 27 October Auto Mode/browser test to the automatically triggered public repository Actions acceptance workflow, before long audio tests. It will exercise both continuation paths and original within-period flow. **Results pending; do not claim passed until observed.**
+- The Vercel production release initially showed `QUEUED`; recheck after the latest commit and report actual state, not just a GitHub push.
