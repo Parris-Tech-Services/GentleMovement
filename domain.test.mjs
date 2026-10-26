@@ -7,6 +7,13 @@ test('last hold differs from each-repetition hold',()=>{assert.deepEqual(phases(
 test('unknown and ambiguous dosage never gets invented',()=>{assert.deepEqual(phases({}),[]);assert.ok(phases({reps:3,hold:12,ambiguous:true}).every(p=>p.seconds===0))});
 test('paused hold is independent of wall clock',()=>{assert.equal(remaining({left:8},999999),8);assert.equal(remaining({end:10000},11000),0)});
 test('Sydney programme expiry uses local calendar',()=>{const p={expiresOn:'2030-01-01'};assert.equal(expired(p,Date.parse('2030-01-01T12:59:59Z')),false);assert.equal(expired(p,Date.parse('2030-01-01T13:00:00Z')),true)});
+test('the 22 October exercises do not expire after the short-term frequency schedule',()=>{
+ const p=programmes.find(x=>x.id==='robins-2026-10-22');
+ assert.ok(p);
+ assert.equal(Object.hasOwn(p,'expiresOn'),false);
+ assert.equal(expired(p,Date.parse('2026-10-27T00:00:00Z')),false);
+ assert.match(p.frequency,/3–4 days/);
+});
 test('voice commands reject partial or negated matches',()=>{assert.equal(command('not done'),null);assert.equal(command('That hurts'),'hurt');assert.equal(command('confirm done'),'confirm')});
 
 import {validateArchive} from './archive-schema.js';
