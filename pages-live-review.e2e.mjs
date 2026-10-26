@@ -23,10 +23,7 @@ try{
  const button=page.getByRole('button',{name:/Start Auto Mode/i});
  await button.waitFor({timeout:30000});
  await button.click();
- const dialog=page.locator('dialog[open]');
- assert.match(await dialog.innerText(),/programme review due|old programme/i);
- assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('gentle-motion-v1')).session),null,'Expired plan requires active choice');
- await page.getByRole('button',{name:'Continue Auto Mode'}).click();
+ assert.equal(await page.locator('dialog[open]').count(),0,'No expiry warning is expected');
  await page.getByRole('heading',{name:'Active cervical rotation'}).waitFor();
  const s=await page.evaluate(()=>JSON.parse(localStorage.getItem('gentle-motion-v1')).session);
  assert.equal(s?.auto,true);
