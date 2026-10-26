@@ -17,6 +17,13 @@ try{
  });
  const page=await context.newPage(),errors=[];
  page.on('pageerror',e=>errors.push(e.message));
+ let ready=false;
+ for(let n=0;n<30;n++){
+  const response=await page.request.get(url+'programmes.js?test='+n,{timeout:30000});
+  if(response.ok()&&createHash('sha256').update(await response.body()).digest('hex')===expectedProgramme){ready=true;break}
+  await new Promise(resolve=>setTimeout(resolve,5000));
+ }
+ assert.ok(ready,'Live published programme must match the corrected source');
  await page.goto(url+'#today',{waitUntil:'domcontentloaded',timeout:60000});
  const app=await page.request.get(url+'app.js',{timeout:30000});
  assert.equal(app.status(),200,'Public Pages must serve the application');
