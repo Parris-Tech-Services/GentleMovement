@@ -107,3 +107,18 @@ The synthetic media-ended full-flow test is now complete. Next execute a **real-
 - No physical Samsung device/browser lock-screen test performed. Hands-free playback remains subject to browser/device limits documented in existing audio tracker. Those original audio tasks remain open where not otherwise verified.
 
 Next: if Vercel deploys, verify exact release SHA and live modal flow there before declaring the original alias updated; otherwise use GitHub Pages as the supported live entrypoint.
+
+
+## 27 October 2026 — corrected unsupported prescription stop date
+
+**VERIFIED COMPLETE — false expiry removal and live Pages Auto Mode.**
+
+- Source clarification: The 22 October clinician summary specified an intensive exercise frequency over an initial 3–4 days, and follow-up if symptoms remained troublesome. It did **not** specify an exercise cessation date. The public source must not claim otherwise. Original patient PDF remains private and has **not** been committed to GitHub.
+- Fixed `programmes.js`: removed `expiresOn: "2026-10-26"` and distinguished follow-up guidance from an exercise stop date. The original instructions, repetition counts, hold durations and symptom precautions were not changed.
+- Updated mobile `auto-mode.e2e.mjs`: at 27 October Sydney time, both automatic and manual sessions start without an invented expiry modal. Updated the live GitHub Pages browser test to check the published programme content against the source SHA and verify direct Auto Mode. Updated the real-time audio test to stop expecting an expiry acknowledgement.
+- Changed `sw.js` to shell cache v17 to replace older installed copies.
+- Added `domain.test.mjs` regression and lightweight free GitHub Actions workflow `clinical-plan-regression.yml`. Workflow [#40409867621](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40409867621) **PASSED**.
+- Browser acceptance workflow [#40409251682](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40409251682) passed syntax/core, mobile auto/manual, and **actual published GitHub Pages direct-start** tests. Remaining extended audio steps were still running at this checkpoint.
+- GitHub Pages is published and usable at `https://parris-tech-services.github.io/GentleMovement/`. The old Vercel alias had QUEUED Git deployments and must not be described as serving this fix until verified.
+- Outstanding: verify the remainder of the audio workflow; the original unrelated voice/device acceptance tasks remain distinct.
+
