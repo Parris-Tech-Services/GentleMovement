@@ -78,6 +78,9 @@ async function check(viewport) {
     await page.locator('#passcode').fill('2468')
     await page.getByRole('button',{name:'Open settings'}).click()
     await hear(page,'CLmhlWLp5a0WCYKOIbxu','Hear about parent settings')
+    await page.goto(BASE+'/feelings-friends',{waitUntil:'domcontentloaded'})
+    await page.getByRole('button',{name:'me',exact:true}).click()
+    await hear(page,'2gJAFjEybxjueORMOErd','Hear the check-in question')
     await page.goto(BASE+'/game-ideas',{waitUntil:'domcontentloaded'})
     await page.getByRole('button',{name:'Toggle automatic narration'}).click()
     // Switching from tap to voice triggers route controls; allow a gesture-required browser to show a tap notice.
