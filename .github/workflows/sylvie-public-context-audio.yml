@@ -1,0 +1,29 @@
+name: Public cross-app Sylvie original audio browser acceptance
+on:
+  push:
+    branches: [test/sylvie-public-context-audio-20261029]
+    paths:
+      - 'tests/sylvie-public-context-audio.e2e.mjs'
+      - '.github/workflows/sylvie-public-context-audio.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install standalone browser test dependency
+        run: npm install --no-save playwright@1.60.0
+      - name: Install open-source Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Play original public MP3s from real route controls on desktop and phone
+        env:
+          SYLVIE_PUBLIC_URL: https://sylvie-app-github.pages.dev
+        run: node tests/sylvie-public-context-audio.e2e.mjs
