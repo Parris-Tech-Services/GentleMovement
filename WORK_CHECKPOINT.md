@@ -122,3 +122,12 @@ Next: if Vercel deploys, verify exact release SHA and live modal flow there befo
 - GitHub Pages is published and usable at `https://parris-tech-services.github.io/GentleMovement/`. The old Vercel alias had QUEUED Git deployments and must not be described as serving this fix until verified.
 - Outstanding: verify the remainder of the audio workflow; the original unrelated voice/device acceptance tasks remain distinct.
 
+
+
+## 29 October 2026 — GM-031.01 voice engine tracing and runtime branch acceptance
+
+- Objective: in source `app.js`, inspect `say()`, `cancelSpeech()`, selected provider, approved-track paths, exact Naomy VoiceBank adapter, premium manifest and every failure path. No clinical dosing or original MP3 changes.
+- Branch: `audit/gm031-voice-routing-20261029`. Added `tests/voice-routing-gm031.test.mjs` at `6026ea563dc65f2ed3ca3b8f0f46cb111fed3e3b` and `.github/workflows/gm-voice-routing.yml` at `7a3984d5c440dfbaf86fb1ba03078c9431d2f4bc`.
+- **PASS:** [GitHub Actions run 40826496521](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40826496521), job `recorded-routing` success, source HEAD `7a3984d5`. Ten simulated runtime-dispatch branches plus existing clinical audio acceptance tests in Node 22. Tests invoke the actual extracted `say()` / `cancelSpeech()` source under browser API doubles, without paying for audio. Verified local assets used in recorded mode, device TTS only if explicitly selected, missing/error/reject cases fail closed and preserve Auto Mode safety, and old media canceled.
+- **GM-031.01 VERIFIED COMPLETE for source routing and controlled branch tests**; updating its checklist and triage on this branch. It is NOT a real wall-clock, audible, physical Android or production source-interaction playback test. Those remain OPEN under GM-031.03, GM-030.02 and other original IDs. The original 148 MP3s and current clinical instructions were not touched.
+- Next: open/merge reviewed PR after exact CI check, then update [VoiceBank central index](https://github.com/Parris-Tech-Services/ParrisVoiceBank/blob/main/docs/GENTLE_MOVEMENT_AUDIO_TASK_INDEX.md). Proceed to `GM-031.03` with simulated slow/stalled downloads, repeated exercises and timer transitions. Do not claim deployment UX tested merely due test-only code changes.
