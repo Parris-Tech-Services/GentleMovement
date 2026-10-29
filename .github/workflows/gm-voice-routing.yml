@@ -1,0 +1,37 @@
+name: GM-031 recorded-only voice routing acceptance
+on:
+  push:
+    branches: [main, audit/gm031-voice-routing-20261029]
+    paths:
+      - 'tests/voice-routing-gm031.test.mjs'
+      - 'tests/clinical-audio-acceptance.test.mjs'
+      - 'app.js'
+      - 'premium-voice.js'
+      - 'voicebank/adapters/gentle-movement.js'
+      - '.github/workflows/gm-voice-routing.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tests/voice-routing-gm031.test.mjs'
+      - 'tests/clinical-audio-acceptance.test.mjs'
+      - 'app.js'
+      - 'premium-voice.js'
+      - 'voicebank/adapters/gentle-movement.js'
+      - '.github/workflows/gm-voice-routing.yml'
+permissions:
+  contents: read
+jobs:
+  recorded-routing:
+    if: github.repository == 'Parris-Tech-Services/GentleMovement'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check app.js
+      - name: Simulate exact recorded/phone branch dispatch, failures and cancellation
+        run: node --test tests/voice-routing-gm031.test.mjs tests/clinical-audio-acceptance.test.mjs

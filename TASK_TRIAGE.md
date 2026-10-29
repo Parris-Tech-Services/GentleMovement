@@ -1,14 +1,14 @@
 # TASK_TRIAGE — GentleMovement ElevenLabs audio
 
-**Current next unclaimed item: GM-031.01 (queue 01).** This is the authoritative agent pick-up pointer for GentleMovement audio tasks as of 2026-10-25. [Central 55-task registry](https://github.com/Parris-Tech-Services/ParrisVoiceBank/blob/main/docs/GENTLE_MOVEMENT_AUDIO_TASK_INDEX.md) · [Numbered local checklist](AUDIO_INTEGRATION_TODO.md) · [Checkpoint](WORK_CHECKPOINT.md).
+**Current next unclaimed item: GM-031.03 (queue 02).** This is the authoritative agent pick-up pointer for GentleMovement audio tasks as of 2026-10-25. [Central 55-task registry](https://github.com/Parris-Tech-Services/ParrisVoiceBank/blob/main/docs/GENTLE_MOVEMENT_AUDIO_TASK_INDEX.md) · [Numbered local checklist](AUDIO_INTEGRATION_TODO.md) · [Checkpoint](WORK_CHECKPOINT.md).
 
-**Progress:** 20 / 55 specific subtasks complete; 35 open. Parent objective 029 complete; 13 parent objectives open. Every subtask's checklist ID is formatted `GM-<existing global parent>.<sequence>` so the 14 existing parent numbers are preserved. All 35 remaining subtasks have a separate, explicit queue rank in the central registry. Do not confuse this game's scoped IDs with shared VoiceBank `040.1` etc or overwrite existing `UN-` IDs.
+**Progress:** 21 / 55 specific subtasks complete; 34 open. Parent objective 029 complete; 13 parent objectives open. Every subtask's checklist ID is formatted `GM-<existing global parent>.<sequence>` so the 14 existing parent numbers are preserved. All 35 remaining subtasks have a separate, explicit queue rank in the central registry. Do not confuse this game's scoped IDs with shared VoiceBank `040.1` etc or overwrite existing `UN-` IDs.
 
 ## Next work, exact priority order
 
 | Queue | ID | Action and completion evidence |
 |---:|---|---|
-| 01 | **GM-031.01** | Trace app.js say(), VoiceBank adapter, premium manifest, approved-track paths and each error/timeout fallback; add tests confirming only intended engine is used. |
+| 01 | **GM-031.01 — DONE** | Trace app.js say(), VoiceBank adapter, premium manifest, approved-track paths and each error/timeout fallback; add tests confirming only intended engine is used. |
 | 02 | **GM-031.03** | Inject missing/slow/decode failures and repeated exercises, prove fail-safe pause and no accidental device TTS. |
 | 03 | **GM-030.02** | Run normal-speed, actual MP3-decoding full five-exercise session; verify real hold/rep/left/right transitions against clinical matrix. Synthetic audio endings do NOT pass. |
 | 04 | **GM-044.03** | Capture outbound network hosts; prove no unexpected ElevenLabs billable synthesis API use. |
@@ -25,7 +25,7 @@
 
 ## Agent execution contract
 
-- Start at **GM-031.01**, unless the checkpoint shows a verified result or active claim. Continue by ascending **queue rank**; do not choose a parent just because its numeric ID comes first.
+- Start at **GM-031.03**, unless the checkpoint shows a verified result or active claim. Continue by ascending **queue rank**; do not choose a parent just because its numeric ID comes first.
 - For every action, update [AUDIO_INTEGRATION_TODO.md](AUDIO_INTEGRATION_TODO.md) only after observing the applicable acceptance proof; include exact test command/output, SHA, observed production alias, and any limitations. Then update central VoiceBank registry and [WORK_CHECKPOINT.md](WORK_CHECKPOINT.md).
 - Do not renumber existing global IDs or remove completed evidence. Parent completion requires all acceptance criteria, including real audio where applicable, not merely all local checkboxes.
 - When Vercel is quota-limited, do source and local/test-sandbox work and record production as blocked. No paid regeneration or unrequested billing changes.
@@ -33,3 +33,10 @@
 ## Existing validated baseline
 
 46 Node tests previously passed; 167 exact/current Auto Mode cues mapped to existing recordings; 148 production MP3s verified byte-for-byte; accelerated unskipped five-exercise sequence finished with 69 synthetic media trigger events. **The simulated session does not establish normal-speed audible end-to-end playback.** Contrast changes passed local axe scans, but that fix was not verified deployed to the production alias.
+
+
+## 29 Oct 2026 GM-031.01 evidence
+
+- Verified on public GitHub Actions run [#40826496521](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40826496521): actual extracted `app.js` voice dispatcher exercised under mocked browser media APIs, with 10 new branch tests plus existing clinical safety tests; all job steps concluded success at commit `7a3984d5c440dfbaf86fb1ba03078c9431d2f4bc`. Source `tests/voice-routing-gm031.test.mjs`.
+- Covered: approved VO path, approved exact shared VoiceBank path, miss/rejection to local premium recordings, unavailable/decode/play failure pauses Auto Mode rather than generic phone speech, explicit Phone voice opt-in, cancellation of obsolete players, adapter exact-voice policy. No clinical text/timing altered, no paid audio generated.
+- GM-031.01 CLOSED; next queue task GM-031.03 remains OPEN (stress and timing/network injections). Browser/physical playback still distinct.
