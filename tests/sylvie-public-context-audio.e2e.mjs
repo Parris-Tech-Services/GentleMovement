@@ -107,7 +107,8 @@ async function check(viewport) {
       assert.equal((await page.locator('.feeling-main strong').textContent()).trim(),situation,'Situation should emerge after real face matching')
       await hear(page,id,'Hear the feelings question')
     }
-    await page.evaluate(()=>localStorage.setItem('__qa_seed','0.5'))
+    // Meadow deliberately retries equal groups: use native RNG to avoid a constant-seed infinite loop.
+    await page.evaluate(()=>localStorage.removeItem('__qa_seed'))
     await page.goto(BASE+'/more-or-less-meadow',{waitUntil:'domcontentloaded'})
     const left=await page.locator('button[aria-label="left group"] .meadow-thing').count()
     const right=await page.locator('button[aria-label="right group"] .meadow-thing').count()
@@ -115,6 +116,7 @@ async function check(viewport) {
     await page.getByRole('button',{name:left>right?'left group':'right group'}).click()
     await page.getByRole('button',{name:'Hear which has less'}).waitFor({state:'visible',timeout:10000})
     await hear(page,'z4o6Jz2lXcqnnvCrKn9q','Hear which has less')
+    await page.evaluate(()=>localStorage.setItem('__qa_seed','0.5'))
     await page.goto(BASE+'/sparkle-count',{waitUntil:'domcontentloaded'})
     assert.ok(await page.locator('.sparkle-count-icon[aria-label="apple"]').count()>0,'Real non-star count should match recovered prompt')
     await hear(page,'pordhVU54sPAV9lO4gyf','Hear the counting challenge')
