@@ -63,6 +63,8 @@ async function check(viewport) {
   const page=await context.newPage()
   try {
     await page.addInitScript(instrument('tap'),{mode:'tap'})
+    // Reproducible question selection only: still answer real game controls.
+    await page.addInitScript(()=>{const n=localStorage.getItem('__qa_seed');if(n!==null)Math.random=()=>Number(n)})
     for(const [name,id] of favoriteClips) {
       await page.goto(BASE+'/things-sylvie-loves/'+name,{waitUntil:'domcontentloaded'})
       await hear(page,id,'Hear this activity')
@@ -81,12 +83,47 @@ async function check(viewport) {
     await page.goto(BASE+'/feelings-friends',{waitUntil:'domcontentloaded'})
     await page.getByRole('button',{name:'me',exact:true}).click()
     await hear(page,'2gJAFjEybxjueORMOErd','Hear the check-in question')
+    // Six additional REC clips occur only in genuine question states.
+    for(const [word,seed,id] of [
+      ['apple',.3,'hHYfVQwoK3Lj6HYPYozR'],
+      ['book',.9,'uNcLgUDESUmyce67ppUo']
+    ]) {
+      await page.evaluate(seed=>localStorage.setItem('__qa_seed',String(seed)),seed)
+      await page.goto(BASE+'/rhyme-time-together',{waitUntil:'domcontentloaded'})
+      assert.equal((await page.locator('button.listen-card strong').textContent()).trim(),word,'Real word round should match its recording')
+      await hear(page,id,'Hear the word question')
+    }
+    for(const [situation,seed,id] of [
+      ['A kind friend gives a hug.',.7,'YTwKrU54jHNZb6uwZeIz'],
+      ['A favourite cup breaks.',.9,'5Vzw1tBngEmwTi9V56LI']
+    ]) {
+      await page.evaluate(seed=>localStorage.setItem('__qa_seed',String(seed)),seed)
+      await page.goto(BASE+'/feelings-friends',{waitUntil:'domcontentloaded'})
+      for(let i=0;i<3;i++) {
+        const answer=await page.locator('.feeling-main .feeling-face').getAttribute('aria-label')
+        await page.locator('button.emotion-choice').filter({hasText:answer}).first().click()
+        await page.waitForTimeout(1500)
+      }
+      assert.equal((await page.locator('.feeling-main strong').textContent()).trim(),situation,'Situation should emerge after real face matching')
+      await hear(page,id,'Hear the feelings question')
+    }
+    await page.evaluate(()=>localStorage.setItem('__qa_seed','0.5'))
+    await page.goto(BASE+'/more-or-less-meadow',{waitUntil:'domcontentloaded'})
+    const left=await page.locator('button[aria-label="left group"] .meadow-thing').count()
+    const right=await page.locator('button[aria-label="right group"] .meadow-thing').count()
+    assert.notEqual(left,right)
+    await page.getByRole('button',{name:left>right?'left group':'right group'}).click()
+    await page.getByRole('button',{name:'Hear which has less'}).waitFor({state:'visible',timeout:10000})
+    await hear(page,'z4o6Jz2lXcqnnvCrKn9q','Hear which has less')
+    await page.goto(BASE+'/sparkle-count',{waitUntil:'domcontentloaded'})
+    assert.ok(await page.locator('.sparkle-count-icon[aria-label="apple"]').count()>0,'Real non-star count should match recovered prompt')
+    await hear(page,'pordhVU54sPAV9lO4gyf','Hear the counting challenge')
     await page.goto(BASE+'/game-ideas',{waitUntil:'domcontentloaded'})
     await page.getByRole('button',{name:'Toggle automatic narration'}).click()
     // Switching from tap to voice triggers route controls; allow a gesture-required browser to show a tap notice.
     await page.getByRole('button',{name:'Toggle automatic narration'}).click()
-    console.log('PASS VIEWPORT',viewport.width+'x'+viewport.height,'22 contextual takes: original media, Stop, no TTS')
+    console.log('PASS VIEWPORT',viewport.width+'x'+viewport.height,'28 contextual takes: original media, Stop, no TTS')
   } finally {await browser.close()}
 }
 for(const viewport of [{width:1280,height:800},{width:390,height:844}])await check(viewport)
-console.log('PASS: 44 original context-media checks (22 distinct REC takes × 2 viewports); no synthetic speech')
+console.log('PASS: 56 original context-media checks (28 distinct REC takes × 2 viewports); no synthetic speech')
