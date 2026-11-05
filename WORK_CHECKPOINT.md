@@ -1,4 +1,9 @@
-## 6 November 2026 — GM-COMPLETION-REPORT-DRIFT — active repair
+## 6 November 2026 — GM-COMPLETION-REPORT-DRIFT — VERIFIED COMPLETE (scoped repair); CLAIM RELEASED
+
+**Final reconciliation:** [PR #9](https://github.com/Parris-Tech-Services/GentleMovement/pull/9) squash-merged into `main` as `90cac27f6907a10079b807bb68a82e5651fcf317`. Exact-head negative control [#42126380525](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/42126380525) **FAILED as intended** at `Reject stale or untracked committed completion reports`; corrected candidate [#42126516329](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/42126516329) **PASS**, final PR head [#42126678076](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/42126678076) **PASS**, and post-merge main [#42126755913](https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/42126755913) **PASS**. Independent canonical-main file readback: `completion/report.md` **OPEN 0/5**; `completion/report.json` `complete: false` with all five criteria unverified; the original objective ledger is unchanged; workflow checks for both tracked reports and `git diff --exit-code`. This closes only the **report-truth and future drift check**; the real original audio objective remains **OPEN** pending new evidence. No app source, audio, paid runner or third-party contact changed. **Scope RELEASED.**
+
+### Historical implementation checkpoint (prior to merge)
+
 
 **Original objective:** Finish Work's previously built accountability system; prevent the persisted GentleMovement completion report from showing “COMPLETE” after the repaired gate reopened GM-AUDIO-001. Original exclusion: no external contact/correspondence. Scope: existing completion report files, existing completion-gate workflow, and this checkpoint only. **No audio assets, original ledger criteria, paid repair runner, or app source changes.**
 
