@@ -1,33 +1,57 @@
 name: Project Completion Gate
-# Automatic runs paused to cap GitHub Actions costs; use Run workflow when needed.
+# Standard runner on this PUBLIC repository: no API repair, model usage or paid runner.
 on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  push:
+    branches: [main]
+    paths:
+      - 'completion/**'
+      - 'scripts/completion-gate*'
+      - 'scripts/autonomous-repair*'
+      - '.github/workflows/completion-gate.yml'
   workflow_dispatch:
+    inputs:
+      strict:
+        description: Require every original objective to be independently verified
+        type: boolean
+        default: true
+permissions:
+  contents: read
+concurrency:
+  group: completion-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   completion:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
+    # If repository visibility changes, automatic execution stops until reviewed.
+    if: github.event.repository.private == false || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate autonomous runner syntax
-        run: python3 -m py_compile scripts/autonomous-repair.py
-      - name: Self-test repair runner credential isolation
-        run: python3 scripts/autonomous-repair.test.py
-      - name: Self-test completion enforcement
-        run: node --test scripts/completion-gate.test.mjs
-      - name: Validate ledger and publish honest progress report
+      - name: Self-test existing enforcement paths
+        run: |
+          python3 scripts/autonomous-repair.test.py
+          node --test scripts/completion-gate.test.mjs
+      - name: Validate ledger and publish honest progress
         run: node scripts/completion-gate.mjs
-      - name: Enforce completion only when explicitly requested
-        if: ${{ contains(github.event.pull_request.labels.*.name, 'ready-for-completion') }}
-        run: node scripts/completion-gate.mjs --strict
-      - name: Escalate unfinished objectives on scheduled checks
-        if: github.event_name == 'schedule'
-        run: node scripts/completion-gate.mjs --strict
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: project-completion-report
-          path: completion/report.md
+      - name: Load preserved acceptance from the PR base
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: git show "$BASE_SHA:completion/objectives.json" > /tmp/original-completion.json
+      - name: Enforce completion when requested
+        if: contains(github.event.pull_request.labels.*.name, 'ready-for-completion') || (github.event_name == 'workflow_dispatch' && inputs.strict)
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT_NAME" != pull_request ]; then
+            git show HEAD:completion/objectives.json > /tmp/original-completion.json
+          fi
+          node scripts/completion-gate.mjs --strict --baseline=/tmp/original-completion.json
