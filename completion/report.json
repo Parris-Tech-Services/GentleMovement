@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "complete": false,
+  "objectives": [
+    {
+      "id": "GM-AUDIO-001",
+      "status": "open",
+      "criteria": [
+        {
+          "id": "inventory",
+          "verified": false,
+          "errors": [
+            "legacy prose/reference is not independently verified",
+            "legacy prose/reference is not independently verified"
+          ]
+        },
+        {
+          "id": "coverage",
+          "verified": false,
+          "errors": [
+            "legacy prose/reference is not independently verified",
+            "legacy prose/reference is not independently verified"
+          ]
+        },
+        {
+          "id": "automated",
+          "verified": false,
+          "errors": [
+            "legacy prose/reference is not independently verified",
+            "legacy prose/reference is not independently verified"
+          ]
+        },
+        {
+          "id": "production",
+          "verified": false,
+          "errors": [
+            "legacy prose/reference is not independently verified",
+            "legacy prose/reference is not independently verified"
+          ]
+        },
+        {
+          "id": "playtest",
+          "verified": false,
+          "errors": [
+            "legacy prose/reference is not independently verified",
+            "legacy prose/reference is not independently verified"
+          ]
+        }
+      ]
+    }
+  ]
+}
