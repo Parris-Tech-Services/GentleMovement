@@ -33,18 +33,29 @@ def issue(body):
         return ""
 def main():
     ledger=json.loads((ROOT/"completion/objectives.json").read_text())
-    pending=[o for o in ledger["objectives"] if o["status"]!="complete"]
-    if not pending:print("No pending objectives");return
+    # Always invoke the gate, including objectives already labelled complete.
+    (ROOT/"completion/report.json").unlink(missing_ok=True)
+    gate_code,gate_output=run(["node","scripts/completion-gate.mjs","--strict"]+(["--baseline="+os.environ["COMPLETION_BASELINE"]] if os.environ.get("COMPLETION_BASELINE") else []))
+    gate_report=ROOT/"completion/report.json"
+    if not gate_report.exists():
+        print("BLOCKED: completion gate did not produce a report",gate_output);sys.exit(2)
+    inspection=json.loads(gate_report.read_text())
+    if gate_code==0 and inspection.get("complete") is True:
+        print("All completion criteria independently checked");return
+    remaining={o["id"]:o for o in inspection["objectives"] if o["status"]!="complete"}
+    pending=[o for o in ledger["objectives"] if o["id"] in remaining]
+    if not pending:
+        print("BLOCKED: ledger and gate report disagree");sys.exit(2)
     code,output=run(["npm","test"])
-    report=f"Run: {datetime.datetime.now(datetime.timezone.utc).isoformat()}\nRepository: {REPO}\nPending: {', '.join(o['id'] for o in pending)}\nTests: {code}\n\n{output}"
+    report=f"Run: {datetime.datetime.now(datetime.timezone.utc).isoformat()}\nRepository: {REPO}\nPending: {', '.join(o['id'] for o in pending)}\nTests: {code}\n\n{output}\n\nCompletion gate:\n{gate_output}"
     pathlib.Path("completion/last-run.txt").write_text(report)
     if code==0:
-        print("Tests passed, but original objectives remain OPEN. Do not claim completion or fabricate a repair.")
-        print("Outstanding criteria:",[(o["id"],[a["id"] for a in o["acceptance"] if not a["verified"] or not a["evidence"]]) for o in pending])
-        # Escalate unmet non-test criteria to a durable GitHub issue; a green unit test is not completion.
+        print("PARTIALLY COMPLETE: tests passed; acceptance remains unresolved.")
+        print("Outstanding criteria:",json.dumps(remaining,indent=2))
+        # Persist the actual gate failures, including false status-complete claims.
         if os.environ.get("GITHUB_EVENT_NAME") in ("workflow_dispatch","schedule"):
-            issue("Automated completion inspection found passing unit tests but unresolved acceptance criteria.\\n\\n"+json.dumps(pending,indent=2)[:30000])
-        return
+            issue("Passing unit tests with unresolved acceptance.\n\n"+json.dumps(remaining,indent=2)[:30000])
+        sys.exit(1)
     if not KEY:
         print("BLOCKED: OPENAI_API_KEY secret not configured; cannot autonomously propose code changes.")
         print("Tests failed:",output[-1500:]);sys.exit(2)
@@ -81,8 +92,9 @@ def main():
             p,log=run(["git","push","origin",branch])
             if p:print(log);sys.exit(2)
             pr=api("POST",f"/repos/{REPO}/pulls",{"title":f"Automated repair proposal: {pending[0]['id']}","head":branch,"base":os.environ.get("DEFAULT_BRANCH","main"),"body":"Automated repair proposal. Tests passed locally in Actions. Human review and production verification required. This PR does NOT close the completion objective."})
-            print("Created review PR:",pr["html_url"]);return
+            print("PARTIALLY COMPLETE: created review PR:",pr["html_url"]);sys.exit(1)
         file.write_text(original)
     print("No safe passing repair found; leaving objective open.")
     sys.exit(1)
 if __name__=="__main__":main()
+

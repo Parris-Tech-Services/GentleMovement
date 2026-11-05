@@ -1,16 +1,18 @@
 # Project Completion Gate
 
-This folder is a durable, version-controlled definition of done. A deployment, green build, or merged PR **does not** close an objective.
+This is the existing ledger and gate, repaired on 6 November 2026. Green unit tests, a merge, or an agent-edited `verified` flag do not establish completion.
 
-## Workflow
-1. Add a new objective and measurable acceptance criteria in `objectives.json` before implementing changes.
-2. Keep `status: "open"` until every criterion has `verified: true` **and** concrete evidence references (test run URLs, production URLs, commit IDs, logs or playtest recordings).
-3. Run `node scripts/completion-gate.mjs` to generate `completion/report.md`; unresolved work stays visible.
-4. Run `node scripts/completion-gate.mjs --strict` before declaring completion. It exits nonzero for incomplete objectives.
-5. GitHub Actions runs this report automatically on relevant pushes and PRs. Label a PR `ready-for-completion` to enforce the strict gate.
-6. The agent must resume all open criteria in future sessions. Do not invent evidence or mark tests verified without actually executing them.
+Run `node scripts/completion-gate.mjs` for an honest progress report. Strict completion requires `--strict --baseline=/path/to/preserved-original-objectives.json`. On PRs the workflow obtains the baseline from the base commit, not from the candidate ledger. Removed objective IDs, titles, acceptance IDs or descriptions reject completion. This preserves the recorded baseline; it cannot discover instructions omitted before that baseline was created.
 
-**Limitations:** GitHub Actions cannot itself prove a human-perceived audio quality or a complete phone playtest. Evidence must come from real tests; an unchecked checklist cannot prevent an agent from stopping. Configure branch protection requiring the strict check if your workflow requires merge blocking. This is a portable template for other repositories, not a guarantee of autonomous background execution.
+Legacy evidence strings remain in the ledger as historical references. They are no longer accepted as verification. The existing complete audio claim is reopened; original audio subtasks remain untouched and open where unproven.
 
-## Gentle Movement
-`GM-AUDIO-001` remains open until existing Drive recordings are reconciled, all exercise cues covered, automated tests pass, production assets verified, and a full mobile session playtested.
+Evidence references now name a captured JSON file, its SHA-256, exact `check` ID and tested `commit`. Its schemaVersion is 1, kind must equal the acceptance criterion's kind, result must be pass, command and observedAt must be present, and commit must match GITHUB_SHA or local Git HEAD. A hash and pass flag alone never pass:
+
+- `node-test`: command must be `["node","--test","relative.test.mjs"]`. The gate actually reruns it with a timeout and credentials removed; nonzero or zero passing tests reject completion.
+- `deployment`: assets must include current app.js, programmes.js, index.html, sw.js and style.css, each with local path, approved live URL and SHA-256. Both current checkout bytes and freshly fetched live bytes must match. Redirects, unsupported origins and unavailable/stale assets fail closed. This proves those assets, not a complete browser journey or remote build provenance.
+
+Remote URLs, invented run numbers, prose, stale commits, mismatched check kinds and edited evidence fail. Tests demonstrate exact historical weaknesses. These checks still do not judge the semantic adequacy of an agent-written test or replace independently reviewed original requirements. Physical phone/audio-perception acceptance cannot be closed by a unit-test receipt.
+
+The repaired Project Completion Gate runs on PRs and relevant main pushes using a standard runner only while the repository is public; timeout three minutes, read-only token, no model calls and no stored artifacts. Strict mode runs on `ready-for-completion` PRs or manual strict dispatch. Automatic API repair remains disabled: it incurs model usage and proposes changes requiring review. GitHub documents standard hosted runners as free for public repositories: https://docs.github.com/en/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job . Private-repository auto-runs stop pending cost review. Branch protection is separate and must be verified before claiming merges cannot bypass the check.
+
+The repair runner invokes the gate even for objectives labelled complete, discards stale reports, persists exact unfinished acceptance in last-run.txt and a deduplicated issue on explicit/scheduled invocation, and exits nonzero when tests pass but acceptance remains open. A proposed repair PR is also partial, not successful completion. Without a preserved baseline it cannot certify the whole objective.

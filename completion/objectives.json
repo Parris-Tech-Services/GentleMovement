@@ -5,7 +5,7 @@
     {
       "id": "GM-AUDIO-001",
       "title": "Full ElevenLabs narration across complete prescribed exercise session",
-      "status": "complete",
+      "status": "open",
       "acceptance": [
         {
           "id": "inventory",
@@ -31,7 +31,7 @@
           "verified": true,
           "evidence": [
             "completion/audio-verification.json",
-            "https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40041399326 — all checks passed, including complete real recorded sessions online/offline, pause/resume, repeat instructions and missing-audio safe pause."
+            "https://github.com/Parris-Tech-Services/GentleMovement/actions/runs/40041399326 \u2014 all checks passed, including complete real recorded sessions online/offline, pause/resume, repeat instructions and missing-audio safe pause."
           ]
         },
         {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "notes": "Full saved narration verified. Explicit Phone voice remains selectable. Custom/imported wording outside the saved catalogue pauses recorded Auto Mode rather than silently changing voice. Browser tests accelerate media and clock waits while retaining real MP3 playback."
+      "notes": "Full saved narration verified. Explicit Phone voice remains selectable. Custom/imported wording outside the saved catalogue pauses recorded Auto Mode rather than silently changing voice. Browser tests accelerate media and clock waits while retaining real MP3 playback. Accountability audit 6 November: historical evidence retained; previous complete status withdrawn because current independent verification and unresolved original audio acceptance have not been established. Do not replace history with invented current receipts."
     }
   ]
 }
